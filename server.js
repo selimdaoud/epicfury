@@ -1,0 +1,468 @@
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
+const { URL } = require("url");
+
+const HOST = process.env.HOST || "127.0.0.1";
+const PORT = Number(process.env.PORT || 3000);
+const COOLDOWN_MS = 10 * 60 * 1000;
+const STATE_PATH = path.join(__dirname, "state.json");
+const PUBLIC_DIR = __dirname;
+
+const clients = new Set();
+
+function mulberry32(seed) {
+  let value = seed >>> 0;
+  return function rand() {
+    value += 0x6d2b79f5;
+    let next = value;
+    next = Math.imul(next ^ (next >>> 15), next | 1);
+    next ^= next + Math.imul(next ^ (next >>> 7), next | 61);
+    return ((next ^ (next >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function buildCity(seed) {
+  const rand = mulberry32(seed);
+  const buildings = [];
+  const CITY_SIZE = 900;
+  const HALF = CITY_SIZE * 0.5;
+  const ROAD_W = 10;
+  const BLOCK = 36;
+  const DOWNTOWN_RADIUS = 140;
+
+  function chance(value) {
+    return rand() < value;
+  }
+
+  function zoneAt(x, z) {
+    const d = Math.sqrt(x * x + z * z);
+    if (d < DOWNTOWN_RADIUS) {
+      return "downtown";
+    }
+    if (d < 260) {
+      return chance(0.6) ? "midrise" : "park";
+    }
+    if (d < 380) {
+      return chance(0.66) ? "residential" : "park";
+    }
+    return chance(0.72) ? "suburban" : "park";
+  }
+
+  function addBuilding(building) {
+    buildings.push({
+      ...building,
+      destroyedAt: null,
+      destroyedBy: null
+    });
+  }
+
+  function addTowerLot(x, z, lotW, lotD, blockId, lotId) {
+    const podiumH = 14 + rand() * 16;
+    const podiumW = lotW * (0.7 + rand() * 0.18);
+    const podiumD = lotD * (0.7 + rand() * 0.18);
+    addBuilding({
+      id: `${blockId}-${lotId}-podium`,
+      x,
+      z,
+      width: podiumW,
+      depth: podiumD,
+      height: podiumH,
+      zone: "downtown"
+    });
+
+    const towerCount = chance(0.36) ? 2 : 1;
+    for (let index = 0; index < towerCount; index += 1) {
+      const towerW = podiumW * (towerCount === 2 ? 0.34 + rand() * 0.12 : 0.38 + rand() * 0.24);
+      const towerD = podiumD * (towerCount === 2 ? 0.34 + rand() * 0.12 : 0.38 + rand() * 0.24);
+      const offsetX = towerCount === 2 ? (index === 0 ? -towerW * 0.7 : towerW * 0.7) : (rand() - 0.5) * podiumW * 0.08;
+      const offsetZ = (rand() - 0.5) * podiumD * 0.12;
+      addBuilding({
+        id: `${blockId}-${lotId}-tower-${index}`,
+        x: x + offsetX,
+        z: z + offsetZ,
+        width: towerW,
+        depth: towerD,
+        height: 120 + rand() * 190,
+        zone: "downtown"
+      });
+    }
+  }
+
+  function addMidriseLot(x, z, lotW, lotD, blockId, lotId) {
+    const count = chance(0.8) ? 1 : 2;
+    for (let index = 0; index < count; index += 1) {
+      addBuilding({
+        id: `${blockId}-${lotId}-mid-${index}`,
+        x: x + (rand() - 0.5) * lotW * 0.18,
+        z: z + (rand() - 0.5) * lotD * 0.18,
+        width: lotW * (0.34 + rand() * 0.34),
+        depth: lotD * (0.34 + rand() * 0.34),
+        height: 42 + rand() * 72,
+        zone: "midrise"
+      });
+    }
+  }
+
+  function addResidentialLot(x, z, lotW, lotD, blockId, lotId) {
+    const count = chance(0.84) ? 1 : 2;
+    for (let index = 0; index < count; index += 1) {
+      addBuilding({
+        id: `${blockId}-${lotId}-res-${index}`,
+        x: x + (rand() - 0.5) * lotW * 0.22,
+        z: z + (rand() - 0.5) * lotD * 0.22,
+        width: 10 + rand() * 9,
+        depth: 10 + rand() * 9,
+        height: 10 + rand() * 16,
+        zone: "residential"
+      });
+    }
+  }
+
+  function addSuburbanLot(x, z, blockId, lotId) {
+    addBuilding({
+      id: `${blockId}-${lotId}-suburban`,
+      x,
+      z,
+      width: 11 + rand() * 10,
+      depth: 11 + rand() * 10,
+      height: 8 + rand() * 10,
+      zone: "suburban"
+    });
+  }
+
+  function isMajorRoadLine(value) {
+    const mod = Math.abs(value % 90);
+    return mod < 1 || Math.abs(mod - 90) < 1;
+  }
+
+  for (let gx = -HALF + 25; gx < HALF - 25; gx += BLOCK + ROAD_W) {
+    for (let gz = -HALF + 25; gz < HALF - 25; gz += BLOCK + ROAD_W) {
+      if (isMajorRoadLine(gx) || isMajorRoadLine(gz)) {
+        continue;
+      }
+
+      const zone = zoneAt(gx, gz);
+      if (chance(0.1)) {
+        continue;
+      }
+      if (zone === "park" || chance(0.08)) {
+        continue;
+      }
+
+      const blockId = `b-${gx}-${gz}`.replace(/\./g, "_");
+      const lotsX = zone === "downtown" ? (chance(0.82) ? 1 : 2) : (chance(0.72) ? 1 : 2);
+      const lotsZ = zone === "downtown" ? (chance(0.82) ? 1 : 2) : (chance(0.72) ? 1 : 2);
+      const lotW = (BLOCK * 0.92) / lotsX;
+      const lotD = (BLOCK * 0.92) / lotsZ;
+
+      for (let ix = 0; ix < lotsX; ix += 1) {
+        for (let iz = 0; iz < lotsZ; iz += 1) {
+          const x = gx - (BLOCK * 0.92) * 0.5 + lotW * (ix + 0.5);
+          const z = gz - (BLOCK * 0.92) * 0.5 + lotD * (iz + 0.5);
+          const lotId = `lot-${ix}-${iz}`;
+
+          if (zone === "downtown") {
+            addTowerLot(x, z, lotW * 0.92, lotD * 0.92, blockId, lotId);
+          } else if (zone === "midrise") {
+            addMidriseLot(x, z, lotW * 0.9, lotD * 0.9, blockId, lotId);
+          } else if (zone === "residential") {
+            addResidentialLot(x, z, lotW * 0.9, lotD * 0.9, blockId, lotId);
+          } else {
+            addSuburbanLot(x, z, blockId, lotId);
+          }
+        }
+      }
+    }
+  }
+
+  return buildings.sort((a, b) => a.x - b.x || a.z - b.z || a.height - b.height);
+}
+
+function createRound(roundId) {
+  const seed = Date.now() ^ (roundId * 2654435761);
+  const buildings = buildCity(seed);
+  return {
+    roundId,
+    seed,
+    phase: "active",
+    startedAt: Date.now(),
+    endedAt: null,
+    cooldownEndsAt: null,
+    totalBuildings: buildings.length,
+    destroyedCount: 0,
+    lastEventAt: Date.now(),
+    players: {},
+    buildings
+  };
+}
+
+function loadState() {
+  try {
+    const raw = fs.readFileSync(STATE_PATH, "utf8");
+    const parsed = JSON.parse(raw);
+    if (
+      !parsed ||
+      !Array.isArray(parsed.buildings) ||
+      (parsed.buildings[0] && (typeof parsed.buildings[0].z !== "number" || typeof parsed.buildings[0].depth !== "number"))
+    ) {
+      throw new Error("Invalid state file");
+    }
+    return parsed;
+  } catch {
+    return createRound(1);
+  }
+}
+
+let state = loadState();
+
+function saveState() {
+  fs.writeFileSync(STATE_PATH, JSON.stringify(state, null, 2));
+}
+
+function currentPayload() {
+  const leaderboard = Object.entries(state.players)
+    .map(([playerId, player]) => ({
+      playerId,
+      name: player.name,
+      strikes: player.strikes
+    }))
+    .sort((a, b) => b.strikes - a.strikes || a.name.localeCompare(b.name))
+    .slice(0, 10);
+
+  return {
+    roundId: state.roundId,
+    seed: state.seed,
+    phase: state.phase,
+    startedAt: state.startedAt,
+    endedAt: state.endedAt,
+    cooldownEndsAt: state.cooldownEndsAt,
+    totalBuildings: state.totalBuildings,
+    destroyedCount: state.destroyedCount,
+    remainingBuildings: state.totalBuildings - state.destroyedCount,
+    leaderboard,
+    buildings: state.buildings
+  };
+}
+
+function broadcast(type, payload = currentPayload()) {
+  const message = `event: ${type}\ndata: ${JSON.stringify(payload)}\n\n`;
+  for (const client of clients) {
+    client.write(message);
+  }
+}
+
+function registerPlayer(playerId, name) {
+  if (!playerId) {
+    return;
+  }
+  const sanitized = String(name || "Anonymous").trim().slice(0, 24) || "Anonymous";
+  if (!state.players[playerId]) {
+    state.players[playerId] = {
+      name: sanitized,
+      strikes: 0
+    };
+    state.lastEventAt = Date.now();
+    saveState();
+    broadcast("leaderboard");
+    return;
+  }
+  if (sanitized && state.players[playerId].name !== sanitized) {
+    state.players[playerId].name = sanitized;
+    state.lastEventAt = Date.now();
+    saveState();
+    broadcast("leaderboard");
+  }
+}
+
+function resetRound() {
+  state = createRound(state.roundId + 1);
+  saveState();
+  broadcast("round_reset");
+}
+
+function maybeAdvanceCooldown() {
+  if (state.phase !== "cooldown") {
+    return;
+  }
+  if (Date.now() >= state.cooldownEndsAt) {
+    resetRound();
+  }
+}
+
+function markDestroyed(buildingId, playerId, playerName) {
+  maybeAdvanceCooldown();
+  registerPlayer(playerId, playerName);
+
+  if (state.phase !== "active") {
+    return { ok: false, code: 409, error: "Round is in cooldown." };
+  }
+
+  const building = state.buildings.find((item) => item.id === buildingId);
+  if (!building) {
+    return { ok: false, code: 404, error: "Building not found." };
+  }
+  if (building.destroyedAt) {
+    return { ok: false, code: 409, error: "Building already destroyed." };
+  }
+
+  building.destroyedAt = Date.now();
+  building.destroyedBy = playerId || "anonymous";
+  state.destroyedCount += 1;
+  state.lastEventAt = Date.now();
+
+  if (playerId) {
+    state.players[playerId] = state.players[playerId] || { name: "Anonymous", strikes: 0 };
+    state.players[playerId].strikes += 1;
+    if (playerName) {
+      state.players[playerId].name = String(playerName).trim().slice(0, 24) || state.players[playerId].name;
+    }
+  }
+
+  if (state.destroyedCount >= state.totalBuildings) {
+    state.phase = "cooldown";
+    state.endedAt = Date.now();
+    state.cooldownEndsAt = state.endedAt + COOLDOWN_MS;
+  }
+
+  saveState();
+  broadcast("state");
+  return { ok: true, code: 200, payload: currentPayload() };
+}
+
+function sendJson(res, code, payload) {
+  res.writeHead(code, {
+    "Content-Type": "application/json; charset=utf-8",
+    "Cache-Control": "no-store"
+  });
+  res.end(JSON.stringify(payload));
+}
+
+function serveFile(reqPath, res) {
+  if (reqPath === "/shared/cyberpunk.jpg" || reqPath === "/shared/skyline.jpg") {
+    const assetName = path.basename(reqPath);
+    const resolvedPath = path.join(path.dirname(PUBLIC_DIR), assetName);
+    fs.readFile(resolvedPath, (err, data) => {
+      if (err) {
+        res.writeHead(404);
+        res.end("Not found");
+        return;
+      }
+      res.writeHead(200, { "Content-Type": "image/jpeg" });
+      res.end(data);
+    });
+    return;
+  }
+
+  const pathname = reqPath === "/" ? "/index.html" : reqPath;
+  const resolvedPath = path.join(PUBLIC_DIR, pathname);
+  if (!resolvedPath.startsWith(PUBLIC_DIR)) {
+    res.writeHead(403);
+    res.end("Forbidden");
+    return;
+  }
+
+  fs.readFile(resolvedPath, (err, data) => {
+    if (err) {
+      res.writeHead(404);
+      res.end("Not found");
+      return;
+    }
+
+    const ext = path.extname(resolvedPath);
+    const contentTypes = {
+      ".html": "text/html; charset=utf-8",
+      ".css": "text/css; charset=utf-8",
+      ".js": "text/javascript; charset=utf-8",
+      ".json": "application/json; charset=utf-8",
+      ".jpg": "image/jpeg"
+    };
+
+    res.writeHead(200, {
+      "Content-Type": contentTypes[ext] || "application/octet-stream"
+    });
+    res.end(data);
+  });
+}
+
+function readBody(req) {
+  return new Promise((resolve, reject) => {
+    let raw = "";
+    req.on("data", (chunk) => {
+      raw += chunk;
+      if (raw.length > 1_000_000) {
+        reject(new Error("Body too large"));
+        req.destroy();
+      }
+    });
+    req.on("end", () => {
+      if (!raw) {
+        resolve({});
+        return;
+      }
+      try {
+        resolve(JSON.parse(raw));
+      } catch {
+        reject(new Error("Invalid JSON"));
+      }
+    });
+    req.on("error", reject);
+  });
+}
+
+const server = http.createServer(async (req, res) => {
+  maybeAdvanceCooldown();
+  const url = new URL(req.url, `http://${req.headers.host || "localhost"}`);
+
+  if (req.method === "GET" && url.pathname === "/api/state") {
+    sendJson(res, 200, currentPayload());
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/register") {
+    try {
+      const body = await readBody(req);
+      registerPlayer(body.playerId, body.playerName);
+      sendJson(res, 200, currentPayload());
+    } catch (error) {
+      sendJson(res, 400, { error: error.message });
+    }
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/strike") {
+    try {
+      const body = await readBody(req);
+      const result = markDestroyed(body.buildingId, body.playerId, body.playerName);
+      sendJson(res, result.code, result.ok ? result.payload : { error: result.error, ...currentPayload() });
+    } catch (error) {
+      sendJson(res, 400, { error: error.message });
+    }
+    return;
+  }
+
+  if (req.method === "GET" && url.pathname === "/api/events") {
+    res.writeHead(200, {
+      "Content-Type": "text/event-stream; charset=utf-8",
+      "Cache-Control": "no-cache, no-transform",
+      Connection: "keep-alive"
+    });
+    res.write("retry: 2000\n\n");
+    clients.add(res);
+    res.write(`event: state\ndata: ${JSON.stringify(currentPayload())}\n\n`);
+    req.on("close", () => {
+      clients.delete(res);
+    });
+    return;
+  }
+
+  serveFile(url.pathname, res);
+});
+
+setInterval(maybeAdvanceCooldown, 1000);
+
+saveState();
+
+server.listen(PORT, HOST, () => {
+  console.log(`mm server running on http://${HOST}:${PORT}`);
+});
