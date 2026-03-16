@@ -307,7 +307,6 @@ function makeLabelSprite(text) {
   });
   const sprite = new THREE.Sprite(material);
   sprite.scale.set(1.45, 0.58, 1);
-  sprite.raycast = () => {};
   return sprite;
 }
 
@@ -846,6 +845,7 @@ function addBuilding(serverBuilding) {
 
   const label = makeLabelSprite(shortBuildingCode(serverBuilding.id));
   label.position.set(0, h + 0.45, 0);
+  label.userData.buildingGroup = group;
   group.add(label);
 
   group.userData = {
