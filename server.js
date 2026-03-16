@@ -61,10 +61,12 @@ function buildCity(seed) {
     const podiumH = 14 + rand() * 16;
     const podiumW = lotW * (0.7 + rand() * 0.18);
     const podiumD = lotD * (0.7 + rand() * 0.18);
+    const baseJitterX = (rand() - 0.5) * lotW * 0.1;
+    const baseJitterZ = (rand() - 0.5) * lotD * 0.1;
     addBuilding({
       id: `${blockId}-${lotId}-podium`,
-      x,
-      z,
+      x: x + baseJitterX,
+      z: z + baseJitterZ,
       width: podiumW,
       depth: podiumD,
       height: podiumH,
@@ -79,8 +81,8 @@ function buildCity(seed) {
       const offsetZ = (rand() - 0.5) * podiumD * 0.12;
       addBuilding({
         id: `${blockId}-${lotId}-tower-${index}`,
-        x: x + offsetX,
-        z: z + offsetZ,
+        x: x + baseJitterX + offsetX,
+        z: z + baseJitterZ + offsetZ,
         width: towerW,
         depth: towerD,
         height: 120 + rand() * 190,
@@ -92,12 +94,14 @@ function buildCity(seed) {
   function addMidriseLot(x, z, lotW, lotD, blockId, lotId) {
     const count = chance(0.8) ? 1 : 2;
     for (let index = 0; index < count; index += 1) {
+      const footprintW = lotW * (0.34 + rand() * 0.34);
+      const footprintD = lotD * (0.34 + rand() * 0.34);
       addBuilding({
         id: `${blockId}-${lotId}-mid-${index}`,
-        x: x + (rand() - 0.5) * lotW * 0.18,
-        z: z + (rand() - 0.5) * lotD * 0.18,
-        width: lotW * (0.34 + rand() * 0.34),
-        depth: lotD * (0.34 + rand() * 0.34),
+        x: x + (rand() - 0.5) * lotW * 0.3,
+        z: z + (rand() - 0.5) * lotD * 0.3,
+        width: footprintW,
+        depth: footprintD,
         height: 42 + rand() * 72,
         zone: "midrise"
       });
@@ -107,23 +111,25 @@ function buildCity(seed) {
   function addResidentialLot(x, z, lotW, lotD, blockId, lotId) {
     const count = chance(0.84) ? 1 : 2;
     for (let index = 0; index < count; index += 1) {
+      const width = 10 + rand() * 9;
+      const depth = 10 + rand() * 9;
       addBuilding({
         id: `${blockId}-${lotId}-res-${index}`,
-        x: x + (rand() - 0.5) * lotW * 0.22,
-        z: z + (rand() - 0.5) * lotD * 0.22,
-        width: 10 + rand() * 9,
-        depth: 10 + rand() * 9,
+        x: x + (rand() - 0.5) * Math.max(lotW * 0.34, 4),
+        z: z + (rand() - 0.5) * Math.max(lotD * 0.34, 4),
+        width,
+        depth,
         height: 10 + rand() * 16,
         zone: "residential"
       });
     }
   }
 
-  function addSuburbanLot(x, z, blockId, lotId) {
+  function addSuburbanLot(x, z, lotW, lotD, blockId, lotId) {
     addBuilding({
       id: `${blockId}-${lotId}-suburban`,
-      x,
-      z,
+      x: x + (rand() - 0.5) * lotW * 0.22,
+      z: z + (rand() - 0.5) * lotD * 0.22,
       width: 11 + rand() * 10,
       depth: 11 + rand() * 10,
       height: 8 + rand() * 10,
@@ -153,13 +159,20 @@ function buildCity(seed) {
       const blockId = `b-${gx}-${gz}`.replace(/\./g, "_");
       const lotsX = zone === "downtown" ? (chance(0.82) ? 1 : 2) : (chance(0.72) ? 1 : 2);
       const lotsZ = zone === "downtown" ? (chance(0.82) ? 1 : 2) : (chance(0.72) ? 1 : 2);
-      const lotW = (BLOCK * 0.92) / lotsX;
-      const lotD = (BLOCK * 0.92) / lotsZ;
+      const blockFill = zone === "downtown" ? 0.9 : 0.82 + rand() * 0.1;
+      const usableW = BLOCK * blockFill;
+      const usableD = BLOCK * blockFill;
+      const blockShiftX = (rand() - 0.5) * (BLOCK * (zone === "downtown" ? 0.08 : 0.16));
+      const blockShiftZ = (rand() - 0.5) * (BLOCK * (zone === "downtown" ? 0.08 : 0.16));
+      const lotW = usableW / lotsX;
+      const lotD = usableD / lotsZ;
 
       for (let ix = 0; ix < lotsX; ix += 1) {
         for (let iz = 0; iz < lotsZ; iz += 1) {
-          const x = gx - (BLOCK * 0.92) * 0.5 + lotW * (ix + 0.5);
-          const z = gz - (BLOCK * 0.92) * 0.5 + lotD * (iz + 0.5);
+          const laneBendX = lotsX > 1 ? (iz - (lotsZ - 1) * 0.5) * rand() * 2.2 : 0;
+          const laneBendZ = lotsZ > 1 ? (ix - (lotsX - 1) * 0.5) * rand() * 2.2 : 0;
+          const x = gx + blockShiftX - usableW * 0.5 + lotW * (ix + 0.5) + laneBendX;
+          const z = gz + blockShiftZ - usableD * 0.5 + lotD * (iz + 0.5) + laneBendZ;
           const lotId = `lot-${ix}-${iz}`;
 
           if (zone === "downtown") {
@@ -169,7 +182,7 @@ function buildCity(seed) {
           } else if (zone === "residential") {
             addResidentialLot(x, z, lotW * 0.9, lotD * 0.9, blockId, lotId);
           } else {
-            addSuburbanLot(x, z, blockId, lotId);
+            addSuburbanLot(x, z, lotW * 0.9, lotD * 0.9, blockId, lotId);
           }
         }
       }
@@ -191,6 +204,8 @@ function createRound(roundId) {
     cooldownEndsAt: null,
     totalBuildings: buildings.length,
     destroyedCount: 0,
+    strikeSeq: 0,
+    lastStrike: null,
     lastEventAt: Date.now(),
     players: {},
     buildings
@@ -240,6 +255,8 @@ function currentPayload() {
     totalBuildings: state.totalBuildings,
     destroyedCount: state.destroyedCount,
     remainingBuildings: state.totalBuildings - state.destroyedCount,
+    strikeSeq: state.strikeSeq || 0,
+    lastStrike: state.lastStrike || null,
     leaderboard,
     buildings: state.buildings
   };
@@ -306,12 +323,26 @@ function markDestroyed(buildingId, playerId, playerName) {
     return { ok: false, code: 409, error: "Building already destroyed." };
   }
 
-  building.destroyedAt = Date.now();
-  building.destroyedBy = playerId || "anonymous";
-  state.destroyedCount += 1;
+  const resolvedAt = Date.now();
+  const intercepted = Math.random() < 0.2;
+  state.strikeSeq = (state.strikeSeq || 0) + 1;
+  state.lastStrike = {
+    seq: state.strikeSeq,
+    buildingId,
+    playerId: playerId || "anonymous",
+    resolvedAt,
+    outcome: intercepted ? "intercepted" : "destroyed"
+  };
+
+  if (!intercepted) {
+    building.destroyedAt = resolvedAt;
+    building.destroyedBy = playerId || "anonymous";
+    state.destroyedCount += 1;
+  }
+
   state.lastEventAt = Date.now();
 
-  if (playerId) {
+  if (playerId && !intercepted) {
     state.players[playerId] = state.players[playerId] || { name: "Anonymous", strikes: 0 };
     state.players[playerId].strikes += 1;
     if (playerName) {
@@ -319,7 +350,7 @@ function markDestroyed(buildingId, playerId, playerName) {
     }
   }
 
-  if (state.destroyedCount >= state.totalBuildings) {
+  if (!intercepted && state.destroyedCount >= state.totalBuildings) {
     state.phase = "cooldown";
     state.endedAt = Date.now();
     state.cooldownEndsAt = state.endedAt + COOLDOWN_MS;

@@ -32,14 +32,14 @@ if (!storedId) {
 playerNameInput.value = localStorage.getItem("mm-player-name") || "";
 
 const scene = new THREE.Scene();
-scene.fog = new THREE.FogExp2(0x25142f, 0.016);
+scene.fog = new THREE.FogExp2(0x25142f, 0.011);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 renderer.setSize(stage.clientWidth, stage.clientHeight);
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1.14;
+renderer.toneMappingExposure = 1.26;
 stage.prepend(renderer.domElement);
 
 const camera = new THREE.PerspectiveCamera(42, stage.clientWidth / stage.clientHeight, 0.1, 500);
@@ -156,11 +156,12 @@ function playBlastSound(intensity = 1) {
 
 let appState = null;
 let previousDestroyed = new Map();
+let lastStrikeSeq = 0;
 
-const hemi = new THREE.HemisphereLight(0xffc1d7, 0x120614, 1.12);
+const hemi = new THREE.HemisphereLight(0xffc1d7, 0x120614, 1.34);
 scene.add(hemi);
 
-const keyLight = new THREE.DirectionalLight(0xffd6cc, 1.55);
+const keyLight = new THREE.DirectionalLight(0xffd6cc, 1.72);
 keyLight.position.set(18, 28, 8);
 scene.add(keyLight);
 
@@ -572,16 +573,9 @@ function addRoads() {
   const scale = 15;
   const half = 450 / scale;
   const majorPositions = [];
-  const localPositions = [];
 
   for (let value = -420; value <= 420; value += 90) {
     majorPositions.push(value / scale);
-  }
-  for (let value = -432; value <= 432; value += 46) {
-    if (Math.abs(value % 90) < 1 || Math.abs(Math.abs(value % 90) - 90) < 1) {
-      continue;
-    }
-    localPositions.push(value / scale);
   }
 
   majorPositions.forEach((x) => {
@@ -612,23 +606,6 @@ function addRoads() {
     );
     line.position.set(0, 0.25, z);
     root.add(line);
-  });
-
-  localPositions.forEach((x) => {
-    const road = new THREE.Mesh(
-      new THREE.BoxGeometry(0.68, 0.08, half * 1.95),
-      new THREE.MeshStandardMaterial({ color: 0x24162d, transparent: true, opacity: 0.84, metalness: 0.16, roughness: 0.48, emissive: 0xff7f7f, emissiveIntensity: 0.12 })
-    );
-    road.position.set(x, 0.12, 0);
-    root.add(road);
-  });
-  localPositions.forEach((z) => {
-    const road = new THREE.Mesh(
-      new THREE.BoxGeometry(half * 1.95, 0.08, 0.68),
-      new THREE.MeshStandardMaterial({ color: 0x24162d, transparent: true, opacity: 0.84, metalness: 0.16, roughness: 0.48, emissive: 0xff7f7f, emissiveIntensity: 0.12 })
-    );
-    road.position.set(0, 0.12, z);
-    root.add(road);
   });
 
   majorPositions.slice(1, -1).forEach((x) => {
@@ -870,23 +847,31 @@ function rebuildCity(state) {
   previousDestroyed = new Map(state.buildings.map((building) => [building.id, building.destroyedAt]));
 }
 
-function createMissile(group, start, control, target, duration) {
+function createMissile(group, start, control, target, duration, options = {}) {
+  const missileScale = options.missileScale || 1;
+  const trailScale = options.trailScale || 1;
+  const exhaustIntensity = options.exhaustIntensity || 2.8;
+  const canExplode = options.canExplode !== false;
+  const arc = options.arc || "curve";
+  const outcome = options.outcome || "destroyed";
+  const interceptAt = options.interceptAt || 0.68;
+  const startDelay = options.startDelay || 0;
   const missileGroup = new THREE.Group();
   const body = new THREE.Mesh(
-    new THREE.CylinderGeometry(0.06, 0.09, 1.15, 10),
+    new THREE.CylinderGeometry(0.06 * missileScale, 0.09 * missileScale, 1.15 * missileScale, 10),
     new THREE.MeshStandardMaterial({ color: 0xd7e6ff, emissive: 0x5decff, emissiveIntensity: 0.7, metalness: 0.4, roughness: 0.28 })
   );
   body.rotation.z = Math.PI * 0.5;
   missileGroup.add(body);
   const nose = new THREE.Mesh(
-    new THREE.ConeGeometry(0.12, 0.28, 10),
+    new THREE.ConeGeometry(0.12 * missileScale, 0.28 * missileScale, 10),
     new THREE.MeshBasicMaterial({ color: 0xff73d8, transparent: true, opacity: 0.95 })
   );
-  nose.position.x = 0.68;
+  nose.position.x = 0.68 * missileScale;
   nose.rotation.z = -Math.PI * 0.5;
   missileGroup.add(nose);
-  const exhaust = new THREE.PointLight(0xff8fd8, 2.8, 4.2, 2);
-  exhaust.position.x = -0.55;
+  const exhaust = new THREE.PointLight(0xff8fd8, exhaustIntensity, 3.2 + trailScale * 1.1, 2);
+  exhaust.position.x = -0.55 * missileScale;
   missileGroup.add(exhaust);
   root.add(missileGroup);
 
@@ -903,7 +888,7 @@ function createMissile(group, start, control, target, duration) {
     trailColors[index * 3] = color.r;
     trailColors[index * 3 + 1] = color.g;
     trailColors[index * 3 + 2] = color.b;
-    trailSizes[index] = 16 * (1 - t * 0.8);
+    trailSizes[index] = 18 * trailScale * (1 - t * 0.72);
   }
   const trailGeometry = new THREE.BufferGeometry();
   trailGeometry.setAttribute("position", new THREE.BufferAttribute(trailPositions, 3));
@@ -923,7 +908,7 @@ function createMissile(group, start, control, target, duration) {
       void main() {
         vColor = color;
         vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
-        gl_PointSize = aSize * (220.0 / -mvPosition.z);
+        gl_PointSize = min(aSize * (70.0 / -mvPosition.z), 16.0);
         gl_Position = projectionMatrix * mvPosition;
       }
     `,
@@ -941,31 +926,170 @@ function createMissile(group, start, control, target, duration) {
   const trail = new THREE.Points(trailGeometry, trailMaterial);
   root.add(trail);
   const history = Array.from({ length: trailCount }, () => start.clone());
-  missiles.push({
+  const missile = {
     group,
+    canExplode,
+    trailScale,
+    timingProfile: options.timingProfile || "linear",
+    arc,
+    outcome,
+    interceptAt,
+    startDelay,
+    start,
+    control,
+    target,
     missileGroup,
     exhaust,
     trail,
     trailPositions,
     history,
-    curve: new THREE.QuadraticBezierCurve3(start, control, target),
+    curve: arc === "horizontalDive" ? null : new THREE.QuadraticBezierCurve3(start, control, target),
     elapsed: 0,
     duration
+  };
+  if (startDelay > 0) {
+    missileGroup.visible = false;
+    trail.visible = false;
+  }
+  missiles.push(missile);
+  return missile;
+}
+
+function getMissilePose(missile, rawT) {
+  let t = rawT;
+  if (missile.timingProfile === "delayedBurst") {
+    if (rawT < 0.66) {
+      t = rawT * 0.5;
+    } else {
+      const burstT = (rawT - 0.66) / 0.34;
+      const easedBurst = 1 - Math.pow(1 - burstT, 1.75);
+      t = 0.33 + (1 - 0.33) * easedBurst;
+    }
+  } else if (missile.timingProfile === "patriotChase") {
+    if (rawT < 0.66) {
+      t = rawT * 0.34;
+    } else {
+      const burstT = (rawT - 0.66) / 0.34;
+      const easedBurst = 1 - Math.pow(1 - burstT, 2.2);
+      t = 0.2244 + (1 - 0.2244) * easedBurst;
+    }
+  }
+
+  let current;
+  let tangent;
+  if (missile.arc === "horizontalDive") {
+    const diveStart = 0.78;
+    if (t < diveStart) {
+      const cruiseT = t / diveStart;
+      current = new THREE.Vector3().lerpVectors(missile.start, missile.control, cruiseT);
+      tangent = missile.control.clone().sub(missile.start).normalize();
+    } else {
+      const diveT = THREE.MathUtils.smoothstep((t - diveStart) / (1 - diveStart), 0, 1);
+      current = new THREE.Vector3().lerpVectors(missile.control, missile.target, diveT);
+      tangent = missile.target.clone().sub(missile.control).normalize();
+    }
+  } else {
+    current = missile.curve.getPoint(t);
+    tangent = missile.curve.getTangent(Math.min(0.999, t + 0.001)).normalize();
+  }
+
+  return { current, tangent, t };
+}
+
+function launchPatriotInterceptor(group, interceptPoint, duration, seed) {
+  const rand = mulberry32(seed);
+  const launchBase = group.position.clone().add(new THREE.Vector3(
+    (rand() - 0.5) * 5,
+    0.8 + rand() * 0.8,
+    (rand() - 0.5) * 5
+  ));
+  const control = launchBase.clone().lerp(interceptPoint, 0.45).add(new THREE.Vector3(
+    (rand() - 0.5) * 1.2,
+    6 + rand() * 5,
+    (rand() - 0.5) * 1.2
+  ));
+  createMissile(group, launchBase, control, interceptPoint, duration, {
+    missileScale: 0.72,
+    trailScale: 0.82,
+    exhaustIntensity: 2.1,
+    canExplode: false,
+    timingProfile: "patriotChase",
+    arc: "curve",
+    outcome: "interceptor"
   });
 }
 
-function launchMissile(group, seed) {
+function launchMissile(group, seed, outcome = "destroyed") {
   if (!group || group.userData.exploded) {
     return;
   }
   const rand = mulberry32(seed || hashString(group.userData.id));
-  const { h } = group.userData.size;
+  const { w, h, d } = group.userData.size;
   const target = group.position.clone().add(new THREE.Vector3(0, h * 0.72, 0));
   const angle = rand() * Math.PI * 2;
   const radius = 20 + rand() * 10;
-  const start = target.clone().add(new THREE.Vector3(Math.cos(angle) * radius, 24 + rand() * 10, Math.sin(angle) * radius));
-  const control = target.clone().add(new THREE.Vector3(Math.cos(angle) * (6 + rand() * 5), 11 + rand() * 7, Math.sin(angle) * (6 + rand() * 5)));
-  createMissile(group, start, control, target, 0.9 + rand() * 0.35);
+  const footprint = Math.max(w, d);
+  const cluster = footprint > 1.35 && rand() < 0.6;
+  const clusterCount = cluster ? (rand() < 0.5 ? 3 : 5) : 1;
+  const baseArc = outcome === "intercepted" ? "curve" : (rand() < 0.2 ? "horizontalDive" : "curve");
+  const baseStart = baseArc === "horizontalDive"
+    ? target.clone().add(new THREE.Vector3(Math.cos(angle) * (26 + rand() * 10), 17 + rand() * 5, Math.sin(angle) * (26 + rand() * 10)))
+    : target.clone().add(new THREE.Vector3(Math.cos(angle) * radius, 24 + rand() * 10, Math.sin(angle) * radius));
+  const baseControl = baseArc === "horizontalDive"
+    ? target.clone().add(new THREE.Vector3(Math.cos(angle) * (10 + rand() * 5), 18 + rand() * 4, Math.sin(angle) * (10 + rand() * 5)))
+    : target.clone().add(new THREE.Vector3(Math.cos(angle) * (6 + rand() * 5), 11 + rand() * 7, Math.sin(angle) * (6 + rand() * 5)));
+  const direction = target.clone().sub(baseStart).normalize();
+  const side = new THREE.Vector3(-direction.z, 0, direction.x).normalize();
+  const up = new THREE.Vector3().crossVectors(side, direction).normalize();
+  const spacing = 0.34 + footprint * 0.08;
+  const attackerStartDelay = outcome === "intercepted" ? 0.7 : 0;
+
+  for (let index = 0; index < clusterCount; index += 1) {
+    const row = cluster ? Math.floor(index / 2) : 0;
+    const col = cluster ? (index % 2 === 0 ? -1 : 1) : 0;
+    const offset = cluster
+      ? side.clone().multiplyScalar(col * spacing * (0.7 + row * 0.16))
+          .add(up.clone().multiplyScalar((1.3 - row) * spacing * 0.22))
+      : new THREE.Vector3();
+
+    if (cluster && index === clusterCount - 1 && clusterCount % 2 === 1) {
+      offset.set(0, -spacing * 0.15, 0);
+    }
+
+    const targetOffset = cluster && index > 0
+      ? side.clone().multiplyScalar((rand() - 0.5) * 0.45)
+          .add(new THREE.Vector3(0, (rand() - 0.5) * 0.22, 0))
+      : new THREE.Vector3();
+
+    const missile = createMissile(
+      group,
+      baseStart.clone().add(offset),
+      baseControl.clone().add(offset.clone().multiplyScalar(0.55)),
+      target.clone().add(targetOffset),
+      0.9 + rand() * 0.35 - (cluster ? rand() * 0.06 : 0),
+      {
+        missileScale: cluster ? 0.84 + rand() * 0.08 : 1,
+        trailScale: cluster ? 0.92 + rand() * 0.16 : 1.04,
+        exhaustIntensity: cluster ? 2.2 + rand() * 0.6 : 2.8,
+        canExplode: index === 0 && outcome === "destroyed",
+        timingProfile: outcome === "intercepted" ? "linear" : (rand() < 0.125 ? "delayedBurst" : "linear"),
+        arc: baseArc,
+        outcome,
+        interceptAt: 0.62 + rand() * 0.14,
+        startDelay: attackerStartDelay
+      }
+    );
+
+    if (outcome === "intercepted" && index === 0) {
+      const interceptPose = getMissilePose(missile, missile.interceptAt);
+      launchPatriotInterceptor(
+        group,
+        interceptPose.current.clone(),
+        Math.max(0.42, missile.startDelay + missile.duration * missile.interceptAt),
+        hashString(`${group.userData.id}:patriot:${seed}`)
+      );
+    }
+  }
 }
 
 function explodeBuilding(group) {
@@ -1045,6 +1169,7 @@ function explodeBuilding(group) {
   };
 
   explosions.push({
+    type: "blast",
     life: 0,
     maxLife: 2.8,
     flash,
@@ -1064,6 +1189,15 @@ function updateExplosions(delta) {
     const item = explosions[index];
     item.life += delta;
     const t = item.life / item.maxLife;
+    if (item.type === "escortFlash") {
+      item.flash.intensity = Math.max(0, 1.4 * (1 - t));
+      if (item.life >= item.maxLife) {
+        item.flash.parent?.remove(item.flash);
+        explosions.splice(index, 1);
+      }
+      continue;
+    }
+
     [item.fire, item.smoke].forEach((cloud, cloudIndex) => {
       for (let particle = 0; particle < cloud.alphas.length; particle += 1) {
         cloud.positions[particle * 3] += cloud.velocities[particle * 3] * delta;
@@ -1088,12 +1222,25 @@ function updateMissiles(delta) {
   for (let index = missiles.length - 1; index >= 0; index -= 1) {
     const missile = missiles[index];
     missile.elapsed += delta;
-    const t = Math.min(1, missile.elapsed / missile.duration);
-    const current = missile.curve.getPoint(t);
-    const tangent = missile.curve.getTangent(t).normalize();
+    const activeElapsed = Math.max(0, missile.elapsed - missile.startDelay);
+    const rawT = Math.min(1, activeElapsed / missile.duration);
+    if (missile.elapsed < missile.startDelay) {
+      missile.missileGroup.visible = false;
+      missile.trail.visible = false;
+      continue;
+    }
+    missile.missileGroup.visible = true;
+    missile.trail.visible = true;
+    const { current, tangent } = getMissilePose(missile, rawT);
     missile.missileGroup.position.copy(current);
     missile.missileGroup.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), tangent);
-    missile.exhaust.intensity = 1.8 + Math.sin(missile.elapsed * 50) * 0.35;
+    let burstBoost = 0;
+    if (missile.timingProfile === "delayedBurst" && rawT > 0.66) {
+      burstBoost = 0.45 + ((rawT - 0.66) / 0.34) * 0.75;
+    } else if (missile.timingProfile === "patriotChase" && rawT > 0.66) {
+      burstBoost = 0.35 + ((rawT - 0.66) / 0.34) * 0.95;
+    }
+    missile.exhaust.intensity = 1.4 + missile.trailScale * 0.7 + burstBoost + Math.sin(missile.elapsed * 50) * 0.35;
     missile.history.pop();
     missile.history.unshift(current.clone());
     for (let trailIndex = 0; trailIndex < missile.history.length; trailIndex += 1) {
@@ -1103,11 +1250,48 @@ function updateMissiles(delta) {
       missile.trailPositions[trailIndex * 3 + 2] = point.z;
     }
     missile.trail.geometry.attributes.position.needsUpdate = true;
-    missile.trail.material.uniforms.globalAlpha.value = 0.74 + (1 - t) * 0.16;
-    if (t >= 1) {
+    missile.trail.material.uniforms.globalAlpha.value = 0.72 + missile.trailScale * 0.12 + (1 - rawT) * 0.14;
+    if (missile.outcome === "intercepted" && rawT >= missile.interceptAt) {
       missile.missileGroup.parent?.remove(missile.missileGroup);
       missile.trail.parent?.remove(missile.trail);
-      explodeBuilding(missile.group);
+      const patriotFlash = new THREE.PointLight(0x8cefff, 2.2, 4.2, 2);
+      patriotFlash.position.copy(current);
+      root.add(patriotFlash);
+      explosions.push({
+        type: "escortFlash",
+        life: 0,
+        maxLife: 0.18,
+        flash: patriotFlash
+      });
+      missiles.splice(index, 1);
+      continue;
+    }
+    if (rawT >= 1) {
+      missile.missileGroup.parent?.remove(missile.missileGroup);
+      missile.trail.parent?.remove(missile.trail);
+      if (missile.outcome === "interceptor") {
+        const interceptFlash = new THREE.PointLight(0x8cefff, 1.2, 2.8, 2);
+        interceptFlash.position.copy(current);
+        root.add(interceptFlash);
+        explosions.push({
+          type: "escortFlash",
+          life: 0,
+          maxLife: 0.1,
+          flash: interceptFlash
+        });
+      } else if (missile.canExplode) {
+        explodeBuilding(missile.group);
+      } else if (missile.group && !missile.group.userData.exploded) {
+        const escortFlash = new THREE.PointLight(0xff85de, 1.4, 3.2, 2);
+        escortFlash.position.copy(current);
+        root.add(escortFlash);
+        explosions.push({
+          type: "escortFlash",
+          life: 0,
+          maxLife: 0.12,
+          flash: escortFlash
+        });
+      }
       missiles.splice(index, 1);
     }
   }
@@ -1193,6 +1377,18 @@ function syncSceneState(nextState) {
   appState = nextState;
   if (isNewRound) {
     rebuildCity(nextState);
+    lastStrikeSeq = nextState.strikeSeq || 0;
+  }
+  if (nextState.lastStrike && nextState.lastStrike.seq > lastStrikeSeq) {
+    lastStrikeSeq = nextState.lastStrike.seq;
+    const strikeGroup = buildingMap.get(nextState.lastStrike.buildingId);
+    if (strikeGroup) {
+      launchMissile(
+        strikeGroup,
+        hashString(`${nextState.lastStrike.buildingId}:${nextState.lastStrike.resolvedAt}:${nextState.lastStrike.outcome}`),
+        nextState.lastStrike.outcome
+      );
+    }
   }
   nextState.buildings.forEach((serverBuilding) => {
     const group = buildingMap.get(serverBuilding.id);
@@ -1203,7 +1399,7 @@ function syncSceneState(nextState) {
     }
     group.userData.destroyedAt = serverBuilding.destroyedAt;
     if (serverBuilding.destroyedAt && !wasDestroyed) {
-      launchMissile(group, hashString(`${serverBuilding.id}:${serverBuilding.destroyedAt}`));
+      group.userData.exploded = false;
     } else if (!serverBuilding.destroyedAt) {
       group.userData.exploded = false;
       group.visible = true;
