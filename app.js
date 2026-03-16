@@ -17,8 +17,15 @@ const overlayCopy = document.getElementById("overlay-copy");
 const playerNameInput = document.getElementById("player-name");
 const connectionLabel = document.getElementById("connection-label");
 
+function createClientId() {
+  if (window.crypto && typeof window.crypto.randomUUID === "function") {
+    return `p-${window.crypto.randomUUID()}`;
+  }
+  return `p-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
 const storedId = localStorage.getItem("mm-player-id");
-const playerId = storedId || `p-${crypto.randomUUID()}`;
+const playerId = storedId || createClientId();
 if (!storedId) {
   localStorage.setItem("mm-player-id", playerId);
 }
