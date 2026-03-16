@@ -1259,7 +1259,9 @@ function pickBuilding(event) {
   if (!hits.length) {
     return;
   }
-  const group = resolveBuildingGroup(hits[0].object);
+  const group = hits
+    .map((hit) => resolveBuildingGroup(hit.object))
+    .find((candidate) => candidate?.userData?.isBuilding && !candidate.userData.exploded);
   if (!group?.userData?.isBuilding || group.userData.exploded) {
     return;
   }
@@ -1279,7 +1281,9 @@ function updatePointerCursor(event) {
   pointer.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
   raycaster.setFromCamera(pointer, camera);
   const hits = raycaster.intersectObjects(buildings, true);
-  const group = hits.length ? resolveBuildingGroup(hits[0].object) : null;
+  const group = hits
+    .map((hit) => resolveBuildingGroup(hit.object))
+    .find((candidate) => candidate?.userData?.isBuilding && !candidate.userData.exploded);
   renderer.domElement.style.cursor = group && appState?.phase === "active" && !group.userData.exploded ? "pointer" : "crosshair";
 }
 
