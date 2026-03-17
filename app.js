@@ -935,6 +935,8 @@ function createMissile(group, start, control, target, duration, options = {}) {
     outcome,
     interceptAt,
     startDelay,
+    orbitCenter: options.orbitCenter || null,
+    orbitRadius: options.orbitRadius || 0,
     start,
     control,
     target,
@@ -943,7 +945,9 @@ function createMissile(group, start, control, target, duration, options = {}) {
     trail,
     trailPositions,
     history,
-    curve: arc === "horizontalDive" ? null : new THREE.QuadraticBezierCurve3(start, control, target),
+    curve: arc === "horizontalDive" || arc === "orbitDive"
+      ? null
+      : new THREE.QuadraticBezierCurve3(start, control, target),
     elapsed: 0,
     duration
   };
@@ -988,6 +992,43 @@ function getMissilePose(missile, rawT) {
       current = new THREE.Vector3().lerpVectors(missile.control, missile.target, diveT);
       tangent = missile.target.clone().sub(missile.control).normalize();
     }
+  } else if (missile.arc === "orbitDive") {
+    const approachEnd = 0.24;
+    const orbitEnd = 0.82;
+    if (t < approachEnd) {
+      const approachT = t / approachEnd;
+      current = new THREE.Vector3().lerpVectors(missile.start, missile.control, approachT);
+      tangent = missile.control.clone().sub(missile.start).normalize();
+    } else if (t < orbitEnd) {
+      const orbitT = (t - approachEnd) / (orbitEnd - approachEnd);
+      const angle = orbitT * Math.PI * 4;
+      const center = missile.orbitCenter || missile.control;
+      const radius = missile.orbitRadius || 4.8;
+      current = new THREE.Vector3(
+        center.x + Math.cos(angle) * radius,
+        center.y + Math.sin(orbitT * Math.PI) * 0.8,
+        center.z + Math.sin(angle) * radius
+      );
+      const nextAngle = angle + 0.05;
+      const nextPoint = new THREE.Vector3(
+        center.x + Math.cos(nextAngle) * radius,
+        center.y + Math.sin(Math.min(1, orbitT + 0.01) * Math.PI) * 0.8,
+        center.z + Math.sin(nextAngle) * radius
+      );
+      tangent = nextPoint.sub(current).normalize();
+    } else {
+      const orbitAngle = Math.PI * 4;
+      const center = missile.orbitCenter || missile.control;
+      const radius = missile.orbitRadius || 4.8;
+      const diveStartPoint = new THREE.Vector3(
+        center.x + Math.cos(orbitAngle) * radius,
+        center.y,
+        center.z + Math.sin(orbitAngle) * radius
+      );
+      const diveT = THREE.MathUtils.smoothstep((t - orbitEnd) / (1 - orbitEnd), 0, 1);
+      current = new THREE.Vector3().lerpVectors(diveStartPoint, missile.target, diveT);
+      tangent = missile.target.clone().sub(diveStartPoint).normalize();
+    }
   } else {
     current = missile.curve.getPoint(t);
     tangent = missile.curve.getTangent(Math.min(0.999, t + 0.001)).normalize();
@@ -1031,18 +1072,31 @@ function launchMissile(group, seed, outcome = "destroyed") {
   const footprint = Math.max(w, d);
   const cluster = footprint > 1.35 && rand() < 0.6;
   const clusterCount = cluster ? (rand() < 0.5 ? 3 : 5) : 1;
-  const baseArc = outcome === "intercepted" ? "curve" : (rand() < 0.2 ? "horizontalDive" : "curve");
+  const arcRoll = rand();
+  const baseArc = outcome === "intercepted"
+    ? "curve"
+    : arcRoll < 0.2
+      ? "horizontalDive"
+      : arcRoll < 0.3
+        ? "orbitDive"
+        : "curve";
   const baseStart = baseArc === "horizontalDive"
     ? target.clone().add(new THREE.Vector3(Math.cos(angle) * (26 + rand() * 10), 17 + rand() * 5, Math.sin(angle) * (26 + rand() * 10)))
-    : target.clone().add(new THREE.Vector3(Math.cos(angle) * radius, 24 + rand() * 10, Math.sin(angle) * radius));
+    : baseArc === "orbitDive"
+      ? target.clone().add(new THREE.Vector3(Math.cos(angle) * (30 + rand() * 12), 17 + rand() * 4, Math.sin(angle) * (30 + rand() * 12)))
+      : target.clone().add(new THREE.Vector3(Math.cos(angle) * radius, 24 + rand() * 10, Math.sin(angle) * radius));
   const baseControl = baseArc === "horizontalDive"
     ? target.clone().add(new THREE.Vector3(Math.cos(angle) * (10 + rand() * 5), 18 + rand() * 4, Math.sin(angle) * (10 + rand() * 5)))
-    : target.clone().add(new THREE.Vector3(Math.cos(angle) * (6 + rand() * 5), 11 + rand() * 7, Math.sin(angle) * (6 + rand() * 5)));
+    : baseArc === "orbitDive"
+      ? target.clone().add(new THREE.Vector3(0, 15 + rand() * 4, 0))
+      : target.clone().add(new THREE.Vector3(Math.cos(angle) * (6 + rand() * 5), 11 + rand() * 7, Math.sin(angle) * (6 + rand() * 5)));
   const direction = target.clone().sub(baseStart).normalize();
   const side = new THREE.Vector3(-direction.z, 0, direction.x).normalize();
   const up = new THREE.Vector3().crossVectors(side, direction).normalize();
   const spacing = 0.34 + footprint * 0.08;
   const attackerStartDelay = outcome === "intercepted" ? 0.7 : 0;
+  const orbitCenter = target.clone().add(new THREE.Vector3(0, 14 + rand() * 4, 0));
+  const orbitRadius = 3.8 + rand() * 2.8;
 
   for (let index = 0; index < clusterCount; index += 1) {
     const row = cluster ? Math.floor(index / 2) : 0;
@@ -1076,7 +1130,9 @@ function launchMissile(group, seed, outcome = "destroyed") {
         arc: baseArc,
         outcome,
         interceptAt: 0.62 + rand() * 0.14,
-        startDelay: attackerStartDelay
+        startDelay: attackerStartDelay,
+        orbitCenter,
+        orbitRadius
       }
     );
 
