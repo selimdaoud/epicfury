@@ -6,8 +6,8 @@
   "endedAt": null,
   "cooldownEndsAt": null,
   "totalBuildings": 842,
-  "destroyedCount": 737,
-  "lastEventAt": 1773742116479,
+  "destroyedCount": 752,
+  "lastEventAt": 1773750597575,
   "players": {
     "p-52968a35-d4e3-4093-966b-e54e21c84d89": {
       "name": "Anonymous",
@@ -15,14 +15,18 @@
     },
     "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1": {
       "name": "toto",
-      "strikes": 121
+      "strikes": 128
     },
     "p-45552a32-ce07-4e5a-8777-401309171a03": {
       "name": "Anonymous",
-      "strikes": 569
+      "strikes": 575
     },
     "p-6ecb3080-88ae-4aac-9572-71d70174022a": {
       "name": "Anonymous",
+      "strikes": 2
+    },
+    "p-acd68c40-ff4b-4658-bc07-c1a688719b00": {
+      "name": "titi",
       "strikes": 2
     }
   },
@@ -3104,8 +3108,8 @@
       "depth": 17.8382861870341,
       "height": 10.973251324146986,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750599380,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--103-lot-0-1-mid-1",
@@ -3291,8 +3295,8 @@
       "depth": 14.91641740873456,
       "height": 12.823424320667982,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750593557,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--241-lot-0-0-res-0",
@@ -3610,8 +3614,8 @@
       "depth": 16.587497857632115,
       "height": 12.931391846388578,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750594021,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--241-lot-1-1-res-1",
@@ -3632,8 +3636,8 @@
       "depth": 10.86006399570033,
       "height": 24.155282091349363,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750594419,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--241-lot-1-0-res-1",
@@ -3643,8 +3647,8 @@
       "depth": 13.99389025522396,
       "height": 16.81259859725833,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750586003,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--103--241-lot-1-0-res-0",
@@ -4116,8 +4120,8 @@
       "depth": 15.742114117834717,
       "height": 22.540034491568804,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750582497,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--57--57-lot-1-0-tower-0",
@@ -4237,8 +4241,8 @@
       "depth": 13.324534226208925,
       "height": 9.127071999944746,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750594749,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--103-lot-1-0-podium",
@@ -5491,8 +5495,8 @@
       "depth": 10.467103152303025,
       "height": 13.830194924026728,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750589607,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b-35-357-lot-1-1-res-0",
@@ -5854,8 +5858,8 @@
       "depth": 16.171496876515448,
       "height": 19.82175550237298,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773743877072,
+      "destroyedBy": "p-acd68c40-ff4b-4658-bc07-c1a688719b00"
     },
     {
       "id": "b-81--425-lot-0-0-suburban",
@@ -5865,8 +5869,8 @@
       "depth": 11.731063864659518,
       "height": 14.608264101669192,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750577959,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b-81--57-lot-0-0-podium",
@@ -5887,8 +5891,8 @@
       "depth": 18.932240988127887,
       "height": 11.665652561932802,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773750555407,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-127-lot-0-1-mid-1",
@@ -6514,8 +6518,8 @@
       "depth": 17.81685210368596,
       "height": 23.47652944177389,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773743871612,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b-127-219-lot-1-1-mid-0",
@@ -7361,8 +7365,8 @@
       "depth": 14.037855566944927,
       "height": 15.474375553429127,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773743867835,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b-219--195-lot-0-0-res-1",
@@ -8802,8 +8806,8 @@
       "depth": 13.63203953858465,
       "height": 11.87838392984122,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773743841780,
+      "destroyedBy": "p-acd68c40-ff4b-4658-bc07-c1a688719b00"
     },
     {
       "id": "b-357--333-lot-1-1-suburban",
@@ -9187,8 +9191,8 @@
       "depth": 19.719605847727507,
       "height": 17.067095320206136,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773743857879,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b-403--241-lot-1-0-suburban",
@@ -9290,47 +9294,5 @@
       "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     }
   ],
-  "strikeSeq": 208,
-  "lastStrike": {
-    "seq": 208,
-    "buildingId": "b--425--103-lot-0-0-suburban",
-    "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
-    "playerName": "toto",
-    "startedAt": 1773742116478,
-    "resolvedAt": 1773742116478,
-    "impactAt": 1773742118278,
-    "outcome": "destroyed"
-  },
-  "pendingStrikes": [
-    {
-      "seq": 201,
-      "buildingId": "b--195-403-lot-1-0-suburban",
-      "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
-      "playerName": "toto",
-      "startedAt": 1773742103951,
-      "resolvedAt": 1773742103951,
-      "impactAt": 1773742105751,
-      "outcome": "destroyed"
-    },
-    {
-      "seq": 202,
-      "buildingId": "b--195-403-lot-0-0-suburban",
-      "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
-      "playerName": "toto",
-      "startedAt": 1773742104268,
-      "resolvedAt": 1773742104268,
-      "impactAt": 1773742106068,
-      "outcome": "destroyed"
-    },
-    {
-      "seq": 205,
-      "buildingId": "b--425-403-lot-0-0-suburban",
-      "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
-      "playerName": "toto",
-      "startedAt": 1773742111347,
-      "resolvedAt": 1773742111347,
-      "impactAt": 1773742113147,
-      "outcome": "destroyed"
-    }
-  ]
+  "strikeSeq": 225
 }

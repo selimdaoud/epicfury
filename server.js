@@ -1,4 +1,4 @@
-// Version: 1.0.3
+// Version: 1.0.4
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -14,6 +14,7 @@ const PUBLIC_DIR = __dirname;
 
 const clients = new Set();
 const pendingStrikeTimers = new Map();
+const activeStrikes = new Map();
 
 function logEvent(type, details = {}) {
   const timestamp = new Date().toISOString();
@@ -214,8 +215,6 @@ function createRound(roundId) {
     totalBuildings: buildings.length,
     destroyedCount: 0,
     strikeSeq: 0,
-    lastStrike: null,
-    pendingStrikes: [],
     lastEventAt: Date.now(),
     players: {},
     buildings
@@ -233,7 +232,8 @@ function loadState() {
     ) {
       throw new Error("Invalid state file");
     }
-    parsed.pendingStrikes = Array.isArray(parsed.pendingStrikes) ? parsed.pendingStrikes : [];
+    delete parsed.lastStrike;
+    delete parsed.pendingStrikes;
     return parsed;
   } catch {
     return createRound(1);
@@ -266,9 +266,6 @@ function currentPayload() {
     totalBuildings: state.totalBuildings,
     destroyedCount: state.destroyedCount,
     remainingBuildings: state.totalBuildings - state.destroyedCount,
-    strikeSeq: state.strikeSeq || 0,
-    lastStrike: state.lastStrike || null,
-    pendingStrikes: state.pendingStrikes || [],
     leaderboard,
     buildings: state.buildings
   };
@@ -314,6 +311,7 @@ function resetRound() {
   const previousRoundId = state.roundId;
   pendingStrikeTimers.forEach((timer) => clearTimeout(timer));
   pendingStrikeTimers.clear();
+  activeStrikes.clear();
   state = createRound(state.roundId + 1);
   logEvent("round_reset", {
     previousRoundId,
@@ -343,25 +341,23 @@ function maybeAdvanceCooldown() {
   }
 }
 
-function resolveStrike(strikeSeq) {
-  const strikeIndex = state.pendingStrikes.findIndex((item) => item.seq === strikeSeq);
-  if (strikeIndex === -1) {
+function resolveStrike(strikeId) {
+  const strike = activeStrikes.get(strikeId);
+  if (!strike) {
     return;
   }
-
-  const strike = state.pendingStrikes[strikeIndex];
-  state.pendingStrikes.splice(strikeIndex, 1);
-  pendingStrikeTimers.delete(strikeSeq);
+  activeStrikes.delete(strikeId);
+  pendingStrikeTimers.delete(strikeId);
 
   const building = state.buildings.find((item) => item.id === strike.buildingId);
   if (!building) {
     saveState();
-    broadcast("state");
+    broadcast("snapshot");
     return;
   }
 
   if (strike.outcome === "destroyed" && !building.destroyedAt) {
-    building.destroyedAt = strike.resolvedAt;
+    building.destroyedAt = Date.now();
     building.destroyedBy = strike.playerId || "anonymous";
     state.destroyedCount += 1;
 
@@ -385,8 +381,22 @@ function resolveStrike(strikeSeq) {
     });
   }
 
+  broadcast("strike_resolved", {
+    roundId: state.roundId,
+    strike: {
+      strikeId: strike.strikeId,
+      seq: strike.seq,
+      buildingId: strike.buildingId,
+      playerId: strike.playerId,
+      playerName: strike.playerName,
+      startedAt: strike.startedAt,
+      impactAt: strike.impactAt,
+      resolvedAt: Date.now(),
+      outcome: strike.outcome
+    }
+  });
   saveState();
-  broadcast("state");
+  broadcast("snapshot");
 }
 
 function markDestroyed(buildingId, playerId, playerName) {
@@ -424,7 +434,7 @@ function markDestroyed(buildingId, playerId, playerName) {
     });
     return { ok: false, code: 409, error: "Building already destroyed." };
   }
-  if ((state.pendingStrikes || []).some((item) => item.buildingId === buildingId)) {
+  if (Array.from(activeStrikes.values()).some((item) => item.buildingId === buildingId)) {
     logEvent("strike_rejected", {
       reason: "building_already_targeted",
       playerId: playerId || "anonymous",
@@ -434,38 +444,36 @@ function markDestroyed(buildingId, playerId, playerName) {
     return { ok: false, code: 409, error: "Building already targeted." };
   }
 
-  const resolvedAt = Date.now();
+  const startedAt = Date.now();
   const intercepted = Math.random() < 0.2;
   state.strikeSeq = (state.strikeSeq || 0) + 1;
-  state.lastStrike = {
+  const strike = {
+    strikeId: `${state.roundId}-${state.strikeSeq}-${buildingId}`,
     seq: state.strikeSeq,
     buildingId,
     playerId: playerId || "anonymous",
     playerName: playerName || ((state.players[playerId] && state.players[playerId].name) || "Anonymous"),
-    startedAt: resolvedAt,
-    resolvedAt,
-    impactAt: resolvedAt + STRIKE_TRAVEL_MS,
+    startedAt,
+    impactAt: startedAt + STRIKE_TRAVEL_MS,
     outcome: intercepted ? "intercepted" : "destroyed"
   };
-  state.pendingStrikes = state.pendingStrikes || [];
-  state.pendingStrikes.push(state.lastStrike);
+  activeStrikes.set(strike.strikeId, strike);
 
-  logEvent("strike_resolved", {
+  logEvent("strike_started", {
     playerId: playerId || "anonymous",
-    playerName: state.lastStrike.playerName,
+    playerName: strike.playerName,
     buildingId,
-    outcome: state.lastStrike.outcome,
+    outcome: strike.outcome,
     roundId: state.roundId
   });
-  broadcast("strike", {
+  broadcast("strike_started", {
     roundId: state.roundId,
-    strike: state.lastStrike
+    strike
   });
 
   state.lastEventAt = Date.now();
   saveState();
-  pendingStrikeTimers.set(state.lastStrike.seq, setTimeout(() => resolveStrike(state.lastStrike.seq), STRIKE_TRAVEL_MS));
-  broadcast("state");
+  pendingStrikeTimers.set(strike.strikeId, setTimeout(() => resolveStrike(strike.strikeId), STRIKE_TRAVEL_MS));
   return { ok: true, code: 200, payload: currentPayload() };
 }
 
@@ -603,7 +611,7 @@ const server = http.createServer(async (req, res) => {
     res.write("retry: 2000\n\n");
     clients.add(res);
     logEvent("events_connected", { clients: clients.size });
-    res.write(`event: state\ndata: ${JSON.stringify(currentPayload())}\n\n`);
+    res.write(`event: snapshot\ndata: ${JSON.stringify(currentPayload())}\n\n`);
     req.on("close", () => {
       clients.delete(res);
       logEvent("events_disconnected", { clients: clients.size });

@@ -1,4 +1,4 @@
-// Version: 1.0.3
+// Version: 1.0.4
 import * as THREE from "https://esm.sh/three@0.164.1";
 import { OrbitControls } from "https://esm.sh/three@0.164.1/examples/jsm/controls/OrbitControls.js";
 import { EffectComposer } from "https://esm.sh/three@0.164.1/examples/jsm/postprocessing/EffectComposer.js";
@@ -18,7 +18,7 @@ const overlayCopy = document.getElementById("overlay-copy");
 const playerNameInput = document.getElementById("player-name");
 const connectionLabel = document.getElementById("connection-label");
 const appVersionEl = document.getElementById("app-version");
-const APP_VERSION = "1.0.3";
+const APP_VERSION = "1.0.4";
 
 if (appVersionEl) {
   appVersionEl.textContent = `Version ${APP_VERSION}`;
@@ -165,7 +165,8 @@ function playBlastSound(intensity = 1) {
 
 let appState = null;
 let previousDestroyed = new Map();
-let lastStrikeSeq = 0;
+const seenStrikeIds = new Set();
+const activeStrikeBuildings = new Map();
 
 const hemi = new THREE.HemisphereLight(0xffc1d7, 0x120614, 1.34);
 scene.add(hemi);
@@ -1074,17 +1075,18 @@ function hasActiveMissileForGroup(group) {
   return missiles.some((missile) => missile.group === group);
 }
 
-function handleStrikeEvent(strikePayload) {
+function handleStrikeStarted(strikePayload) {
   if (!strikePayload || !strikePayload.strike || !appState) {
     return;
   }
   if (strikePayload.roundId !== appState.roundId) {
     return;
   }
-  if (strikePayload.strike.seq <= lastStrikeSeq) {
+  if (seenStrikeIds.has(strikePayload.strike.strikeId)) {
     return;
   }
-  lastStrikeSeq = strikePayload.strike.seq;
+  seenStrikeIds.add(strikePayload.strike.strikeId);
+  activeStrikeBuildings.set(strikePayload.strike.strikeId, strikePayload.strike.buildingId);
   const strikeGroup = buildingMap.get(strikePayload.strike.buildingId);
   if (!strikeGroup) {
     return;
@@ -1096,6 +1098,27 @@ function handleStrikeEvent(strikePayload) {
     strikePayload.strike.outcome,
     strikePayload.strike
   );
+}
+
+function handleStrikeResolved(strikePayload) {
+  if (!strikePayload || !strikePayload.strike || !appState) {
+    return;
+  }
+  if (strikePayload.roundId !== appState.roundId) {
+    return;
+  }
+  activeStrikeBuildings.delete(strikePayload.strike.strikeId);
+  const strikeGroup = buildingMap.get(strikePayload.strike.buildingId);
+  if (!strikeGroup) {
+    return;
+  }
+  strikeGroup.userData.pendingStrike = false;
+  if (strikePayload.strike.outcome === "destroyed") {
+    strikeGroup.userData.destroyedAt = strikePayload.strike.resolvedAt || Date.now();
+    if (!hasActiveMissileForGroup(strikeGroup)) {
+      explodeBuilding(strikeGroup);
+    }
+  }
 }
 
 function launchMissile(group, seed, outcome = "destroyed", strikeMeta) {
@@ -1474,28 +1497,11 @@ function syncSceneState(nextState) {
   appState = nextState;
   if (isNewRound) {
     rebuildCity(nextState);
-    lastStrikeSeq = 0;
+    previousDestroyed = new Map();
+    seenStrikeIds.clear();
+    activeStrikeBuildings.clear();
   }
-  if (nextState.lastStrike && nextState.lastStrike.seq > lastStrikeSeq) {
-    handleStrikeEvent({
-      roundId: nextState.roundId,
-      strike: nextState.lastStrike
-    });
-  }
-  if (Array.isArray(nextState.pendingStrikes)) {
-    nextState.pendingStrikes
-      .slice()
-      .sort((a, b) => a.seq - b.seq)
-      .forEach((strike) => {
-        if (strike.seq > lastStrikeSeq) {
-          handleStrikeEvent({
-            roundId: nextState.roundId,
-            strike
-          });
-        }
-      });
-  }
-  const pendingIds = new Set((nextState.pendingStrikes || []).map((strike) => strike.buildingId));
+  const pendingIds = new Set(activeStrikeBuildings.values());
   nextState.buildings.forEach((serverBuilding) => {
     const group = buildingMap.get(serverBuilding.id);
     const wasDestroyed = previousDestroyed.get(serverBuilding.id);
@@ -1530,15 +1536,19 @@ async function loadState() {
 function connectEvents() {
   const events = new EventSource("/api/events");
   connectionLabel.textContent = "Live";
-  ["state", "round_reset", "leaderboard"].forEach((eventName) => {
+  ["snapshot", "round_reset", "leaderboard"].forEach((eventName) => {
     events.addEventListener(eventName, (event) => {
       connectionLabel.textContent = "Live";
       syncSceneState(JSON.parse(event.data));
     });
   });
-  events.addEventListener("strike", (event) => {
+  events.addEventListener("strike_started", (event) => {
     connectionLabel.textContent = "Live";
-    handleStrikeEvent(JSON.parse(event.data));
+    handleStrikeStarted(JSON.parse(event.data));
+  });
+  events.addEventListener("strike_resolved", (event) => {
+    connectionLabel.textContent = "Live";
+    handleStrikeResolved(JSON.parse(event.data));
   });
   events.onerror = () => {
     connectionLabel.textContent = "Reconnecting";
