@@ -384,7 +384,7 @@ function markDestroyed(buildingId, playerId, playerName) {
 
   logEvent("strike_resolved", {
     playerId: playerId || "anonymous",
-    playerName: playerName || state.players[playerId]?.name || "Anonymous",
+    playerName: playerName || ((state.players[playerId] && state.players[playerId].name) || "Anonymous"),
     buildingId,
     outcome: state.lastStrike.outcome,
     roundId: state.roundId
