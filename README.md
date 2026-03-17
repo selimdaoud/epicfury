@@ -17,3 +17,17 @@ node mm/server.js
 Then open `http://localhost:3000`.
 
 Open it in multiple tabs or browsers to verify the shared state.
+
+## Regenerate The Current Map
+
+If the server is already running, force a new shared round with:
+
+```bash
+curl -X POST http://127.0.0.1:3000/api/admin/regen
+```
+
+If you set `MM_ADMIN_TOKEN`, use:
+
+```bash
+curl -X POST "http://127.0.0.1:3000/api/admin/regen?token=YOUR_TOKEN"
+```

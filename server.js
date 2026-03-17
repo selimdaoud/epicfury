@@ -6,6 +6,7 @@ const { URL } = require("url");
 const HOST = process.env.HOST || "127.0.0.1";
 const PORT = Number(process.env.PORT || 3000);
 const COOLDOWN_MS = 10 * 60 * 1000;
+const ADMIN_TOKEN = process.env.MM_ADMIN_TOKEN || "";
 const STATE_PATH = path.join(__dirname, "state.json");
 const PUBLIC_DIR = __dirname;
 
@@ -298,6 +299,16 @@ function resetRound() {
   broadcast("round_reset");
 }
 
+function isAuthorizedAdmin(req, url) {
+  if (!ADMIN_TOKEN) {
+    return true;
+  }
+  const authHeader = req.headers.authorization || "";
+  const bearerToken = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : "";
+  const queryToken = url.searchParams.get("token") || "";
+  return bearerToken === ADMIN_TOKEN || queryToken === ADMIN_TOKEN;
+}
+
 function maybeAdvanceCooldown() {
   if (state.phase !== "cooldown") {
     return;
@@ -469,6 +480,16 @@ const server = http.createServer(async (req, res) => {
     } catch (error) {
       sendJson(res, 400, { error: error.message });
     }
+    return;
+  }
+
+  if (req.method === "POST" && url.pathname === "/api/admin/regen") {
+    if (!isAuthorizedAdmin(req, url)) {
+      sendJson(res, 403, { error: "Forbidden" });
+      return;
+    }
+    resetRound();
+    sendJson(res, 200, currentPayload());
     return;
   }
 

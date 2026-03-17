@@ -6,8 +6,8 @@
   "endedAt": null,
   "cooldownEndsAt": null,
   "totalBuildings": 842,
-  "destroyedCount": 289,
-  "lastEventAt": 1773669223669,
+  "destroyedCount": 730,
+  "lastEventAt": 1773685714350,
   "players": {
     "p-52968a35-d4e3-4093-966b-e54e21c84d89": {
       "name": "Anonymous",
@@ -19,7 +19,7 @@
     },
     "p-45552a32-ce07-4e5a-8777-401309171a03": {
       "name": "Anonymous",
-      "strikes": 128
+      "strikes": 569
     }
   },
   "buildings": [
@@ -53,8 +53,8 @@
       "depth": 20.51162293786183,
       "height": 14.171468750108033,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684614172,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--425--241-lot-0-1-suburban",
@@ -130,8 +130,8 @@
       "depth": 15.530075937509537,
       "height": 8.287352623417974,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684064120,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--425--287-lot-0-0-suburban",
@@ -196,8 +196,8 @@
       "depth": 14.442675916012377,
       "height": 17.750037281773984,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685511736,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--425-127-lot-0-0-suburban",
@@ -218,8 +218,8 @@
       "depth": 15.68554450199008,
       "height": 13.48644617665559,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685545483,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--425-219-lot-0-0-suburban",
@@ -339,8 +339,8 @@
       "depth": 14.007791247218847,
       "height": 14.137460342142731,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685690448,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--425-81-lot-1-0-suburban",
@@ -372,8 +372,8 @@
       "depth": 20.432433696929365,
       "height": 15.285844986326993,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685548147,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--379-lot-0-0-suburban",
@@ -438,8 +438,8 @@
       "depth": 15.510874280240387,
       "height": 11.858496898319572,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685567764,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--195-lot-0-0-suburban",
@@ -471,8 +471,8 @@
       "depth": 18.503703595139086,
       "height": 16.517412894871086,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683856356,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-127-lot-0-0-suburban",
@@ -493,8 +493,8 @@
       "depth": 18.87293469067663,
       "height": 11.895547983702272,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685688098,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-173-lot-0-0-suburban",
@@ -504,8 +504,8 @@
       "depth": 12.149633063469082,
       "height": 13.67770449211821,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684923327,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-173-lot-0-1-suburban",
@@ -515,8 +515,8 @@
       "depth": 19.256547653581947,
       "height": 9.30320857744664,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684784660,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-219-lot-0-0-suburban",
@@ -559,8 +559,8 @@
       "depth": 15.480240943375975,
       "height": 9.21921896468848,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685200198,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--11-lot-0-0-res-0",
@@ -570,8 +570,8 @@
       "depth": 14.943151734070852,
       "height": 24.20333329960704,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684197537,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--425-lot-0-0-suburban",
@@ -603,8 +603,8 @@
       "depth": 20.748739693313837,
       "height": 16.268383122049272,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683862803,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--149-lot-0-0-suburban",
@@ -614,8 +614,8 @@
       "depth": 12.431661590468138,
       "height": 10.106788917444646,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685692788,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--149-lot-0-1-suburban",
@@ -625,8 +625,8 @@
       "depth": 16.640557205770165,
       "height": 15.096428524237126,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684616661,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--57-lot-0-0-suburban",
@@ -647,8 +647,8 @@
       "depth": 20.4940091134049,
       "height": 12.885202907025814,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684885730,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-35-lot-0-0-suburban",
@@ -669,8 +669,8 @@
       "depth": 15.343767327489331,
       "height": 13.264310993254185,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685513333,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--11-lot-0-1-res-0",
@@ -713,8 +713,8 @@
       "depth": 14.073140811175108,
       "height": 9.480901364702731,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685565334,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--287-lot-1-1-suburban",
@@ -724,8 +724,8 @@
       "depth": 14.106723134405911,
       "height": 10.72290745517239,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685566167,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379--241-lot-1-0-suburban",
@@ -779,8 +779,8 @@
       "depth": 19.654302363283932,
       "height": 14.893859240226448,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683864985,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-127-lot-1-0-suburban",
@@ -790,8 +790,8 @@
       "depth": 17.768668505828828,
       "height": 17.648614630568773,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685470771,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-127-lot-1-1-suburban",
@@ -801,8 +801,8 @@
       "depth": 13.13274741312489,
       "height": 12.90151745500043,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684473740,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-173-lot-1-0-suburban",
@@ -812,8 +812,8 @@
       "depth": 20.999399003572762,
       "height": 8.452113873325288,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684429871,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-173-lot-1-1-suburban",
@@ -834,8 +834,8 @@
       "depth": 18.45329041266814,
       "height": 8.33549213083461,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685198520,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--379-219-lot-1-1-suburban",
@@ -900,8 +900,8 @@
       "depth": 16.18369095097296,
       "height": 13.307379696518183,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684266155,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--57-lot-0-1-res-1",
@@ -911,8 +911,8 @@
       "depth": 17.737352746538818,
       "height": 19.913362447172403,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684782860,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--425-lot-0-0-suburban",
@@ -966,8 +966,8 @@
       "depth": 13.522628686856478,
       "height": 10.004451260436326,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685547166,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-311-lot-0-0-suburban",
@@ -988,8 +988,8 @@
       "depth": 13.929239976219833,
       "height": 9.707914010621607,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683952269,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-357-lot-0-0-suburban",
@@ -1010,8 +1010,8 @@
       "depth": 12.426933550043032,
       "height": 22.466417249292135,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685598633,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-81-lot-0-1-res-0",
@@ -1054,8 +1054,8 @@
       "depth": 15.091538152191788,
       "height": 12.851214528083801,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684781172,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--11-lot-0-0-res-0",
@@ -1065,8 +1065,8 @@
       "depth": 15.628738054307178,
       "height": 21.42228175699711,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684061622,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-127-lot-0-0-res-1",
@@ -1076,8 +1076,8 @@
       "depth": 10.961092514218763,
       "height": 12.189744606614113,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684363120,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-81-lot-0-0-res-1",
@@ -1109,8 +1109,8 @@
       "depth": 14.022725016344339,
       "height": 14.617314605973661,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684471855,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--195-lot-0-1-suburban",
@@ -1131,8 +1131,8 @@
       "depth": 17.969047954306006,
       "height": 16.793424803763628,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685507883,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-173-lot-0-1-res-1",
@@ -1153,8 +1153,8 @@
       "depth": 18.699562340043485,
       "height": 18.818968534469604,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685472570,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--149-lot-0-0-res-1",
@@ -1164,8 +1164,8 @@
       "depth": 15.479931579204276,
       "height": 11.998698066920042,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685596231,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--149-lot-0-0-res-0",
@@ -1175,8 +1175,8 @@
       "depth": 14.773983283899724,
       "height": 21.30728866904974,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685540727,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-127-lot-0-0-res-0",
@@ -1252,8 +1252,8 @@
       "depth": 11.907050324603915,
       "height": 15.5846708426252,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685245965,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-311-lot-1-0-suburban",
@@ -1263,8 +1263,8 @@
       "depth": 11.376479672268033,
       "height": 13.883430382236838,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684701860,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-311-lot-1-1-suburban",
@@ -1296,8 +1296,8 @@
       "depth": 16.993174333125353,
       "height": 19.120962128043175,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685441600,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--57-lot-1-1-res-1",
@@ -1307,8 +1307,8 @@
       "depth": 16.477864600950852,
       "height": 18.714702058583498,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684920627,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333-35-lot-1-0-res-0",
@@ -1318,8 +1318,8 @@
       "depth": 11.310111672384664,
       "height": 11.203911125659943,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684265388,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--333--57-lot-1-1-res-0",
@@ -1329,8 +1329,8 @@
       "depth": 16.049712179927155,
       "height": 22.499788586050272,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685143933,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--149-lot-0-0-res-1",
@@ -1340,8 +1340,8 @@
       "depth": 16.51587939634919,
       "height": 22.107455994933844,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685260484,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--57-lot-0-0-res-1",
@@ -1351,8 +1351,8 @@
       "depth": 11.301025335211307,
       "height": 18.97506244108081,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685711598,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-81-lot-0-0-res-1",
@@ -1362,8 +1362,8 @@
       "depth": 18.82306865020655,
       "height": 17.717332933098078,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684354908,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--379-lot-0-0-suburban",
@@ -1384,8 +1384,8 @@
       "depth": 13.224991142284125,
       "height": 16.0760293523781,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684066141,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--287-lot-0-1-suburban",
@@ -1395,8 +1395,8 @@
       "depth": 15.907603873871267,
       "height": 8.182332631666213,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685708223,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-357-lot-0-0-suburban",
@@ -1406,8 +1406,8 @@
       "depth": 16.706311012618244,
       "height": 13.781253878958523,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685202230,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--149-lot-0-0-res-0",
@@ -1417,8 +1417,8 @@
       "depth": 14.562608569161966,
       "height": 13.437218651175499,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685540372,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--57-lot-0-0-res-0",
@@ -1428,8 +1428,8 @@
       "depth": 15.786116513190791,
       "height": 16.312181670218706,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684919245,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-127-lot-0-0-res-0",
@@ -1439,8 +1439,8 @@
       "depth": 18.547766547184438,
       "height": 12.299798272550106,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685141464,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-127-lot-0-0-res-1",
@@ -1450,8 +1450,8 @@
       "depth": 17.118294073734432,
       "height": 11.382085416465998,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685561750,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--149-lot-0-1-res-0",
@@ -1461,8 +1461,8 @@
       "depth": 11.047053067712113,
       "height": 15.589262142777443,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684466622,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-173-lot-0-0-res-0",
@@ -1483,8 +1483,8 @@
       "depth": 14.004525710595772,
       "height": 23.96895133703947,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684514973,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-81-lot-0-0-res-0",
@@ -1494,8 +1494,8 @@
       "depth": 17.653400040231645,
       "height": 13.750699650496244,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684516655,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--195-lot-0-0-res-1",
@@ -1505,8 +1505,8 @@
       "depth": 15.860019428655505,
       "height": 13.904164664447308,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685514932,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--103-lot-0-1-res-0",
@@ -1516,8 +1516,8 @@
       "depth": 12.173382230103016,
       "height": 15.349265042692423,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685509382,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--241-lot-0-0-res-0",
@@ -1538,8 +1538,8 @@
       "depth": 15.631987552624196,
       "height": 20.40548448637128,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683857853,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--103-lot-0-0-res-0",
@@ -1549,8 +1549,8 @@
       "depth": 11.804305060300976,
       "height": 11.742271646857262,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685509833,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--425-lot-0-0-suburban",
@@ -1593,8 +1593,8 @@
       "depth": 18.920452649705112,
       "height": 14.781660402193666,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685466555,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-311-lot-0-1-suburban",
@@ -1604,8 +1604,8 @@
       "depth": 20.983967868611217,
       "height": 10.973049932625145,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684475623,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-403-lot-0-0-suburban",
@@ -1615,8 +1615,8 @@
       "depth": 13.052906376775354,
       "height": 14.399147070478648,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683963253,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--103-lot-0-1-res-1",
@@ -1626,8 +1626,8 @@
       "depth": 14.0761790049728,
       "height": 16.103265650570393,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685563715,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--11-lot-0-0-res-0",
@@ -1637,8 +1637,8 @@
       "depth": 15.333462961483747,
       "height": 22.56501304730773,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684876439,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--241-lot-0-0-res-1",
@@ -1659,8 +1659,8 @@
       "depth": 16.716967252781615,
       "height": 18.29395331069827,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685433483,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--149-lot-1-1-res-1",
@@ -1670,8 +1670,8 @@
       "depth": 13.814037858275697,
       "height": 25.563324864953756,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684816342,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-127-lot-1-0-res-0",
@@ -1681,8 +1681,8 @@
       "depth": 11.262334421975538,
       "height": 25.98589051514864,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684342760,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-81-lot-1-0-res-0",
@@ -1692,8 +1692,8 @@
       "depth": 17.48723892052658,
       "height": 23.794657092541456,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684699393,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--149-lot-1-0-res-0",
@@ -1703,8 +1703,8 @@
       "depth": 15.884792814031243,
       "height": 15.302562970668077,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685435464,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-173-lot-1-0-res-1",
@@ -1714,8 +1714,8 @@
       "depth": 12.077265791827813,
       "height": 14.59690348431468,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684778606,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287-173-lot-1-0-res-0",
@@ -1736,8 +1736,8 @@
       "depth": 16.573767309077084,
       "height": 10.084757879376411,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685142630,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--195-lot-1-0-res-0",
@@ -1747,8 +1747,8 @@
       "depth": 15.497785477200523,
       "height": 16.78935742378235,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685539654,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--379-lot-1-0-suburban",
@@ -1791,8 +1791,8 @@
       "depth": 13.550266152247787,
       "height": 11.332379162311554,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684122837,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--195-lot-1-0-res-1",
@@ -1802,8 +1802,8 @@
       "depth": 12.941483808448538,
       "height": 15.813946012407541,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685710118,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--287--57-lot-1-0-res-0",
@@ -1813,8 +1813,8 @@
       "depth": 15.468523961957544,
       "height": 10.912623554468155,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685701967,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-127-lot-0-0-res-0",
@@ -1824,8 +1824,8 @@
       "depth": 15.949618222657591,
       "height": 25.859265498816967,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684460439,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-219-lot-0-0-res-0",
@@ -1846,8 +1846,8 @@
       "depth": 5.960683300898597,
       "height": 42.110036719590425,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684821756,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--57-lot-0-1-mid-0",
@@ -1857,8 +1857,8 @@
       "depth": 7.957776885894501,
       "height": 97.88804119080305,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684535622,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-127-lot-0-0-res-1",
@@ -1868,8 +1868,8 @@
       "depth": 15.595258264569566,
       "height": 14.658568773418665,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684341987,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--57-lot-0-0-mid-0",
@@ -1890,8 +1890,8 @@
       "depth": 5.073693298463189,
       "height": 75.71525691077113,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685128903,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--379-lot-0-0-suburban",
@@ -1934,8 +1934,8 @@
       "depth": 20.469605062622577,
       "height": 13.174026023596525,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685139031,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-403-lot-0-0-suburban",
@@ -1945,8 +1945,8 @@
       "depth": 19.607071333099157,
       "height": 14.694158918689936,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685465464,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-0-0-mid-1",
@@ -1956,8 +1956,8 @@
       "depth": 9.142675658561625,
       "height": 78.06963742151856,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684275575,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-0-1-mid-0",
@@ -1978,8 +1978,8 @@
       "depth": 10.063958135200664,
       "height": 16.48183384537697,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684272439,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-0-0-mid-0",
@@ -2011,8 +2011,8 @@
       "depth": 16.797700460841806,
       "height": 75.4387694913894,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684240437,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--241-lot-0-0-res-1",
@@ -2033,8 +2033,8 @@
       "depth": 11.224860678426921,
       "height": 20.86771535128355,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685699467,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--241-lot-0-0-res-0",
@@ -2077,8 +2077,8 @@
       "depth": 18.87715937430039,
       "height": 25.82352076843381,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684873139,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--103-lot-0-0-res-0",
@@ -2088,8 +2088,8 @@
       "depth": 13.764627002179623,
       "height": 19.43769482895732,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685557161,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--195-lot-0-0-res-0",
@@ -2099,8 +2099,8 @@
       "depth": 12.85366967250593,
       "height": 11.297544829547405,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685710884,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--287-lot-0-1-res-1",
@@ -2143,8 +2143,8 @@
       "depth": 11.459574657958001,
       "height": 11.072281423956156,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684702872,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--287-lot-0-1-res-0",
@@ -2165,8 +2165,8 @@
       "depth": 7.342944034295307,
       "height": 44.930773884058,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684239670,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-127-lot-1-0-res-0",
@@ -2176,8 +2176,8 @@
       "depth": 15.429684156784788,
       "height": 21.236056115478277,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684878906,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-219-lot-1-0-res-1",
@@ -2187,8 +2187,8 @@
       "depth": 10.511354988906533,
       "height": 21.22096675634384,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684271672,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--57-lot-1-1-mid-1",
@@ -2198,8 +2198,8 @@
       "depth": 5.815798297000789,
       "height": 77.07361400686204,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685128515,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-219-lot-1-1-res-0",
@@ -2209,8 +2209,8 @@
       "depth": 16.651552194030955,
       "height": 11.401903234422207,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684518758,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-1-0-mid-0",
@@ -2220,8 +2220,8 @@
       "depth": 7.721249047512153,
       "height": 43.053318969905376,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684770189,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-35-lot-1-0-mid-1",
@@ -2242,8 +2242,8 @@
       "depth": 16.837453957181424,
       "height": 18.886008501052856,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684273507,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--379-lot-1-0-suburban",
@@ -2297,8 +2297,8 @@
       "depth": 16.50239180913195,
       "height": 11.106416086666286,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684786162,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-1-0-mid-1",
@@ -2308,8 +2308,8 @@
       "depth": 6.557283501368501,
       "height": 101.96658949367702,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684534371,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-35-lot-1-0-mid-0",
@@ -2319,8 +2319,8 @@
       "depth": 10.54534897896722,
       "height": 72.6185003221035,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683854451,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-1-1-mid-1",
@@ -2330,8 +2330,8 @@
       "depth": 7.129290467342624,
       "height": 43.06490400061011,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684281207,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--11-lot-1-1-mid-0",
@@ -2352,8 +2352,8 @@
       "depth": 7.063272881125511,
       "height": 43.50924593769014,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685557983,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241-127-lot-1-0-res-1",
@@ -2363,8 +2363,8 @@
       "depth": 13.275662306230515,
       "height": 11.218037702143192,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685560447,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--241--57-lot-1-1-mid-0",
@@ -2374,8 +2374,8 @@
       "depth": 9.113582710983085,
       "height": 43.38949742540717,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685542034,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--195-lot-0-1-res-0",
@@ -2385,8 +2385,8 @@
       "depth": 18.38019079901278,
       "height": 19.35471872612834,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684513806,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--287-lot-0-0-res-0",
@@ -2407,8 +2407,8 @@
       "depth": 11.532471244223416,
       "height": 16.181479644030333,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684360539,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--103-lot-0-1-mid-0",
@@ -2418,8 +2418,8 @@
       "depth": 8.90107760414388,
       "height": 66.86325726471841,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684648790,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--287-lot-0-1-res-1",
@@ -2473,8 +2473,8 @@
       "depth": 17.176960039883852,
       "height": 9.93409513682127,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684786989,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-265-lot-0-0-res-1",
@@ -2495,8 +2495,8 @@
       "depth": 17.525800769547974,
       "height": 56.193436877802014,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685248949,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-311-lot-0-0-res-0",
@@ -2506,8 +2506,8 @@
       "depth": 14.709307186305523,
       "height": 21.306314948946238,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684258388,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-127-lot-0-0-mid-0",
@@ -2528,8 +2528,8 @@
       "depth": 7.335581235112623,
       "height": 43.645318457856774,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685290919,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-81-lot-0-0-mid-0",
@@ -2539,8 +2539,8 @@
       "depth": 13.814549202750253,
       "height": 93.10865128599107,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683832168,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--287-lot-0-1-res-0",
@@ -2550,8 +2550,8 @@
       "depth": 17.285829102620482,
       "height": 17.759284913539886,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685263880,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--149-lot-0-0-mid-1",
@@ -2561,8 +2561,8 @@
       "depth": 17.163353550761197,
       "height": 83.26510652527213,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684710007,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--287-lot-0-0-res-1",
@@ -2572,8 +2572,8 @@
       "depth": 14.657056176802143,
       "height": 18.674905136227608,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685210897,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--241-lot-0-0-res-1",
@@ -2583,8 +2583,8 @@
       "depth": 14.227514549624175,
       "height": 21.447001334279776,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685682136,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-219-lot-0-0-res-1",
@@ -2594,8 +2594,8 @@
       "depth": 13.564861168852076,
       "height": 22.569167230278254,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684256122,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--241-lot-0-1-res-0",
@@ -2605,8 +2605,8 @@
       "depth": 18.00889878673479,
       "height": 14.263148080557585,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684711745,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-219-lot-0-0-res-0",
@@ -2616,8 +2616,8 @@
       "depth": 10.072214267915115,
       "height": 21.32409208267927,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684340104,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-173-lot-0-1-res-0",
@@ -2627,8 +2627,8 @@
       "depth": 10.956250167218968,
       "height": 18.526658985763788,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685427555,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--425-lot-0-0-suburban",
@@ -2682,8 +2682,8 @@
       "depth": 16.35907517746091,
       "height": 11.746152367442846,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683937853,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-173-lot-0-0-res-0",
@@ -2704,8 +2704,8 @@
       "depth": 14.776007444847826,
       "height": 77.7660318966955,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684280655,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--195-lot-1-0-res-0",
@@ -2715,8 +2715,8 @@
       "depth": 16.90126507799141,
       "height": 19.63956831768155,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684881128,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--195-lot-1-1-res-0",
@@ -2726,8 +2726,8 @@
       "depth": 16.182001100620255,
       "height": 20.706604164093733,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684537159,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--195-lot-1-0-res-1",
@@ -2737,8 +2737,8 @@
       "depth": 12.333250941941515,
       "height": 23.594722021371126,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685437716,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--287-lot-1-1-res-1",
@@ -2770,8 +2770,8 @@
       "depth": 14.482544602826238,
       "height": 25.54138809815049,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685517331,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-127-lot-1-0-mid-1",
@@ -2792,8 +2792,8 @@
       "depth": 12.490779487183318,
       "height": 11.228213407099247,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684330271,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--287-lot-1-0-res-0",
@@ -2803,8 +2803,8 @@
       "depth": 16.776180553948507,
       "height": 10.558922369033098,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684868834,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--103-lot-1-1-mid-0",
@@ -2814,8 +2814,8 @@
       "depth": 8.282476355335305,
       "height": 105.54500470496714,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684946944,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--103-lot-1-0-mid-1",
@@ -2825,8 +2825,8 @@
       "depth": 7.873205045123512,
       "height": 81.30654585175216,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684948017,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-403-lot-1-0-suburban",
@@ -2858,8 +2858,8 @@
       "depth": 11.263950107153505,
       "height": 14.13633145391941,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684259271,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-127-lot-1-0-mid-0",
@@ -2880,8 +2880,8 @@
       "depth": 15.054266314621794,
       "height": 106.97591003961861,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683732281,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195--149-lot-1-0-mid-0",
@@ -2902,8 +2902,8 @@
       "depth": 9.606009558866436,
       "height": 100.99612494930625,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685128065,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--195-81-lot-1-0-mid-1",
@@ -2913,8 +2913,8 @@
       "depth": 19.65882513653912,
       "height": 112.08045450411737,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684229874,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--379-lot-0-0-suburban",
@@ -2968,8 +2968,8 @@
       "depth": 8.489651035516712,
       "height": 91.0186492279172,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684178122,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--241-lot-0-0-res-0",
@@ -2979,8 +2979,8 @@
       "depth": 18.099892666796222,
       "height": 24.043826196342707,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684649922,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--103-lot-0-1-mid-0",
@@ -3001,8 +3001,8 @@
       "depth": 10.116105732973665,
       "height": 17.75099217891693,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685614849,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149-265-lot-0-0-res-0",
@@ -3012,8 +3012,8 @@
       "depth": 10.718639927916229,
       "height": 19.162173081189394,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684269105,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--57-lot-0-0-mid-1",
@@ -3023,8 +3023,8 @@
       "depth": 11.003639419573101,
       "height": 98.01508437283337,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684280172,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--195-lot-0-1-mid-0",
@@ -3045,8 +3045,8 @@
       "depth": 8.501609155848364,
       "height": 112.10621806047857,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684906110,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--195-lot-0-0-mid-0",
@@ -3056,8 +3056,8 @@
       "depth": 5.916464278267512,
       "height": 47.9262095913291,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685252365,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--425-lot-0-0-suburban",
@@ -3089,8 +3089,8 @@
       "depth": 10.33769434475966,
       "height": 57.70372825674713,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685250734,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--241-lot-0-0-res-1",
@@ -3111,8 +3111,8 @@
       "depth": 8.08449534255311,
       "height": 110.04963066056371,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684904816,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--241-lot-0-1-res-0",
@@ -3122,8 +3122,8 @@
       "depth": 15.157505955547094,
       "height": 12.224692650139332,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685681000,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--57-lot-0-0-mid-0",
@@ -3133,8 +3133,8 @@
       "depth": 19.640855109978098,
       "height": 110.50140240043402,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684767756,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149--379-lot-1-0-suburban",
@@ -3155,8 +3155,8 @@
       "depth": 16.011742648202926,
       "height": 12.660422324668616,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684867273,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149-127-lot-1-0-mid-0",
@@ -3166,8 +3166,8 @@
       "depth": 8.734702165169793,
       "height": 70.54706127941608,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684151554,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--149-127-lot-1-1-mid-1",
@@ -3199,8 +3199,8 @@
       "depth": 10.97956266021356,
       "height": 23.52363683655858,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683935155,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--241-lot-0-1-res-1",
@@ -3210,8 +3210,8 @@
       "depth": 13.496732506668195,
       "height": 13.534494057297707,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685697500,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--425-lot-0-0-suburban",
@@ -3232,8 +3232,8 @@
       "depth": 15.529737730044872,
       "height": 16.341410006396472,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683740467,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--11-lot-0-0-podium",
@@ -3243,8 +3243,8 @@
       "depth": 24.604800184164677,
       "height": 14.768642205744982,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684641394,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103-403-lot-0-0-suburban",
@@ -3254,8 +3254,8 @@
       "depth": 19.519571472425014,
       "height": 16.055136217735708,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684477838,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103-403-lot-0-1-suburban",
@@ -3265,8 +3265,8 @@
       "depth": 18.41278267931193,
       "height": 16.551053991541266,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684262705,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--11-lot-0-0-tower-0",
@@ -3298,8 +3298,8 @@
       "depth": 17.526064763544127,
       "height": 23.94255280122161,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685592397,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--241-lot-0-1-res-0",
@@ -3309,8 +3309,8 @@
       "depth": 12.737101424019784,
       "height": 12.517763167619705,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685555931,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--57-lot-0-0-tower-0",
@@ -3430,8 +3430,8 @@
       "depth": 12.00246050103307,
       "height": 20.87672458961606,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684634677,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--57-lot-0-1-podium",
@@ -3441,8 +3441,8 @@
       "depth": 11.772557443280027,
       "height": 17.11067884787917,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684334721,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103-35-lot-0-0-podium",
@@ -3452,8 +3452,8 @@
       "depth": 24.594041801273082,
       "height": 18.703758340328932,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684327571,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--287-lot-0-0-res-1",
@@ -3463,8 +3463,8 @@
       "depth": 15.765057978918776,
       "height": 22.415306992828846,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683739786,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--57-lot-0-1-tower-0",
@@ -3496,8 +3496,8 @@
       "depth": 13.44632064178586,
       "height": 22.54959073290229,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685679383,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103-357-lot-1-0-res-1",
@@ -3518,8 +3518,8 @@
       "depth": 5.415171808172756,
       "height": 244.36508329352364,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684185424,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--241-lot-1-1-res-0",
@@ -3529,8 +3529,8 @@
       "depth": 13.236199905863032,
       "height": 15.482890605926514,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685530616,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--425-lot-1-0-suburban",
@@ -3562,8 +3562,8 @@
       "depth": 21.95059693352455,
       "height": 23.434014681726694,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684353471,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103-403-lot-1-0-suburban",
@@ -3595,8 +3595,8 @@
       "depth": 9.96484174167897,
       "height": 203.2633208320476,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684278274,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--333-lot-1-0-res-1",
@@ -3617,8 +3617,8 @@
       "depth": 10.6238486119546,
       "height": 13.474329564720392,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685439464,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103--333-lot-1-0-res-0",
@@ -3650,8 +3650,8 @@
       "depth": 10.024316498311237,
       "height": 18.8917688280344,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684670888,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--103-357-lot-1-0-res-0",
@@ -3716,8 +3716,8 @@
       "depth": 12.389717707177624,
       "height": 11.148534893989563,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684543445,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-265-lot-0-0-res-1",
@@ -3749,8 +3749,8 @@
       "depth": 6.665380399689228,
       "height": 81.17000050842762,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684921392,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--195-lot-0-0-mid-0",
@@ -3782,8 +3782,8 @@
       "depth": 6.994946031536354,
       "height": 152.1805988298729,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684946027,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--379-lot-0-0-suburban",
@@ -3793,8 +3793,8 @@
       "depth": 18.181873817462474,
       "height": 11.43774002045393,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684831640,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--103-lot-0-0-podium",
@@ -3815,8 +3815,8 @@
       "depth": 12.68922488613935,
       "height": 25.28579929471016,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683733284,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--57-lot-0-0-podium",
@@ -3826,8 +3826,8 @@
       "depth": 12.34977035872713,
       "height": 23.921149477362633,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685463083,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--57-lot-0-1-podium",
@@ -3837,8 +3837,8 @@
       "depth": 12.064235754139515,
       "height": 14.358265276998281,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684987744,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-35-lot-0-0-podium",
@@ -3848,8 +3848,8 @@
       "depth": 11.163813925539717,
       "height": 15.931338906288147,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684653562,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-35-lot-0-1-podium",
@@ -3859,8 +3859,8 @@
       "depth": 11.683698241985994,
       "height": 18.49079056084156,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684639554,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-127-lot-0-0-podium",
@@ -3903,8 +3903,8 @@
       "depth": 7.5147880007828505,
       "height": 266.98740418069065,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684906611,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-35-lot-0-0-tower-0",
@@ -3958,8 +3958,8 @@
       "depth": 9.298601132949518,
       "height": 87.14594274759293,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684424105,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-127-lot-0-1-tower-1",
@@ -3991,8 +3991,8 @@
       "depth": 4.938275195254812,
       "height": 236.19622682919726,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684532225,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--287-lot-0-0-res-0",
@@ -4013,8 +4013,8 @@
       "depth": 18.549070448614657,
       "height": 13.120843823999166,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685678480,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-81-lot-0-0-tower-0",
@@ -4046,8 +4046,8 @@
       "depth": 22.815793399963443,
       "height": 25.410233683884144,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684599709,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-81-lot-0-0-podium",
@@ -4068,8 +4068,8 @@
       "depth": 12.315285188611597,
       "height": 16.401300956029445,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684789206,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--11-lot-0-0-tower-0",
@@ -4090,8 +4090,8 @@
       "depth": 18.18032502825372,
       "height": 24.341424234211445,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685420700,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-173-lot-0-0-mid-0",
@@ -4123,8 +4123,8 @@
       "depth": 4.441760644151382,
       "height": 124.70444391714409,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685120580,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--57-lot-1-1-tower-0",
@@ -4134,8 +4134,8 @@
       "depth": 3.7605330842699174,
       "height": 209.8830563062802,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684805339,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-311-lot-1-0-res-0",
@@ -4211,8 +4211,8 @@
       "depth": 6.697420577171021,
       "height": 154.46270496817306,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683943879,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-219-lot-1-1-mid-0",
@@ -4222,8 +4222,8 @@
       "depth": 7.137828936032543,
       "height": 83.60576923191547,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684175592,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--379-lot-1-0-suburban",
@@ -4244,8 +4244,8 @@
       "depth": 12.081228901044446,
       "height": 28.498913414776325,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685208271,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--103-lot-1-1-podium",
@@ -4255,8 +4255,8 @@
       "depth": 11.600431412554176,
       "height": 18.541856613010168,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685520514,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--57-lot-1-0-podium",
@@ -4266,8 +4266,8 @@
       "depth": 10.877980043299601,
       "height": 29.363188862800598,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685287519,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--57-lot-1-1-podium",
@@ -4277,8 +4277,8 @@
       "depth": 10.774575657576532,
       "height": 22.50575741007924,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684352522,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-35-lot-1-0-podium",
@@ -4288,8 +4288,8 @@
       "depth": 12.270793781584205,
       "height": 24.41484009847045,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684464172,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-35-lot-1-1-podium",
@@ -4299,8 +4299,8 @@
       "depth": 11.850987051436812,
       "height": 27.858072567731142,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684463472,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-127-lot-1-0-podium",
@@ -4310,8 +4310,8 @@
       "depth": 11.47136239294991,
       "height": 21.60514359921217,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684325171,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-127-lot-1-1-podium",
@@ -4332,8 +4332,8 @@
       "depth": 5.578313664155156,
       "height": 76.93371166102588,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683735784,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--195-lot-1-0-mid-0",
@@ -4354,8 +4354,8 @@
       "depth": 6.659573461874048,
       "height": 214.4278512755409,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685125757,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-35-lot-1-1-tower-0",
@@ -4376,8 +4376,8 @@
       "depth": 20.092771943000262,
       "height": 96.36062762886286,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684610556,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--241-lot-1-0-mid-0",
@@ -4387,8 +4387,8 @@
       "depth": 13.61964985615276,
       "height": 74.97278856486082,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684871189,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--149-lot-1-0-mid-0",
@@ -4398,8 +4398,8 @@
       "depth": 15.365289015681224,
       "height": 88.54549882560968,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685126368,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57-311-lot-1-0-res-1",
@@ -4420,8 +4420,8 @@
       "depth": 4.500070484489165,
       "height": 210.65528593258932,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684906978,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--57--57-lot-1-1-tower-1",
@@ -4475,8 +4475,8 @@
       "depth": 16.627151248045266,
       "height": 10.487629946321249,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684191873,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-265-lot-0-0-res-1",
@@ -4486,8 +4486,8 @@
       "depth": 15.859712979989126,
       "height": 25.698157470673323,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684243088,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-0-0-tower-0",
@@ -4508,8 +4508,8 @@
       "depth": 14.949626213921162,
       "height": 46.65121984295547,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684992477,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--103-lot-0-0-podium",
@@ -4519,8 +4519,8 @@
       "depth": 12.049060842842506,
       "height": 16.687989629805088,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685207468,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--103-lot-0-1-podium",
@@ -4530,8 +4530,8 @@
       "depth": 12.72452547699179,
       "height": 26.64788132160902,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684907795,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--11-lot-0-0-podium",
@@ -4541,8 +4541,8 @@
       "depth": 24.59547717576635,
       "height": 22.92435247823596,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684426388,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-0-0-podium",
@@ -4552,8 +4552,8 @@
       "depth": 10.818763564957559,
       "height": 23.183424845337868,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684627508,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-0-1-podium",
@@ -4563,8 +4563,8 @@
       "depth": 10.704002383423358,
       "height": 28.69585120677948,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684349525,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-403-lot-0-0-suburban",
@@ -4574,8 +4574,8 @@
       "depth": 16.84183032391593,
       "height": 8.122385111171752,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684059837,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-403-lot-0-1-suburban",
@@ -4596,8 +4596,8 @@
       "depth": 6.198028414218626,
       "height": 198.19887234829366,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684934758,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--195-lot-0-0-mid-0",
@@ -4607,8 +4607,8 @@
       "depth": 14.315333045102658,
       "height": 98.53072229214013,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684207853,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--149-lot-0-0-mid-0",
@@ -4618,8 +4618,8 @@
       "depth": 18.587087365494227,
       "height": 91.68858754076064,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684866340,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-265-lot-0-0-res-0",
@@ -4629,8 +4629,8 @@
       "depth": 11.695629278896376,
       "height": 18.50808970630169,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684038004,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-0-1-tower-1",
@@ -4651,8 +4651,8 @@
       "depth": 10.022799694229558,
       "height": 125.96465251175687,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684233637,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--103-lot-0-1-tower-1",
@@ -4662,8 +4662,8 @@
       "depth": 5.8302377188857655,
       "height": 138.77647904213518,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684803656,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-357-lot-0-0-res-0",
@@ -4706,8 +4706,8 @@
       "depth": 23.597619230302428,
       "height": 26.18261433765292,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683834437,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-35-lot-0-0-podium",
@@ -4717,8 +4717,8 @@
       "depth": 11.168158987294749,
       "height": 23.240303300321102,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684462656,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-35-lot-0-1-podium",
@@ -4728,8 +4728,8 @@
       "depth": 12.341521822994471,
       "height": 23.181663174182177,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684351272,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-127-lot-0-0-podium",
@@ -4772,8 +4772,8 @@
       "depth": 12.137289371574298,
       "height": 21.868328791111708,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684357954,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--57-lot-0-0-tower-0",
@@ -4794,8 +4794,8 @@
       "depth": 11.291340758347886,
       "height": 52.99651996605098,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684674622,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--287-lot-0-0-res-0",
@@ -4805,8 +4805,8 @@
       "depth": 16.713143386645243,
       "height": 16.99376391246915,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684651422,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--379-lot-1-0-res-0",
@@ -4816,8 +4816,8 @@
       "depth": 15.966734592802823,
       "height": 23.194060027599335,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685625983,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--11-lot-1-0-tower-0",
@@ -4838,8 +4838,8 @@
       "depth": 17.715105259769263,
       "height": 70.09981687366962,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684672721,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-265-lot-1-0-res-0",
@@ -4871,8 +4871,8 @@
       "depth": 12.856434157663108,
       "height": 27.447916250675917,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685192882,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--103-lot-1-1-podium",
@@ -4882,8 +4882,8 @@
       "depth": 10.768046748172539,
       "height": 25.927827443927526,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685194113,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--11-lot-1-0-podium",
@@ -4893,8 +4893,8 @@
       "depth": 24.872291481340707,
       "height": 21.15323394536972,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684622707,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-1-0-podium",
@@ -4904,8 +4904,8 @@
       "depth": 10.679850731777432,
       "height": 26.510299764573574,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685116730,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-1-1-podium",
@@ -4915,8 +4915,8 @@
       "depth": 11.017270748995006,
       "height": 21.69031960144639,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684990017,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-403-lot-1-0-suburban",
@@ -4926,8 +4926,8 @@
       "depth": 17.56578921712935,
       "height": 11.387041960377246,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685204668,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-403-lot-1-1-suburban",
@@ -4937,8 +4937,8 @@
       "depth": 18.854640600271523,
       "height": 9.002161880023777,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685145663,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-81-lot-1-1-tower-0",
@@ -4959,8 +4959,8 @@
       "depth": 20.191160081999303,
       "height": 102.70863891206682,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685254283,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--103-lot-1-1-tower-0",
@@ -4981,8 +4981,8 @@
       "depth": 7.837287811858828,
       "height": 136.36912368470803,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684209273,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--195-lot-1-0-mid-1",
@@ -4992,8 +4992,8 @@
       "depth": 13.60169928981811,
       "height": 59.791303066536784,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684189640,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11-265-lot-1-0-res-1",
@@ -5003,8 +5003,8 @@
       "depth": 13.427575171226636,
       "height": 10.475263703614473,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684332430,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b--11--149-lot-1-0-mid-0",
@@ -5014,8 +5014,8 @@
       "depth": 11.446880545301514,
       "height": 54.34510748460889,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685554448,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-357-lot-0-0-res-0",
@@ -5025,8 +5025,8 @@
       "depth": 18.77377854171209,
       "height": 16.278873488307,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685665931,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-357-lot-0-1-res-1",
@@ -5047,8 +5047,8 @@
       "depth": 7.339092149482036,
       "height": 74.17201583459973,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684708273,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--149-lot-0-1-mid-0",
@@ -5058,8 +5058,8 @@
       "depth": 7.690639064737225,
       "height": 52.02448718436062,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684802323,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--57-lot-0-0-podium",
@@ -5069,8 +5069,8 @@
       "depth": 24.608546276866797,
       "height": 25.74786787107587,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685114647,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--11-lot-0-0-podium",
@@ -5080,8 +5080,8 @@
       "depth": 25.03694518081534,
       "height": 22.000665817409754,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684234472,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--11-lot-0-0-tower-0",
@@ -5091,8 +5091,8 @@
       "depth": 10.254607638209873,
       "height": 185.54545973427594,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684337037,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--57-lot-0-0-tower-0",
@@ -5113,8 +5113,8 @@
       "depth": 18.40067242574878,
       "height": 22.879997223615646,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685493100,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-357-lot-0-1-res-0",
@@ -5157,8 +5157,8 @@
       "depth": 11.78681853483431,
       "height": 24.67032517120242,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684539906,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-173-lot-0-0-mid-1",
@@ -5190,8 +5190,8 @@
       "depth": 13.302613011561334,
       "height": 8.562645189929754,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684551488,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-81-lot-0-0-podium",
@@ -5201,8 +5201,8 @@
       "depth": 10.867390654080392,
       "height": 20.604115426540375,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684347921,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-81-lot-0-1-podium",
@@ -5212,8 +5212,8 @@
       "depth": 11.14634825490086,
       "height": 15.90171592310071,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685117579,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-127-lot-0-0-podium",
@@ -5223,8 +5223,8 @@
       "depth": 10.687269529923723,
       "height": 20.368268135935068,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684637288,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-127-lot-0-1-podium",
@@ -5234,8 +5234,8 @@
       "depth": 13.131558643359082,
       "height": 26.681717954576015,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683836900,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-403-lot-0-0-suburban",
@@ -5245,8 +5245,8 @@
       "depth": 15.123068654444069,
       "height": 17.1564526502043,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685618834,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-403-lot-0-1-suburban",
@@ -5289,8 +5289,8 @@
       "depth": 11.009159026201814,
       "height": 23.065148886293173,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683839550,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--195-lot-0-0-mid-0",
@@ -5300,8 +5300,8 @@
       "depth": 7.001663947015555,
       "height": 72.81076327711344,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684713907,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-265-lot-0-0-res-0",
@@ -5311,8 +5311,8 @@
       "depth": 18.11742753488943,
       "height": 23.35385212302208,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684344637,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--195-lot-0-1-mid-1",
@@ -5322,8 +5322,8 @@
       "depth": 6.80717136917431,
       "height": 74.37974361889064,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685286259,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--195-lot-0-1-mid-0",
@@ -5333,8 +5333,8 @@
       "depth": 9.479070550615937,
       "height": 51.10255094245076,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685283332,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-311-lot-0-0-res-0",
@@ -5344,8 +5344,8 @@
       "depth": 11.612333845812827,
       "height": 23.87404090166092,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684260787,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-265-lot-0-0-res-1",
@@ -5355,8 +5355,8 @@
       "depth": 17.649937140755355,
       "height": 16.07231219485402,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684675839,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--57-lot-1-0-tower-0",
@@ -5388,8 +5388,8 @@
       "depth": 14.476977994432673,
       "height": 18.084449406713247,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685617385,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35-127-lot-0-1-tower-1",
@@ -5410,8 +5410,8 @@
       "depth": 18.272648806218058,
       "height": 11.058350551873446,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685677017,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--11-lot-1-0-tower-0",
@@ -5432,8 +5432,8 @@
       "depth": 6.443521041418389,
       "height": 43.374882102012634,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684909258,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--57-lot-1-0-podium",
@@ -5443,8 +5443,8 @@
       "depth": 23.89282539780575,
       "height": 24.9227683134377,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684932427,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--11-lot-1-0-podium",
@@ -5454,8 +5454,8 @@
       "depth": 24.30310586844966,
       "height": 28.58287051320076,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683957153,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--149-lot-1-1-mid-1",
@@ -5476,8 +5476,8 @@
       "depth": 8.62157367276773,
       "height": 94.40789133869112,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685285132,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-35--333-lot-1-0-res-0",
@@ -5553,8 +5553,8 @@
       "depth": 10.352674047229812,
       "height": 11.723448492586613,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684603311,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-357-lot-0-0-res-1",
@@ -5564,8 +5564,8 @@
       "depth": 16.5052333525382,
       "height": 17.75520047917962,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684601977,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--287-lot-0-0-res-0",
@@ -5586,8 +5586,8 @@
       "depth": 10.449212152428034,
       "height": 101.51598582230508,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684935416,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-81-lot-0-0-tower-0",
@@ -5608,8 +5608,8 @@
       "depth": 12.054002448217943,
       "height": 21.46516678854823,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685616633,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--11-lot-0-0-tower-0",
@@ -5630,8 +5630,8 @@
       "depth": 10.052196740871295,
       "height": 24.897051822394133,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684926118,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--11-lot-0-0-podium",
@@ -5641,8 +5641,8 @@
       "depth": 23.988057210762534,
       "height": 17.933391116559505,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684253906,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-35-lot-0-0-podium",
@@ -5652,8 +5652,8 @@
       "depth": 25.14409633158088,
       "height": 25.603563461452723,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684631289,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-81-lot-0-0-podium",
@@ -5674,8 +5674,8 @@
       "depth": 11.533956728995623,
       "height": 20.964023053646088,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684412555,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-35-lot-0-0-tower-0",
@@ -5696,8 +5696,8 @@
       "depth": 11.90821198902056,
       "height": 96.46145940944552,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684521395,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--241-lot-0-0-mid-0",
@@ -5707,8 +5707,8 @@
       "depth": 11.893010041030125,
       "height": 93.52991492673755,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685213051,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-173-lot-0-0-mid-0",
@@ -5740,8 +5740,8 @@
       "depth": 13.552086269748512,
       "height": 111.18088136427104,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684209557,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--149-lot-0-1-mid-0",
@@ -5751,8 +5751,8 @@
       "depth": 5.419353693453447,
       "height": 91.47997707501054,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684910349,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-357-lot-0-1-res-1",
@@ -5784,8 +5784,8 @@
       "depth": 10.72011985979043,
       "height": 20.37017335742712,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684034753,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-219-lot-0-0-mid-1",
@@ -5817,8 +5817,8 @@
       "depth": 16.285882205003873,
       "height": 12.303035609424114,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684942465,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-219-lot-0-1-mid-0",
@@ -5839,8 +5839,8 @@
       "depth": 11.161668427225102,
       "height": 125.27557419845834,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683754816,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--333-lot-0-0-res-0",
@@ -5872,8 +5872,8 @@
       "depth": 26.055450726471488,
       "height": 14.290451258420944,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683750449,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--333-lot-0-0-res-1",
@@ -5916,8 +5916,8 @@
       "depth": 17.816756858024746,
       "height": 10.62511620670557,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684443695,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-127-lot-0-0-mid-0",
@@ -5927,8 +5927,8 @@
       "depth": 8.46015195039455,
       "height": 76.9387817401439,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684236771,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--333-lot-0-1-res-1",
@@ -5938,8 +5938,8 @@
       "depth": 14.945260702632368,
       "height": 22.317579481750727,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684545955,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-357-lot-1-1-res-0",
@@ -5960,8 +5960,8 @@
       "depth": 14.250997142866254,
       "height": 20.32101396471262,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685663048,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-173-lot-1-0-mid-0",
@@ -5971,8 +5971,8 @@
       "depth": 5.822788673653119,
       "height": 86.13764522597194,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683807405,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--195-lot-1-0-mid-0",
@@ -5982,8 +5982,8 @@
       "depth": 12.035088950839343,
       "height": 96.58329469710588,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684208223,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--149-lot-1-1-mid-0",
@@ -5993,8 +5993,8 @@
       "depth": 10.126354490649554,
       "height": 76.06869878433645,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684813956,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-311-lot-1-0-res-0",
@@ -6004,8 +6004,8 @@
       "depth": 13.307708149310201,
       "height": 17.133119624108076,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684916725,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--195-lot-1-0-mid-1",
@@ -6037,8 +6037,8 @@
       "depth": 25.187579042687954,
       "height": 21.833181902766228,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684523825,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-35-lot-1-0-podium",
@@ -6048,8 +6048,8 @@
       "depth": 26.475968576894495,
       "height": 20.883888006210327,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684896246,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-81-lot-1-0-podium",
@@ -6059,8 +6059,8 @@
       "depth": 10.79750170300238,
       "height": 28.35312456265092,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684142571,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-81-lot-1-1-podium",
@@ -6070,8 +6070,8 @@
       "depth": 11.567438609196248,
       "height": 27.702883027493954,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683758167,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-81-lot-1-1-tower-0",
@@ -6103,8 +6103,8 @@
       "depth": 6.582946205911339,
       "height": 53.04239759221673,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684931232,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--11-lot-1-0-tower-0",
@@ -6136,8 +6136,8 @@
       "depth": 14.033047772245482,
       "height": 14.895254220813513,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685704353,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--241-lot-1-0-mid-0",
@@ -6147,8 +6147,8 @@
       "depth": 12.38933934860632,
       "height": 66.08492713049054,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684940042,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81-357-lot-1-0-res-1",
@@ -6158,8 +6158,8 @@
       "depth": 18.719558036420494,
       "height": 20.415390133857727,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685667018,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-81--149-lot-1-1-mid-1",
@@ -6169,8 +6169,8 @@
       "depth": 5.100709548232222,
       "height": 72.50330450758338,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684706555,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-219-lot-0-1-mid-0",
@@ -6191,8 +6191,8 @@
       "depth": 11.587292520482988,
       "height": 70.48778637126088,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684208740,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-219-lot-0-0-mid-1",
@@ -6202,8 +6202,8 @@
       "depth": 7.773390613347779,
       "height": 55.30572049319744,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683792572,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-311-lot-0-0-res-0",
@@ -6213,8 +6213,8 @@
       "depth": 13.599984582746401,
       "height": 21.562358897179365,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683859921,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--57-lot-0-0-podium",
@@ -6224,8 +6224,8 @@
       "depth": 24.99456488823563,
       "height": 22.872150901705027,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684632971,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-403-lot-0-0-suburban",
@@ -6268,8 +6268,8 @@
       "depth": 4.384547102243247,
       "height": 209.24979276489466,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684607772,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--287-lot-0-0-res-0",
@@ -6279,8 +6279,8 @@
       "depth": 17.306420324835926,
       "height": 19.807751789689064,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685497952,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--195-lot-0-0-mid-1",
@@ -6301,8 +6301,8 @@
       "depth": 8.18299437086318,
       "height": 110.9507045969367,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683788536,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--287-lot-0-1-res-0",
@@ -6312,8 +6312,8 @@
       "depth": 14.296477102208883,
       "height": 12.893950533121824,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685532916,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-81-lot-0-0-mid-0",
@@ -6334,8 +6334,8 @@
       "depth": 17.3315719331149,
       "height": 25.727122467011213,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684469422,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--11-lot-0-1-tower-0",
@@ -6345,8 +6345,8 @@
       "depth": 4.886304860390483,
       "height": 161.7974131880328,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684252972,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-35-lot-0-1-tower-0",
@@ -6356,8 +6356,8 @@
       "depth": 4.944057499826441,
       "height": 137.64112683478743,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683959356,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--333-lot-0-0-res-1",
@@ -6378,8 +6378,8 @@
       "depth": 16.252775797620416,
       "height": 20.81031272187829,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684883226,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--149-lot-0-0-mid-0",
@@ -6389,8 +6389,8 @@
       "depth": 9.544149395050967,
       "height": 62.74694221839309,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684188205,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-35-lot-0-0-tower-0",
@@ -6422,8 +6422,8 @@
       "depth": 11.34626996194178,
       "height": 20.520689345896244,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684839673,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--11-lot-0-1-podium",
@@ -6433,8 +6433,8 @@
       "depth": 11.075283713850485,
       "height": 20.957465924322605,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684453006,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-35-lot-0-0-podium",
@@ -6444,8 +6444,8 @@
       "depth": 12.434143384689959,
       "height": 15.811668492853642,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684949576,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-35-lot-0-1-podium",
@@ -6455,8 +6455,8 @@
       "depth": 12.536248117364647,
       "height": 18.335079945623875,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684624612,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--149-lot-0-0-mid-1",
@@ -6466,8 +6466,8 @@
       "depth": 5.813946531516799,
       "height": 113.53021801449358,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684186570,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--149-lot-0-1-mid-0",
@@ -6477,8 +6477,8 @@
       "depth": 8.717781822794528,
       "height": 52.71025934815407,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684145239,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--57-lot-1-0-tower-0",
@@ -6499,8 +6499,8 @@
       "depth": 4.856432023173702,
       "height": 144.61898216744885,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684148492,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--287-lot-1-0-res-0",
@@ -6554,8 +6554,8 @@
       "depth": 15.566053624730557,
       "height": 19.934168875217438,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685453266,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-81-lot-1-0-mid-0",
@@ -6576,8 +6576,8 @@
       "depth": 25.919560615459623,
       "height": 19.728077702224255,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684665255,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-403-lot-1-0-suburban",
@@ -6598,8 +6598,8 @@
       "depth": 15.74463437171653,
       "height": 19.37411953508854,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685533461,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127-219-lot-1-0-mid-0",
@@ -6620,8 +6620,8 @@
       "depth": 4.477891031775252,
       "height": 138.57812974136323,
       "zone": "downtown",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684800390,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--287-lot-1-1-res-1",
@@ -6642,8 +6642,8 @@
       "depth": 12.370606416836381,
       "height": 11.475863583385944,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684792791,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-127--57-lot-1-0-tower-1",
@@ -6664,8 +6664,8 @@
       "depth": 11.260803477838635,
       "height": 24.056453462690115,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685415586,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--241-lot-0-0-res-0",
@@ -6675,8 +6675,8 @@
       "depth": 18.12562996475026,
       "height": 24.41705472394824,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685213851,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173-265-lot-0-0-res-1",
@@ -6686,8 +6686,8 @@
       "depth": 12.772060011979192,
       "height": 22.839892707765102,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684704839,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--57-lot-0-1-mid-1",
@@ -6697,8 +6697,8 @@
       "depth": 8.063567289613523,
       "height": 93.25257308967412,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684717555,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173-265-lot-0-1-res-0",
@@ -6708,8 +6708,8 @@
       "depth": 13.334306488744915,
       "height": 16.25612348690629,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685587162,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--57-lot-0-1-mid-0",
@@ -6719,8 +6719,8 @@
       "depth": 8.88774592737593,
       "height": 68.816306065768,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684716112,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173-265-lot-0-0-res-0",
@@ -6741,8 +6741,8 @@
       "depth": 13.035487964749336,
       "height": 8.425083572044969,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684999411,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--57-lot-0-0-mid-0",
@@ -6763,8 +6763,8 @@
       "depth": 6.193221790515036,
       "height": 61.59440468251705,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684529989,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--57-lot-0-0-mid-1",
@@ -6796,8 +6796,8 @@
       "depth": 9.10081310841445,
       "height": 100.83506602607667,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683804901,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--149-lot-0-0-mid-1",
@@ -6818,8 +6818,8 @@
       "depth": 13.982750236522406,
       "height": 12.031362935900688,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685603931,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--149-lot-0-0-mid-0",
@@ -6840,8 +6840,8 @@
       "depth": 16.09106270247139,
       "height": 20.821696903556585,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684819239,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--287-lot-0-0-res-0",
@@ -6862,8 +6862,8 @@
       "depth": 10.432212185347453,
       "height": 10.453812759369612,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685674584,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--11-lot-0-0-mid-0",
@@ -6884,8 +6884,8 @@
       "depth": 18.192925886949524,
       "height": 22.161994494497776,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685214781,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--425-lot-0-0-suburban",
@@ -6895,8 +6895,8 @@
       "depth": 12.013096675742418,
       "height": 13.133985949214548,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684827372,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--425-lot-0-1-suburban",
@@ -6917,8 +6917,8 @@
       "depth": 20.687246645335108,
       "height": 16.752053934149444,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683948903,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173-403-lot-0-0-suburban",
@@ -7016,8 +7016,8 @@
       "depth": 10.49828915251419,
       "height": 19.19864497333765,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685668099,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--57-lot-1-0-mid-0",
@@ -7049,8 +7049,8 @@
       "depth": 12.407372099114582,
       "height": 14.217485904693604,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684223723,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--57-lot-1-0-mid-1",
@@ -7071,8 +7071,8 @@
       "depth": 17.477503031492233,
       "height": 17.79845162248239,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684834073,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173--149-lot-1-0-mid-0",
@@ -7104,8 +7104,8 @@
       "depth": 14.587826742324978,
       "height": 12.311659757047892,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685603484,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-173-127-lot-1-0-mid-0",
@@ -7159,8 +7159,8 @@
       "depth": 7.438440465536156,
       "height": 77.25938973762095,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684720010,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219--11-lot-0-0-mid-0",
@@ -7170,8 +7170,8 @@
       "depth": 5.958649251825773,
       "height": 78.8779426831752,
       "zone": "midrise",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684448188,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219--379-lot-0-0-suburban",
@@ -7192,8 +7192,8 @@
       "depth": 17.345773285720497,
       "height": 9.124384994618595,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684995061,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-311-lot-0-0-suburban",
@@ -7258,8 +7258,8 @@
       "depth": 16.178472728002816,
       "height": 13.903919599950314,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684890174,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-265-lot-0-0-res-1",
@@ -7269,8 +7269,8 @@
       "depth": 16.31611087662168,
       "height": 11.24820452183485,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685581849,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-265-lot-0-0-res-0",
@@ -7280,8 +7280,8 @@
       "depth": 11.949779263697565,
       "height": 11.791966542601585,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684914550,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219--287-lot-0-1-res-0",
@@ -7291,8 +7291,8 @@
       "depth": 16.3186461571604,
       "height": 25.962692212313414,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685495464,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-173-lot-0-1-res-0",
@@ -7313,8 +7313,8 @@
       "depth": 16.08666005684063,
       "height": 15.138023234438151,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684200123,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219--425-lot-0-1-suburban",
@@ -7368,8 +7368,8 @@
       "depth": 17.73127781553194,
       "height": 11.34033589437604,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685153847,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-265-lot-0-1-res-0",
@@ -7390,8 +7390,8 @@
       "depth": 10.393881023395807,
       "height": 18.57679696381092,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685243780,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-265-lot-0-1-res-1",
@@ -7401,8 +7401,8 @@
       "depth": 16.682409921195358,
       "height": 17.385235082358122,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684222490,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-173-lot-0-0-res-0",
@@ -7412,8 +7412,8 @@
       "depth": 18.473154390696436,
       "height": 12.25500300526619,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684137471,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219--287-lot-0-0-res-1",
@@ -7423,8 +7423,8 @@
       "depth": 10.566800739848986,
       "height": 16.303300254046917,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685673739,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-173-lot-0-1-res-1",
@@ -7434,8 +7434,8 @@
       "depth": 15.313756939489394,
       "height": 10.054001059383154,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683851803,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-219-lot-1-0-res-1",
@@ -7500,8 +7500,8 @@
       "depth": 16.21774890832603,
       "height": 12.29182230727747,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685627056,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-311-lot-1-0-suburban",
@@ -7555,8 +7555,8 @@
       "depth": 10.700113968923688,
       "height": 23.324932795017958,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684775739,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-219-35-lot-1-1-mid-0",
@@ -7577,8 +7577,8 @@
       "depth": 11.196835001464933,
       "height": 17.71830866485834,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685167903,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--241-lot-0-0-res-0",
@@ -7588,8 +7588,8 @@
       "depth": 11.638137138681486,
       "height": 13.351059511303902,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685590051,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-219-lot-0-1-res-0",
@@ -7610,8 +7610,8 @@
       "depth": 13.294158515753224,
       "height": 16.971993260085583,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685119230,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--57-lot-0-0-res-0",
@@ -7621,8 +7621,8 @@
       "depth": 14.483350682072341,
       "height": 10.222628492861986,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684773576,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-81-lot-0-0-res-0",
@@ -7632,8 +7632,8 @@
       "depth": 18.48274473589845,
       "height": 17.344743456691504,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684643827,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--287-lot-0-0-suburban",
@@ -7643,8 +7643,8 @@
       "depth": 15.179971790872514,
       "height": 10.697988878935575,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685482201,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--287-lot-0-1-suburban",
@@ -7654,8 +7654,8 @@
       "depth": 17.511225616559386,
       "height": 15.057904032990336,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684726205,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-81-lot-0-1-res-0",
@@ -7665,8 +7665,8 @@
       "depth": 10.485806633718312,
       "height": 23.922614697366953,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684057069,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-127-lot-0-0-res-1",
@@ -7676,8 +7676,8 @@
       "depth": 12.128244834952056,
       "height": 22.15987080708146,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683946119,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-173-lot-0-0-res-0",
@@ -7687,8 +7687,8 @@
       "depth": 14.556105850962922,
       "height": 12.054949827492237,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684526794,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-127-lot-0-0-res-0",
@@ -7709,8 +7709,8 @@
       "depth": 12.651282463921234,
       "height": 21.253012664616108,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684605972,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-219-lot-0-0-res-1",
@@ -7720,8 +7720,8 @@
       "depth": 14.802985333139077,
       "height": 24.819671515375376,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685423236,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-219-lot-0-0-res-0",
@@ -7731,8 +7731,8 @@
       "depth": 11.597934239078313,
       "height": 14.93502151966095,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685580568,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-81-lot-0-1-res-1",
@@ -7742,8 +7742,8 @@
       "depth": 11.110863279085606,
       "height": 21.890852335840464,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684365864,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-35-lot-0-0-res-0",
@@ -7764,8 +7764,8 @@
       "depth": 18.802317660534754,
       "height": 22.73031171783805,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684139269,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--333-lot-0-0-suburban",
@@ -7775,8 +7775,8 @@
       "depth": 20.0645883907564,
       "height": 9.187222602311522,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685480030,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--333-lot-0-1-suburban",
@@ -7786,8 +7786,8 @@
       "depth": 11.391277908347547,
       "height": 16.14751229947433,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684829590,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-357-lot-0-0-suburban",
@@ -7819,8 +7819,8 @@
       "depth": 14.359147888142616,
       "height": 21.98479086905718,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683830034,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-265-lot-0-0-res-0",
@@ -7841,8 +7841,8 @@
       "depth": 12.986472672084346,
       "height": 10.960703425109386,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685425581,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-81-lot-1-0-res-0",
@@ -7852,8 +7852,8 @@
       "depth": 12.269243724411353,
       "height": 17.83846451342106,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684797822,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--11-lot-1-0-res-1",
@@ -7896,8 +7896,8 @@
       "depth": 18.277661854866892,
       "height": 10.706578437238932,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685165503,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-81-lot-1-1-res-0",
@@ -7907,8 +7907,8 @@
       "depth": 13.511454841820523,
       "height": 18.63400962948799,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684346621,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-173-lot-1-0-res-1",
@@ -7918,8 +7918,8 @@
       "depth": 18.20741587365046,
       "height": 14.76688363775611,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684927528,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--287-lot-1-0-suburban",
@@ -7929,8 +7929,8 @@
       "depth": 14.595914812758565,
       "height": 15.433470648247749,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684661391,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--287-lot-1-1-suburban",
@@ -7940,8 +7940,8 @@
       "depth": 19.888718490488827,
       "height": 15.991950253490359,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684662995,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--11-lot-1-0-res-0",
@@ -7951,8 +7951,8 @@
       "depth": 13.02036627009511,
       "height": 11.53944755718112,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684667540,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-127-lot-1-0-res-0",
@@ -7962,8 +7962,8 @@
       "depth": 11.625812924699858,
       "height": 13.600069463253021,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684604723,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-219-lot-1-0-res-0",
@@ -7973,8 +7973,8 @@
       "depth": 12.343706685118377,
       "height": 23.211753983050585,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684911909,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265--241-lot-1-0-res-0",
@@ -7984,8 +7984,8 @@
       "depth": 14.642883969005197,
       "height": 23.795269515365362,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684724939,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-265-219-lot-1-1-res-1",
@@ -8039,8 +8039,8 @@
       "depth": 10.837192832957953,
       "height": 19.58327206969261,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685157196,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-127-lot-0-0-res-0",
@@ -8050,8 +8050,8 @@
       "depth": 15.074957297649235,
       "height": 11.013220988214016,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683746636,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-35-lot-0-0-res-0",
@@ -8061,8 +8061,8 @@
       "depth": 18.440401525702327,
       "height": 12.387846171855927,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685133298,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311--103-lot-0-1-res-1",
@@ -8072,8 +8072,8 @@
       "depth": 14.74310503154993,
       "height": 15.062937691807747,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685227033,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311--103-lot-0-1-res-0",
@@ -8083,8 +8083,8 @@
       "depth": 10.585465612122789,
       "height": 25.489168994128704,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683744184,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311--379-lot-0-0-suburban",
@@ -8105,8 +8105,8 @@
       "depth": 13.921459579374641,
       "height": 13.136777209118009,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684810880,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-127-lot-0-0-res-1",
@@ -8182,8 +8182,8 @@
       "depth": 12.463063127594069,
       "height": 22.69345649704337,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684218880,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311--333-lot-0-0-suburban",
@@ -8204,8 +8204,8 @@
       "depth": 19.038433336187154,
       "height": 9.251605967991054,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685672333,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-219-lot-0-0-suburban",
@@ -8215,8 +8215,8 @@
       "depth": 11.81759674474597,
       "height": 13.653716940432787,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684891406,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-219-lot-0-1-suburban",
@@ -8237,8 +8237,8 @@
       "depth": 12.209719951730222,
       "height": 17.28316546138376,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685585882,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-357-lot-0-0-suburban",
@@ -8270,8 +8270,8 @@
       "depth": 15.949774578679353,
       "height": 12.25610115379095,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685135698,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-173-lot-1-0-res-0",
@@ -8292,8 +8292,8 @@
       "depth": 11.060715534258634,
       "height": 16.778554249554873,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685502666,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311--103-lot-1-1-res-1",
@@ -8336,8 +8336,8 @@
       "depth": 20.09707780694589,
       "height": 10.099266170989722,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685609148,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311-127-lot-1-0-res-0",
@@ -8347,8 +8347,8 @@
       "depth": 10.938109130365774,
       "height": 19.437780406326056,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683747102,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-311--103-lot-1-1-res-0",
@@ -8380,8 +8380,8 @@
       "depth": 18.740931443171576,
       "height": 10.581358335912228,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684645340,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--57-lot-0-0-res-0",
@@ -8457,8 +8457,8 @@
       "depth": 16.95000804401934,
       "height": 9.764490511268377,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685714350,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--333-lot-0-1-suburban",
@@ -8468,8 +8468,8 @@
       "depth": 20.565938389860094,
       "height": 17.0118112671189,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684548037,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--287-lot-0-0-suburban",
@@ -8479,8 +8479,8 @@
       "depth": 12.174107540864497,
       "height": 17.973916572052985,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685151400,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-357-lot-0-0-suburban",
@@ -8512,8 +8512,8 @@
       "depth": 12.48741010343656,
       "height": 13.018348577432334,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683984408,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-127-lot-0-0-res-0",
@@ -8523,8 +8523,8 @@
       "depth": 13.534216677304357,
       "height": 17.784490179270506,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684723041,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--103-lot-0-1-res-0",
@@ -8534,8 +8534,8 @@
       "depth": 13.202359761344269,
       "height": 17.894545685499907,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685155549,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--103-lot-0-1-res-1",
@@ -8545,8 +8545,8 @@
       "depth": 14.379002005793154,
       "height": 11.628852911293507,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685476231,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-81-lot-0-0-res-0",
@@ -8556,8 +8556,8 @@
       "depth": 12.865752525394782,
       "height": 25.118515595793724,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683747484,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--57-lot-0-0-res-1",
@@ -8578,8 +8578,8 @@
       "depth": 10.77422624337487,
       "height": 20.56180891394615,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685669498,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--11-lot-0-0-res-0",
@@ -8589,8 +8589,8 @@
       "depth": 10.424254192737862,
       "height": 12.297616485506296,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685621900,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--11-lot-0-1-res-1",
@@ -8600,8 +8600,8 @@
       "depth": 10.585164429387078,
       "height": 20.938965070992708,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685457997,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--379-lot-0-0-suburban",
@@ -8611,8 +8611,8 @@
       "depth": 13.158333451952785,
       "height": 12.770018360577524,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684824741,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--379-lot-0-1-suburban",
@@ -8622,8 +8622,8 @@
       "depth": 12.37254896806553,
       "height": 16.313957683276385,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685488281,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--241-lot-0-0-suburban",
@@ -8633,8 +8633,8 @@
       "depth": 19.38919575791806,
       "height": 17.128187701571733,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773683942217,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--241-lot-0-1-suburban",
@@ -8644,8 +8644,8 @@
       "depth": 17.052434311714023,
       "height": 9.983243096619844,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685136400,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--195-lot-0-0-suburban",
@@ -8666,8 +8666,8 @@
       "depth": 20.997150120325387,
       "height": 12.434770070947707,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684893306,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-173-lot-0-1-suburban",
@@ -8677,8 +8677,8 @@
       "depth": 12.901800518389791,
       "height": 9.617532894015312,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684795358,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--11-lot-0-1-res-0",
@@ -8710,8 +8710,8 @@
       "depth": 16.187044657301158,
       "height": 11.57923898845911,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685149247,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-35-lot-1-0-res-0",
@@ -8732,8 +8732,8 @@
       "depth": 13.788732041837648,
       "height": 21.197104956954718,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684646604,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--103-lot-1-1-res-1",
@@ -8743,8 +8743,8 @@
       "depth": 12.534374431939796,
       "height": 12.377082146704197,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684204746,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--103-lot-1-0-res-0",
@@ -8754,8 +8754,8 @@
       "depth": 12.377595821861178,
       "height": 17.673340160399675,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684204137,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-127-lot-1-1-res-1",
@@ -8765,8 +8765,8 @@
       "depth": 12.111726448638365,
       "height": 23.91398799791932,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684842224,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--425-lot-1-0-suburban",
@@ -8809,8 +8809,8 @@
       "depth": 20.94130646577105,
       "height": 16.578137054573745,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685613214,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--287-lot-1-0-suburban",
@@ -8820,8 +8820,8 @@
       "depth": 20.89674091571942,
       "height": 17.22580177197233,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684758442,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-357-lot-1-0-suburban",
@@ -8864,8 +8864,8 @@
       "depth": 13.36689258320257,
       "height": 23.18123586475849,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685620849,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-81-lot-1-0-res-1",
@@ -8875,8 +8875,8 @@
       "depth": 18.295383968390524,
       "height": 17.55163137614727,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684894373,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--103-lot-1-0-res-1",
@@ -8897,8 +8897,8 @@
       "depth": 14.707109248032793,
       "height": 14.363419342786074,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685620132,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-35-lot-1-1-res-0",
@@ -8908,8 +8908,8 @@
       "depth": 10.385483089834452,
       "height": 14.481584172695875,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685575938,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357-81-lot-1-0-res-0",
@@ -8919,8 +8919,8 @@
       "depth": 11.245173826813698,
       "height": 25.01832228526473,
       "zone": "residential",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685223782,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-357--57-lot-1-0-res-0",
@@ -8952,8 +8952,8 @@
       "depth": 15.54518747748807,
       "height": 8.549848563969135,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684809141,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--287-lot-0-0-suburban",
@@ -8963,8 +8963,8 @@
       "depth": 20.5363606675528,
       "height": 12.369704441633075,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684070837,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--287-lot-0-1-suburban",
@@ -8974,8 +8974,8 @@
       "depth": 13.910573668777943,
       "height": 11.278036669362336,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685671202,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--241-lot-0-0-suburban",
@@ -8985,8 +8985,8 @@
       "depth": 16.548100653104484,
       "height": 10.613612557761371,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685608401,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--241-lot-0-1-suburban",
@@ -8996,8 +8996,8 @@
       "depth": 14.749678165186197,
       "height": 14.939219553023577,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684807927,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--57-lot-0-0-suburban",
@@ -9029,8 +9029,8 @@
       "depth": 17.0374253988266,
       "height": 8.461610539350659,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685605905,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403-127-lot-0-0-suburban",
@@ -9040,8 +9040,8 @@
       "depth": 18.02703062677756,
       "height": 17.35887778410688,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684194655,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403-173-lot-0-0-suburban",
@@ -9051,8 +9051,8 @@
       "depth": 20.905132153071463,
       "height": 14.681692712008953,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685573416,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403-357-lot-0-0-suburban",
@@ -9095,8 +9095,8 @@
       "depth": 18.702843747101724,
       "height": 13.356623737607151,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684837657,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403-219-lot-0-0-suburban",
@@ -9106,8 +9106,8 @@
       "depth": 13.846350765321404,
       "height": 14.804497626144439,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685218547,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403-219-lot-0-1-suburban",
@@ -9161,8 +9161,8 @@
       "depth": 15.555098505225033,
       "height": 13.354024996049702,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773685612034,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--287-lot-1-0-suburban",
@@ -9227,8 +9227,8 @@
       "depth": 17.02890770882368,
       "height": 8.402398481965065,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773684203338,
+      "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     },
     {
       "id": "b-403--11-lot-1-0-suburban",
@@ -9285,5 +9285,13 @@
       "destroyedAt": 1773668352088,
       "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     }
-  ]
+  ],
+  "strikeSeq": 196,
+  "lastStrike": {
+    "seq": 196,
+    "buildingId": "b-357--333-lot-0-0-suburban",
+    "playerId": "p-45552a32-ce07-4e5a-8777-401309171a03",
+    "resolvedAt": 1773685714350,
+    "outcome": "destroyed"
+  }
 }
