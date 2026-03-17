@@ -815,6 +815,7 @@ function addBuilding(serverBuilding) {
     id: serverBuilding.id,
     isBuilding: true,
     exploded: Boolean(serverBuilding.destroyedAt),
+    pendingStrike: false,
     destroyedAt: serverBuilding.destroyedAt,
     size: { w, h, d }
   };
@@ -1079,14 +1080,16 @@ function handleStrikeEvent(strikePayload) {
   if (!strikeGroup) {
     return;
   }
+  strikeGroup.userData.pendingStrike = true;
   launchMissile(
     strikeGroup,
     hashString(`${strikePayload.strike.buildingId}:${strikePayload.strike.resolvedAt}:${strikePayload.strike.outcome}`),
-    strikePayload.strike.outcome
+    strikePayload.strike.outcome,
+    strikePayload.strike
   );
 }
 
-function launchMissile(group, seed, outcome = "destroyed") {
+function launchMissile(group, seed, outcome = "destroyed", strikeMeta) {
   if (!group || group.userData.exploded) {
     return;
   }
@@ -1121,6 +1124,9 @@ function launchMissile(group, seed, outcome = "destroyed") {
   const up = new THREE.Vector3().crossVectors(side, direction).normalize();
   const spacing = 0.34 + footprint * 0.08;
   const attackerStartDelay = outcome === "intercepted" ? 0.7 : 0;
+  const travelDuration = strikeMeta && strikeMeta.impactAt
+    ? Math.max(0.25, (strikeMeta.impactAt - Date.now()) / 1000)
+    : null;
   const orbitCenter = target.clone().add(new THREE.Vector3(0, 14 + rand() * 4, 0));
   const orbitRadius = 3.8 + rand() * 2.8;
 
@@ -1146,7 +1152,7 @@ function launchMissile(group, seed, outcome = "destroyed") {
       baseStart.clone().add(offset),
       baseControl.clone().add(offset.clone().multiplyScalar(0.55)),
       target.clone().add(targetOffset),
-      0.9 + rand() * 0.35 - (cluster ? rand() * 0.06 : 0),
+      travelDuration || (0.9 + rand() * 0.35 - (cluster ? rand() * 0.06 : 0)),
       {
         missileScale: cluster ? 0.84 + rand() * 0.08 : 1,
         trailScale: cluster ? 0.92 + rand() * 0.16 : 1.04,
@@ -1459,7 +1465,7 @@ function syncSceneState(nextState) {
   appState = nextState;
   if (isNewRound) {
     rebuildCity(nextState);
-    lastStrikeSeq = nextState.strikeSeq || 0;
+    lastStrikeSeq = 0;
   }
   if (nextState.lastStrike && nextState.lastStrike.seq > lastStrikeSeq) {
     handleStrikeEvent({
@@ -1467,6 +1473,20 @@ function syncSceneState(nextState) {
       strike: nextState.lastStrike
     });
   }
+  if (Array.isArray(nextState.pendingStrikes)) {
+    nextState.pendingStrikes
+      .slice()
+      .sort((a, b) => a.seq - b.seq)
+      .forEach((strike) => {
+        if (strike.seq > lastStrikeSeq) {
+          handleStrikeEvent({
+            roundId: nextState.roundId,
+            strike
+          });
+        }
+      });
+  }
+  const pendingIds = new Set((nextState.pendingStrikes || []).map((strike) => strike.buildingId));
   nextState.buildings.forEach((serverBuilding) => {
     const group = buildingMap.get(serverBuilding.id);
     const wasDestroyed = previousDestroyed.get(serverBuilding.id);
@@ -1474,6 +1494,7 @@ function syncSceneState(nextState) {
     if (!group) {
       return;
     }
+    group.userData.pendingStrike = pendingIds.has(serverBuilding.id);
     group.userData.destroyedAt = serverBuilding.destroyedAt;
     if (serverBuilding.destroyedAt && !wasDestroyed) {
       if (!hasActiveMissileForGroup(group)) {
@@ -1529,8 +1550,8 @@ function pickBuilding(event) {
   }
   const group = hits
     .map((hit) => resolveBuildingGroup(hit.object))
-    .find((candidate) => candidate?.userData?.isBuilding && !candidate.userData.exploded);
-  if (!group?.userData?.isBuilding || group.userData.exploded) {
+    .find((candidate) => candidate && candidate.userData && candidate.userData.isBuilding && !candidate.userData.exploded && !candidate.userData.pendingStrike);
+  if (!group || !group.userData || !group.userData.isBuilding || group.userData.exploded || group.userData.pendingStrike) {
     return;
   }
   postJson("/api/strike", {
@@ -1551,8 +1572,8 @@ function updatePointerCursor(event) {
   const hits = raycaster.intersectObjects(buildings, true);
   const group = hits
     .map((hit) => resolveBuildingGroup(hit.object))
-    .find((candidate) => candidate?.userData?.isBuilding && !candidate.userData.exploded);
-  renderer.domElement.style.cursor = group && appState?.phase === "active" && !group.userData.exploded ? "pointer" : "crosshair";
+    .find((candidate) => candidate && candidate.userData && candidate.userData.isBuilding && !candidate.userData.exploded && !candidate.userData.pendingStrike);
+  renderer.domElement.style.cursor = group && appState && appState.phase === "active" && !group.userData.exploded && !group.userData.pendingStrike ? "pointer" : "crosshair";
 }
 
 function resize() {

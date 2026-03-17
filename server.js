@@ -7,10 +7,12 @@ const HOST = process.env.HOST || "127.0.0.1";
 const PORT = Number(process.env.PORT || 3000);
 const COOLDOWN_MS = 10 * 60 * 1000;
 const ADMIN_TOKEN = process.env.MM_ADMIN_TOKEN || "";
+const STRIKE_TRAVEL_MS = 1800;
 const STATE_PATH = path.join(__dirname, "state.json");
 const PUBLIC_DIR = __dirname;
 
 const clients = new Set();
+const pendingStrikeTimers = new Map();
 
 function logEvent(type, details = {}) {
   const timestamp = new Date().toISOString();
@@ -212,6 +214,7 @@ function createRound(roundId) {
     destroyedCount: 0,
     strikeSeq: 0,
     lastStrike: null,
+    pendingStrikes: [],
     lastEventAt: Date.now(),
     players: {},
     buildings
@@ -229,6 +232,7 @@ function loadState() {
     ) {
       throw new Error("Invalid state file");
     }
+    parsed.pendingStrikes = Array.isArray(parsed.pendingStrikes) ? parsed.pendingStrikes : [];
     return parsed;
   } catch {
     return createRound(1);
@@ -263,6 +267,7 @@ function currentPayload() {
     remainingBuildings: state.totalBuildings - state.destroyedCount,
     strikeSeq: state.strikeSeq || 0,
     lastStrike: state.lastStrike || null,
+    pendingStrikes: state.pendingStrikes || [],
     leaderboard,
     buildings: state.buildings
   };
@@ -306,6 +311,8 @@ function registerPlayer(playerId, name) {
 
 function resetRound() {
   const previousRoundId = state.roundId;
+  pendingStrikeTimers.forEach((timer) => clearTimeout(timer));
+  pendingStrikeTimers.clear();
   state = createRound(state.roundId + 1);
   logEvent("round_reset", {
     previousRoundId,
@@ -333,6 +340,52 @@ function maybeAdvanceCooldown() {
   if (Date.now() >= state.cooldownEndsAt) {
     resetRound();
   }
+}
+
+function resolveStrike(strikeSeq) {
+  const strikeIndex = state.pendingStrikes.findIndex((item) => item.seq === strikeSeq);
+  if (strikeIndex === -1) {
+    return;
+  }
+
+  const strike = state.pendingStrikes[strikeIndex];
+  state.pendingStrikes.splice(strikeIndex, 1);
+  pendingStrikeTimers.delete(strikeSeq);
+
+  const building = state.buildings.find((item) => item.id === strike.buildingId);
+  if (!building) {
+    saveState();
+    broadcast("state");
+    return;
+  }
+
+  if (strike.outcome === "destroyed" && !building.destroyedAt) {
+    building.destroyedAt = strike.resolvedAt;
+    building.destroyedBy = strike.playerId || "anonymous";
+    state.destroyedCount += 1;
+
+    if (strike.playerId) {
+      state.players[strike.playerId] = state.players[strike.playerId] || { name: "Anonymous", strikes: 0 };
+      state.players[strike.playerId].strikes += 1;
+      if (strike.playerName) {
+        state.players[strike.playerId].name = String(strike.playerName).trim().slice(0, 24) || state.players[strike.playerId].name;
+      }
+    }
+  }
+
+  if (strike.outcome === "destroyed" && state.destroyedCount >= state.totalBuildings) {
+    state.phase = "cooldown";
+    state.endedAt = Date.now();
+    state.cooldownEndsAt = state.endedAt + COOLDOWN_MS;
+    logEvent("city_destroyed", {
+      roundId: state.roundId,
+      endedAt: state.endedAt,
+      cooldownEndsAt: state.cooldownEndsAt
+    });
+  }
+
+  saveState();
+  broadcast("state");
 }
 
 function markDestroyed(buildingId, playerId, playerName) {
@@ -370,6 +423,15 @@ function markDestroyed(buildingId, playerId, playerName) {
     });
     return { ok: false, code: 409, error: "Building already destroyed." };
   }
+  if ((state.pendingStrikes || []).some((item) => item.buildingId === buildingId)) {
+    logEvent("strike_rejected", {
+      reason: "building_already_targeted",
+      playerId: playerId || "anonymous",
+      playerName: playerName || "Anonymous",
+      buildingId
+    });
+    return { ok: false, code: 409, error: "Building already targeted." };
+  }
 
   const resolvedAt = Date.now();
   const intercepted = Math.random() < 0.2;
@@ -378,13 +440,18 @@ function markDestroyed(buildingId, playerId, playerName) {
     seq: state.strikeSeq,
     buildingId,
     playerId: playerId || "anonymous",
+    playerName: playerName || ((state.players[playerId] && state.players[playerId].name) || "Anonymous"),
+    startedAt: resolvedAt,
     resolvedAt,
+    impactAt: resolvedAt + STRIKE_TRAVEL_MS,
     outcome: intercepted ? "intercepted" : "destroyed"
   };
+  state.pendingStrikes = state.pendingStrikes || [];
+  state.pendingStrikes.push(state.lastStrike);
 
   logEvent("strike_resolved", {
     playerId: playerId || "anonymous",
-    playerName: playerName || ((state.players[playerId] && state.players[playerId].name) || "Anonymous"),
+    playerName: state.lastStrike.playerName,
     buildingId,
     outcome: state.lastStrike.outcome,
     roundId: state.roundId
@@ -394,34 +461,9 @@ function markDestroyed(buildingId, playerId, playerName) {
     strike: state.lastStrike
   });
 
-  if (!intercepted) {
-    building.destroyedAt = resolvedAt;
-    building.destroyedBy = playerId || "anonymous";
-    state.destroyedCount += 1;
-  }
-
   state.lastEventAt = Date.now();
-
-  if (playerId && !intercepted) {
-    state.players[playerId] = state.players[playerId] || { name: "Anonymous", strikes: 0 };
-    state.players[playerId].strikes += 1;
-    if (playerName) {
-      state.players[playerId].name = String(playerName).trim().slice(0, 24) || state.players[playerId].name;
-    }
-  }
-
-  if (!intercepted && state.destroyedCount >= state.totalBuildings) {
-    state.phase = "cooldown";
-    state.endedAt = Date.now();
-    state.cooldownEndsAt = state.endedAt + COOLDOWN_MS;
-    logEvent("city_destroyed", {
-      roundId: state.roundId,
-      endedAt: state.endedAt,
-      cooldownEndsAt: state.cooldownEndsAt
-    });
-  }
-
   saveState();
+  pendingStrikeTimers.set(state.lastStrike.seq, setTimeout(() => resolveStrike(state.lastStrike.seq), STRIKE_TRAVEL_MS));
   broadcast("state");
   return { ok: true, code: 200, payload: currentPayload() };
 }
