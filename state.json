@@ -6,8 +6,8 @@
   "endedAt": null,
   "cooldownEndsAt": null,
   "totalBuildings": 842,
-  "destroyedCount": 730,
-  "lastEventAt": 1773685714350,
+  "destroyedCount": 737,
+  "lastEventAt": 1773742116479,
   "players": {
     "p-52968a35-d4e3-4093-966b-e54e21c84d89": {
       "name": "Anonymous",
@@ -15,11 +15,15 @@
     },
     "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1": {
       "name": "toto",
-      "strikes": 116
+      "strikes": 121
     },
     "p-45552a32-ce07-4e5a-8777-401309171a03": {
       "name": "Anonymous",
       "strikes": 569
+    },
+    "p-6ecb3080-88ae-4aac-9572-71d70174022a": {
+      "name": "Anonymous",
+      "strikes": 2
     }
   },
   "buildings": [
@@ -174,8 +178,8 @@
       "depth": 12.335264858789742,
       "height": 12.060219544917345,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742116478,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--425--57-lot-0-0-suburban",
@@ -207,8 +211,8 @@
       "depth": 13.385447765700519,
       "height": 12.84468642855063,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742114106,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--425-173-lot-0-0-suburban",
@@ -229,8 +233,8 @@
       "depth": 14.637762379366904,
       "height": 15.261025863699615,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742112774,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--425-357-lot-0-0-suburban",
@@ -273,8 +277,8 @@
       "depth": 15.585259042214602,
       "height": 10.44330926798284,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742109306,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--425--425-lot-1-0-suburban",
@@ -823,8 +827,8 @@
       "depth": 13.880426524206996,
       "height": 8.138322277925909,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742096138,
+      "destroyedBy": "p-6ecb3080-88ae-4aac-9572-71d70174022a"
     },
     {
       "id": "b--379-219-lot-1-0-suburban",
@@ -955,8 +959,8 @@
       "depth": 11.645334338769317,
       "height": 10.023087185807526,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742093363,
+      "destroyedBy": "p-6ecb3080-88ae-4aac-9572-71d70174022a"
     },
     {
       "id": "b--333-265-lot-0-0-suburban",
@@ -999,8 +1003,8 @@
       "depth": 15.861858640797436,
       "height": 14.901448681019247,
       "zone": "suburban",
-      "destroyedAt": null,
-      "destroyedBy": null
+      "destroyedAt": 1773742100666,
+      "destroyedBy": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1"
     },
     {
       "id": "b--333--57-lot-0-1-res-0",
@@ -9286,12 +9290,47 @@
       "destroyedBy": "p-45552a32-ce07-4e5a-8777-401309171a03"
     }
   ],
-  "strikeSeq": 196,
+  "strikeSeq": 208,
   "lastStrike": {
-    "seq": 196,
-    "buildingId": "b-357--333-lot-0-0-suburban",
-    "playerId": "p-45552a32-ce07-4e5a-8777-401309171a03",
-    "resolvedAt": 1773685714350,
+    "seq": 208,
+    "buildingId": "b--425--103-lot-0-0-suburban",
+    "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
+    "playerName": "toto",
+    "startedAt": 1773742116478,
+    "resolvedAt": 1773742116478,
+    "impactAt": 1773742118278,
     "outcome": "destroyed"
-  }
+  },
+  "pendingStrikes": [
+    {
+      "seq": 201,
+      "buildingId": "b--195-403-lot-1-0-suburban",
+      "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
+      "playerName": "toto",
+      "startedAt": 1773742103951,
+      "resolvedAt": 1773742103951,
+      "impactAt": 1773742105751,
+      "outcome": "destroyed"
+    },
+    {
+      "seq": 202,
+      "buildingId": "b--195-403-lot-0-0-suburban",
+      "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
+      "playerName": "toto",
+      "startedAt": 1773742104268,
+      "resolvedAt": 1773742104268,
+      "impactAt": 1773742106068,
+      "outcome": "destroyed"
+    },
+    {
+      "seq": 205,
+      "buildingId": "b--425-403-lot-0-0-suburban",
+      "playerId": "p-c4c38430-29fe-433e-b9e2-c4ba4e6e62c1",
+      "playerName": "toto",
+      "startedAt": 1773742111347,
+      "resolvedAt": 1773742111347,
+      "impactAt": 1773742113147,
+      "outcome": "destroyed"
+    }
+  ]
 }

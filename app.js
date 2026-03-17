@@ -1,3 +1,4 @@
+// Version: 1.0.1
 import * as THREE from "https://esm.sh/three@0.164.1";
 import { OrbitControls } from "https://esm.sh/three@0.164.1/examples/jsm/controls/OrbitControls.js";
 import { EffectComposer } from "https://esm.sh/three@0.164.1/examples/jsm/postprocessing/EffectComposer.js";
