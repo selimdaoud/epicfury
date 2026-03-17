@@ -388,21 +388,10 @@ function addSky() {
 }
 
 function addBackdrop() {
-  const loader = new THREE.TextureLoader();
-  const texture = loader.load("/shared/cyberpunk.jpg");
-  texture.colorSpace = THREE.SRGBColorSpace;
-
-  const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(96, 64),
-    new THREE.MeshBasicMaterial({ map: texture, transparent: true, opacity: 0.46 })
-  );
-  plane.position.set(6, 19, -48);
-  root.add(plane);
-
   [
-    [120, 46, 0xff93c7, 0.05, 4, 11, -38],
-    [112, 40, 0x78fff2, 0.035, 0, 14, -42],
-    [108, 34, 0xffb496, 0.04, 2, 18, -44]
+    [124, 54, 0xff93c7, 0.075, 4, 16, -44],
+    [118, 46, 0x78fff2, 0.05, -2, 18, -42],
+    [104, 30, 0xffb496, 0.055, 2, 12, -36]
   ].forEach(([w, h, color, opacity, x, y, z]) => {
     const mesh = new THREE.Mesh(
       new THREE.PlaneGeometry(w, h),
@@ -411,6 +400,17 @@ function addBackdrop() {
     mesh.position.set(x, y, z);
     root.add(mesh);
   });
+
+  const glow = new THREE.Mesh(
+    new THREE.CircleGeometry(20, 48),
+    new THREE.MeshBasicMaterial({
+      color: 0xff8fd3,
+      transparent: true,
+      opacity: 0.09
+    })
+  );
+  glow.position.set(0, 20, -46);
+  root.add(glow);
 }
 
 function addBase() {
@@ -1460,6 +1460,12 @@ function syncSceneState(nextState) {
   if (isNewRound) {
     rebuildCity(nextState);
     lastStrikeSeq = nextState.strikeSeq || 0;
+  }
+  if (nextState.lastStrike && nextState.lastStrike.seq > lastStrikeSeq) {
+    handleStrikeEvent({
+      roundId: nextState.roundId,
+      strike: nextState.lastStrike
+    });
   }
   nextState.buildings.forEach((serverBuilding) => {
     const group = buildingMap.get(serverBuilding.id);
