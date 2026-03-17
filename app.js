@@ -1,4 +1,4 @@
-// Version: 1.0.1
+// Version: 1.0.3
 import * as THREE from "https://esm.sh/three@0.164.1";
 import { OrbitControls } from "https://esm.sh/three@0.164.1/examples/jsm/controls/OrbitControls.js";
 import { EffectComposer } from "https://esm.sh/three@0.164.1/examples/jsm/postprocessing/EffectComposer.js";
@@ -17,6 +17,14 @@ const overlay = document.getElementById("overlay");
 const overlayCopy = document.getElementById("overlay-copy");
 const playerNameInput = document.getElementById("player-name");
 const connectionLabel = document.getElementById("connection-label");
+const appVersionEl = document.getElementById("app-version");
+const APP_VERSION = "1.0.3";
+
+if (appVersionEl) {
+  appVersionEl.textContent = `Version ${APP_VERSION}`;
+}
+
+document.title = `Skyline MM v${APP_VERSION}`;
 
 function createClientId() {
   if (window.crypto && typeof window.crypto.randomUUID === "function") {
