@@ -1060,6 +1060,10 @@ function launchPatriotInterceptor(group, interceptPoint, duration, seed) {
   });
 }
 
+function hasActiveMissileForGroup(group) {
+  return missiles.some((missile) => missile.group === group);
+}
+
 function launchMissile(group, seed, outcome = "destroyed") {
   if (!group || group.userData.exploded) {
     return;
@@ -1455,7 +1459,12 @@ function syncSceneState(nextState) {
     }
     group.userData.destroyedAt = serverBuilding.destroyedAt;
     if (serverBuilding.destroyedAt && !wasDestroyed) {
-      group.userData.exploded = false;
+      if (!hasActiveMissileForGroup(group)) {
+        group.userData.exploded = true;
+        group.visible = false;
+      } else {
+        group.userData.exploded = false;
+      }
     } else if (!serverBuilding.destroyedAt) {
       group.userData.exploded = false;
       group.visible = true;
