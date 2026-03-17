@@ -1064,6 +1064,28 @@ function hasActiveMissileForGroup(group) {
   return missiles.some((missile) => missile.group === group);
 }
 
+function handleStrikeEvent(strikePayload) {
+  if (!strikePayload || !strikePayload.strike || !appState) {
+    return;
+  }
+  if (strikePayload.roundId !== appState.roundId) {
+    return;
+  }
+  if (strikePayload.strike.seq <= lastStrikeSeq) {
+    return;
+  }
+  lastStrikeSeq = strikePayload.strike.seq;
+  const strikeGroup = buildingMap.get(strikePayload.strike.buildingId);
+  if (!strikeGroup) {
+    return;
+  }
+  launchMissile(
+    strikeGroup,
+    hashString(`${strikePayload.strike.buildingId}:${strikePayload.strike.resolvedAt}:${strikePayload.strike.outcome}`),
+    strikePayload.strike.outcome
+  );
+}
+
 function launchMissile(group, seed, outcome = "destroyed") {
   if (!group || group.userData.exploded) {
     return;
@@ -1439,17 +1461,6 @@ function syncSceneState(nextState) {
     rebuildCity(nextState);
     lastStrikeSeq = nextState.strikeSeq || 0;
   }
-  if (nextState.lastStrike && nextState.lastStrike.seq > lastStrikeSeq) {
-    lastStrikeSeq = nextState.lastStrike.seq;
-    const strikeGroup = buildingMap.get(nextState.lastStrike.buildingId);
-    if (strikeGroup) {
-      launchMissile(
-        strikeGroup,
-        hashString(`${nextState.lastStrike.buildingId}:${nextState.lastStrike.resolvedAt}:${nextState.lastStrike.outcome}`),
-        nextState.lastStrike.outcome
-      );
-    }
-  }
   nextState.buildings.forEach((serverBuilding) => {
     const group = buildingMap.get(serverBuilding.id);
     const wasDestroyed = previousDestroyed.get(serverBuilding.id);
@@ -1488,6 +1499,10 @@ function connectEvents() {
       connectionLabel.textContent = "Live";
       syncSceneState(JSON.parse(event.data));
     });
+  });
+  events.addEventListener("strike", (event) => {
+    connectionLabel.textContent = "Live";
+    handleStrikeEvent(JSON.parse(event.data));
   });
   events.onerror = () => {
     connectionLabel.textContent = "Reconnecting";

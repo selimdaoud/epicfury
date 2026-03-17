@@ -12,6 +12,11 @@ const PUBLIC_DIR = __dirname;
 
 const clients = new Set();
 
+function logEvent(type, details = {}) {
+  const timestamp = new Date().toISOString();
+  console.log(`[${timestamp}] ${type}`, details);
+}
+
 function mulberry32(seed) {
   let value = seed >>> 0;
   return function rand() {
@@ -281,11 +286,17 @@ function registerPlayer(playerId, name) {
       strikes: 0
     };
     state.lastEventAt = Date.now();
+    logEvent("player_joined", { playerId, name: sanitized });
     saveState();
     broadcast("leaderboard");
     return;
   }
   if (sanitized && state.players[playerId].name !== sanitized) {
+    logEvent("player_renamed", {
+      playerId,
+      previousName: state.players[playerId].name,
+      name: sanitized
+    });
     state.players[playerId].name = sanitized;
     state.lastEventAt = Date.now();
     saveState();
@@ -294,7 +305,13 @@ function registerPlayer(playerId, name) {
 }
 
 function resetRound() {
+  const previousRoundId = state.roundId;
   state = createRound(state.roundId + 1);
+  logEvent("round_reset", {
+    previousRoundId,
+    roundId: state.roundId,
+    totalBuildings: state.totalBuildings
+  });
   saveState();
   broadcast("round_reset");
 }
@@ -323,14 +340,34 @@ function markDestroyed(buildingId, playerId, playerName) {
   registerPlayer(playerId, playerName);
 
   if (state.phase !== "active") {
+    logEvent("strike_rejected", {
+      reason: "round_in_cooldown",
+      playerId: playerId || "anonymous",
+      playerName: playerName || "Anonymous",
+      buildingId
+    });
     return { ok: false, code: 409, error: "Round is in cooldown." };
   }
 
   const building = state.buildings.find((item) => item.id === buildingId);
   if (!building) {
+    logEvent("strike_rejected", {
+      reason: "building_not_found",
+      playerId: playerId || "anonymous",
+      playerName: playerName || "Anonymous",
+      buildingId
+    });
     return { ok: false, code: 404, error: "Building not found." };
   }
   if (building.destroyedAt) {
+    logEvent("strike_rejected", {
+      reason: "building_already_destroyed",
+      playerId: playerId || "anonymous",
+      playerName: playerName || "Anonymous",
+      buildingId,
+      destroyedAt: building.destroyedAt,
+      destroyedBy: building.destroyedBy
+    });
     return { ok: false, code: 409, error: "Building already destroyed." };
   }
 
@@ -344,6 +381,18 @@ function markDestroyed(buildingId, playerId, playerName) {
     resolvedAt,
     outcome: intercepted ? "intercepted" : "destroyed"
   };
+
+  logEvent("strike_resolved", {
+    playerId: playerId || "anonymous",
+    playerName: playerName || state.players[playerId]?.name || "Anonymous",
+    buildingId,
+    outcome: state.lastStrike.outcome,
+    roundId: state.roundId
+  });
+  broadcast("strike", {
+    roundId: state.roundId,
+    strike: state.lastStrike
+  });
 
   if (!intercepted) {
     building.destroyedAt = resolvedAt;
@@ -365,6 +414,11 @@ function markDestroyed(buildingId, playerId, playerName) {
     state.phase = "cooldown";
     state.endedAt = Date.now();
     state.cooldownEndsAt = state.endedAt + COOLDOWN_MS;
+    logEvent("city_destroyed", {
+      roundId: state.roundId,
+      endedAt: state.endedAt,
+      cooldownEndsAt: state.cooldownEndsAt
+    });
   }
 
   saveState();
@@ -467,6 +521,7 @@ const server = http.createServer(async (req, res) => {
       registerPlayer(body.playerId, body.playerName);
       sendJson(res, 200, currentPayload());
     } catch (error) {
+      logEvent("register_error", { error: error.message });
       sendJson(res, 400, { error: error.message });
     }
     return;
@@ -478,6 +533,7 @@ const server = http.createServer(async (req, res) => {
       const result = markDestroyed(body.buildingId, body.playerId, body.playerName);
       sendJson(res, result.code, result.ok ? result.payload : { error: result.error, ...currentPayload() });
     } catch (error) {
+      logEvent("strike_error", { error: error.message });
       sendJson(res, 400, { error: error.message });
     }
     return;
@@ -485,9 +541,11 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === "POST" && url.pathname === "/api/admin/regen") {
     if (!isAuthorizedAdmin(req, url)) {
+      logEvent("admin_regen_rejected", { reason: "forbidden" });
       sendJson(res, 403, { error: "Forbidden" });
       return;
     }
+    logEvent("admin_regen_requested", { roundId: state.roundId });
     resetRound();
     sendJson(res, 200, currentPayload());
     return;
@@ -501,9 +559,11 @@ const server = http.createServer(async (req, res) => {
     });
     res.write("retry: 2000\n\n");
     clients.add(res);
+    logEvent("events_connected", { clients: clients.size });
     res.write(`event: state\ndata: ${JSON.stringify(currentPayload())}\n\n`);
     req.on("close", () => {
       clients.delete(res);
+      logEvent("events_disconnected", { clients: clients.size });
     });
     return;
   }
@@ -516,5 +576,9 @@ setInterval(maybeAdvanceCooldown, 1000);
 saveState();
 
 server.listen(PORT, HOST, () => {
-  console.log(`mm server running on http://${HOST}:${PORT}`);
+  logEvent("server_started", {
+    url: `http://${HOST}:${PORT}`,
+    roundId: state.roundId,
+    totalBuildings: state.totalBuildings
+  });
 });
