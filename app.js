@@ -1,9 +1,10 @@
-// Version: 1.0.4
+// Version: 1.0.6
 import * as THREE from "https://esm.sh/three@0.164.1";
 import { OrbitControls } from "https://esm.sh/three@0.164.1/examples/jsm/controls/OrbitControls.js";
 import { EffectComposer } from "https://esm.sh/three@0.164.1/examples/jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "https://esm.sh/three@0.164.1/examples/jsm/postprocessing/RenderPass.js";
 import { UnrealBloomPass } from "https://esm.sh/three@0.164.1/examples/jsm/postprocessing/UnrealBloomPass.js";
+import { FBXLoader } from "https://esm.sh/three@0.164.1/examples/jsm/loaders/FBXLoader.js";
 
 const stage = document.getElementById("stage");
 const phaseLabel = document.getElementById("phase-label");
@@ -18,7 +19,7 @@ const overlayCopy = document.getElementById("overlay-copy");
 const playerNameInput = document.getElementById("player-name");
 const connectionLabel = document.getElementById("connection-label");
 const appVersionEl = document.getElementById("app-version");
-const APP_VERSION = "1.0.4";
+const APP_VERSION = "1.0.6";
 
 if (appVersionEl) {
   appVersionEl.textContent = `Version ${APP_VERSION}`;
@@ -75,9 +76,31 @@ const buildings = [];
 const buildingMap = new Map();
 const explosions = [];
 const missiles = [];
+const airplanes = [];
 const trafficSystems = [];
 const clock = new THREE.Clock();
 let audioContext = null;
+let airplaneTemplate = null;
+const pendingAirplaneStrikes = [];
+
+new FBXLoader().load(
+  "./models/airplane.fbx",
+  (asset) => {
+    airplaneTemplate = normalizeAirplaneTemplate(asset);
+    console.info("[Skyline MM] Airplane FBX loaded.");
+    while (pendingAirplaneStrikes.length) {
+      const pending = pendingAirplaneStrikes.shift();
+      if (pending.group && !pending.group.userData.exploded) {
+        launchAirplane(pending.group, pending.seed, pending.outcome, pending.strikeMeta);
+      }
+    }
+  },
+  undefined,
+  (error) => {
+    airplaneTemplate = null;
+    console.error("[Skyline MM] Failed to load airplane FBX.", error);
+  }
+);
 
 const cameraShake = {
   time: 0,
@@ -198,6 +221,49 @@ function hashString(value) {
     hash = Math.imul(hash, 16777619);
   }
   return hash >>> 0;
+}
+
+function normalizeAirplaneTemplate(asset) {
+  const wrapper = new THREE.Group();
+  const plane = asset.clone(true);
+  wrapper.add(plane);
+
+  let bounds = new THREE.Box3().setFromObject(wrapper);
+  const size = bounds.getSize(new THREE.Vector3());
+  const longest = Math.max(size.x, size.y, size.z) || 1;
+  wrapper.scale.setScalar(2.4 / longest);
+
+  bounds = new THREE.Box3().setFromObject(wrapper);
+  const center = bounds.getCenter(new THREE.Vector3());
+  plane.position.sub(center);
+  bounds = new THREE.Box3().setFromObject(wrapper);
+  plane.position.y -= bounds.min.y;
+  bounds = new THREE.Box3().setFromObject(wrapper);
+  const normalizedSize = bounds.getSize(new THREE.Vector3());
+  if (normalizedSize.z > normalizedSize.x) {
+    plane.rotation.y = -Math.PI * 0.5;
+  }
+  plane.rotation.y -= Math.PI * 0.5;
+
+  wrapper.traverse((child) => {
+    if (child.isMesh) {
+      const materials = Array.isArray(child.material) ? child.material : [child.material];
+      const clonedMaterials = materials.map((material) => {
+        if (!material || typeof material.clone !== "function") {
+          return material;
+        }
+        const clone = material.clone();
+        if ("emissive" in clone) {
+          clone.emissive = new THREE.Color(0x201010);
+          clone.emissiveIntensity = 0.08;
+        }
+        return clone;
+      });
+      child.material = Array.isArray(child.material) ? clonedMaterials : clonedMaterials[0];
+    }
+  });
+
+  return wrapper;
 }
 
 function shortBuildingCode(value) {
@@ -970,6 +1036,95 @@ function createMissile(group, start, control, target, duration, options = {}) {
   return missile;
 }
 
+function createAirplaneStrike(group, start, control, target, duration, options = {}) {
+  if (!airplaneTemplate) {
+    return null;
+  }
+
+  const planeWrapper = airplaneTemplate.clone(true);
+  const engineGlow = new THREE.PointLight(0xffb86c, 1.7, 4.4, 2);
+  engineGlow.position.set(-0.95, 0.34, 0);
+  planeWrapper.add(engineGlow);
+  planeWrapper.position.copy(start);
+  root.add(planeWrapper);
+
+  const trailCount = 20;
+  const trailPositions = new Float32Array(trailCount * 3);
+  const trailColors = new Float32Array(trailCount * 3);
+  const trailSizes = new Float32Array(trailCount);
+  for (let index = 0; index < trailCount; index += 1) {
+    trailPositions[index * 3] = start.x;
+    trailPositions[index * 3 + 1] = start.y;
+    trailPositions[index * 3 + 2] = start.z;
+    const t = index / Math.max(1, trailCount - 1);
+    const color = new THREE.Color().lerpColors(new THREE.Color(0xffd98d), new THREE.Color(0xff764c), t);
+    trailColors[index * 3] = color.r;
+    trailColors[index * 3 + 1] = color.g;
+    trailColors[index * 3 + 2] = color.b;
+    trailSizes[index] = 16 * (1 - t * 0.74);
+  }
+  const trailGeometry = new THREE.BufferGeometry();
+  trailGeometry.setAttribute("position", new THREE.BufferAttribute(trailPositions, 3));
+  trailGeometry.setAttribute("color", new THREE.BufferAttribute(trailColors, 3));
+  trailGeometry.setAttribute("aSize", new THREE.BufferAttribute(trailSizes, 1));
+  const trailMaterial = new THREE.ShaderMaterial({
+    transparent: true,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending,
+    uniforms: {
+      pointTexture: { value: smokeParticleTexture },
+      globalAlpha: { value: 0.72 }
+    },
+    vertexShader: `
+      attribute float aSize;
+      varying vec3 vColor;
+      void main() {
+        vColor = color;
+        vec4 mvPosition = modelViewMatrix * vec4(position, 1.0);
+        gl_PointSize = min(aSize * (70.0 / -mvPosition.z), 18.0);
+        gl_Position = projectionMatrix * mvPosition;
+      }
+    `,
+    fragmentShader: `
+      uniform sampler2D pointTexture;
+      uniform float globalAlpha;
+      varying vec3 vColor;
+      void main() {
+        vec4 tex = texture2D(pointTexture, gl_PointCoord);
+        gl_FragColor = vec4(vColor, tex.a * globalAlpha);
+      }
+    `,
+    vertexColors: true
+  });
+  const trail = new THREE.Points(trailGeometry, trailMaterial);
+  root.add(trail);
+
+  const history = Array.from({ length: trailCount }, () => start.clone());
+  const airplane = {
+    group,
+    outcome: options.outcome || "destroyed",
+    canExplode: options.canExplode !== false,
+    interceptAt: options.interceptAt || 0.72,
+    startDelay: options.startDelay || 0,
+    planeWrapper,
+    engineGlow,
+    trail,
+    trailPositions,
+    history,
+    start,
+    target,
+    direction: target.clone().sub(start).normalize(),
+    elapsed: 0,
+    duration
+  };
+  if (airplane.startDelay > 0) {
+    planeWrapper.visible = false;
+    trail.visible = false;
+  }
+  airplanes.push(airplane);
+  return airplane;
+}
+
 function getMissilePose(missile, rawT) {
   let t = rawT;
   if (missile.timingProfile === "delayedBurst") {
@@ -1071,8 +1226,8 @@ function launchPatriotInterceptor(group, interceptPoint, duration, seed) {
   });
 }
 
-function hasActiveMissileForGroup(group) {
-  return missiles.some((missile) => missile.group === group);
+function hasActiveStrikeVisualForGroup(group) {
+  return missiles.some((missile) => missile.group === group) || airplanes.some((airplane) => airplane.group === group);
 }
 
 function handleStrikeStarted(strikePayload) {
@@ -1092,12 +1247,7 @@ function handleStrikeStarted(strikePayload) {
     return;
   }
   strikeGroup.userData.pendingStrike = true;
-  launchMissile(
-    strikeGroup,
-    hashString(`${strikePayload.strike.buildingId}:${strikePayload.strike.resolvedAt}:${strikePayload.strike.outcome}`),
-    strikePayload.strike.outcome,
-    strikePayload.strike
-  );
+  launchStrikeVehicle(strikeGroup, strikePayload.strike);
 }
 
 function handleStrikeResolved(strikePayload) {
@@ -1115,10 +1265,29 @@ function handleStrikeResolved(strikePayload) {
   strikeGroup.userData.pendingStrike = false;
   if (strikePayload.strike.outcome === "destroyed") {
     strikeGroup.userData.destroyedAt = strikePayload.strike.resolvedAt || Date.now();
-    if (!hasActiveMissileForGroup(strikeGroup)) {
+    if (!hasActiveStrikeVisualForGroup(strikeGroup)) {
       explodeBuilding(strikeGroup);
     }
   }
+}
+
+function launchStrikeVehicle(group, strikeMeta) {
+  const seed = hashString(`${strikeMeta.buildingId}:${strikeMeta.startedAt}:${strikeMeta.vehicle || "missile"}:${strikeMeta.outcome}`);
+  if (strikeMeta.vehicle === "airplane") {
+    if (airplaneTemplate) {
+      launchAirplane(group, seed, strikeMeta.outcome, strikeMeta);
+    } else {
+      pendingAirplaneStrikes.push({
+        group,
+        seed,
+        outcome: strikeMeta.outcome,
+        strikeMeta
+      });
+      console.warn("[Skyline MM] Airplane requested before FBX was ready; queued strike.", strikeMeta);
+    }
+    return;
+  }
+  launchMissile(group, seed, strikeMeta.outcome, strikeMeta);
 }
 
 function launchMissile(group, seed, outcome = "destroyed", strikeMeta) {
@@ -1209,6 +1378,49 @@ function launchMissile(group, seed, outcome = "destroyed", strikeMeta) {
         hashString(`${group.userData.id}:patriot:${seed}`)
       );
     }
+  }
+}
+
+function launchAirplane(group, seed, outcome = "destroyed", strikeMeta) {
+  if (!group || group.userData.exploded || !airplaneTemplate) {
+    return;
+  }
+  const rand = mulberry32(seed || hashString(group.userData.id));
+  const { h } = group.userData.size;
+  const target = group.position.clone().add(new THREE.Vector3(0, h * (2 / 3), 0));
+  const startDistance = 34 + rand() * 14;
+  const edge = Math.floor(rand() * 4);
+  const lateralOffset = (rand() - 0.5) * 18;
+  const start = target.clone();
+  if (edge === 0) {
+    start.x += startDistance;
+    start.z += lateralOffset;
+  } else if (edge === 1) {
+    start.x -= startDistance;
+    start.z += lateralOffset;
+  } else if (edge === 2) {
+    start.z += startDistance;
+    start.x += lateralOffset;
+  } else {
+    start.z -= startDistance;
+    start.x += lateralOffset;
+  }
+  start.y = target.y;
+  const duration = strikeMeta && strikeMeta.impactAt
+    ? Math.max(1.8, (strikeMeta.impactAt - Date.now()) / 1000)
+    : 4.8;
+  const airplane = createAirplaneStrike(group, start, start.clone().lerp(target, 0.5), target, duration, {
+    outcome,
+    interceptAt: 0.64 + rand() * 0.12
+  });
+
+  if (outcome === "intercepted" && airplane) {
+    launchPatriotInterceptor(
+      group,
+      new THREE.Vector3().lerpVectors(airplane.start, airplane.target, airplane.interceptAt),
+      Math.max(0.42, airplane.duration * airplane.interceptAt),
+      hashString(`${group.userData.id}:patriot-plane:${seed}`)
+    );
   }
 }
 
@@ -1417,6 +1629,65 @@ function updateMissiles(delta) {
   }
 }
 
+function updateAirplanes(delta) {
+  for (let index = airplanes.length - 1; index >= 0; index -= 1) {
+    const airplane = airplanes[index];
+    airplane.elapsed += delta;
+    const activeElapsed = Math.max(0, airplane.elapsed - airplane.startDelay);
+    const rawT = Math.min(1, activeElapsed / airplane.duration);
+    if (airplane.elapsed < airplane.startDelay) {
+      airplane.planeWrapper.visible = false;
+      airplane.trail.visible = false;
+      continue;
+    }
+
+    airplane.planeWrapper.visible = true;
+    airplane.trail.visible = true;
+    const current = new THREE.Vector3().lerpVectors(airplane.start, airplane.target, rawT);
+    const tangent = airplane.direction;
+    airplane.planeWrapper.position.copy(current);
+    airplane.planeWrapper.quaternion.setFromUnitVectors(new THREE.Vector3(1, 0, 0), tangent);
+    airplane.planeWrapper.rotateX(Math.sin(airplane.elapsed * 2.2) * 0.8);
+    airplane.engineGlow.intensity = 1.8 + Math.sin(airplane.elapsed * 28) * 0.25;
+
+    airplane.history.pop();
+    airplane.history.unshift(current.clone());
+    for (let trailIndex = 0; trailIndex < airplane.history.length; trailIndex += 1) {
+      const point = airplane.history[trailIndex];
+      airplane.trailPositions[trailIndex * 3] = point.x;
+      airplane.trailPositions[trailIndex * 3 + 1] = point.y;
+      airplane.trailPositions[trailIndex * 3 + 2] = point.z;
+    }
+    airplane.trail.geometry.attributes.position.needsUpdate = true;
+    airplane.trail.material.uniforms.globalAlpha.value = 0.62 + (1 - rawT) * 0.18;
+
+    if (airplane.outcome === "intercepted" && rawT >= airplane.interceptAt) {
+      airplane.planeWrapper.parent?.remove(airplane.planeWrapper);
+      airplane.trail.parent?.remove(airplane.trail);
+      const interceptFlash = new THREE.PointLight(0x8cefff, 2.4, 5.2, 2);
+      interceptFlash.position.copy(current);
+      root.add(interceptFlash);
+      explosions.push({
+        type: "escortFlash",
+        life: 0,
+        maxLife: 0.2,
+        flash: interceptFlash
+      });
+      airplanes.splice(index, 1);
+      continue;
+    }
+
+    if (rawT >= 1) {
+      airplane.planeWrapper.parent?.remove(airplane.planeWrapper);
+      airplane.trail.parent?.remove(airplane.trail);
+      if (airplane.canExplode) {
+        explodeBuilding(airplane.group);
+      }
+      airplanes.splice(index, 1);
+    }
+  }
+}
+
 function applyCameraShake(delta, elapsed) {
   camera.position.sub(cameraShake.offset);
   cameraShake.offset.set(0, 0, 0);
@@ -1512,7 +1783,7 @@ function syncSceneState(nextState) {
     group.userData.pendingStrike = pendingIds.has(serverBuilding.id);
     group.userData.destroyedAt = serverBuilding.destroyedAt;
     if (serverBuilding.destroyedAt && !wasDestroyed) {
-      if (!hasActiveMissileForGroup(group)) {
+      if (!hasActiveStrikeVisualForGroup(group)) {
         group.userData.exploded = true;
         group.visible = false;
       } else {
@@ -1609,6 +1880,7 @@ function animate() {
   const delta = clock.getDelta();
   const elapsed = clock.elapsedTime;
   updateMissiles(delta);
+  updateAirplanes(delta);
   updateTraffic(elapsed * 0.12);
   updateExplosions(delta);
   root.rotation.y = Math.sin(elapsed * 0.12) * 0.015;

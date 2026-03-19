@@ -1,4 +1,4 @@
-// Version: 1.0.4
+// Version: 1.0.6
 const http = require("http");
 const fs = require("fs");
 const path = require("path");
@@ -9,8 +9,40 @@ const PORT = Number(process.env.PORT || 3000);
 const COOLDOWN_MS = 10 * 60 * 1000;
 const ADMIN_TOKEN = process.env.MM_ADMIN_TOKEN || "";
 const STRIKE_TRAVEL_MS = 1800;
+const AIRPLANE_TRAVEL_MS = 4800;
 const STATE_PATH = path.join(__dirname, "state.json");
 const PUBLIC_DIR = __dirname;
+
+function parseCliArgs(argv) {
+  const options = {
+    layoutPath: process.env.MM_LAYOUT_PATH ? path.resolve(process.cwd(), process.env.MM_LAYOUT_PATH) : null
+  };
+
+  for (let index = 0; index < argv.length; index += 1) {
+    const value = argv[index];
+    if (value === "--layout") {
+      const next = argv[index + 1];
+      if (!next) {
+        throw new Error("Missing value for --layout");
+      }
+      options.layoutPath = path.resolve(process.cwd(), next);
+      index += 1;
+    }
+  }
+
+  return options;
+}
+
+const CLI_OPTIONS = parseCliArgs(process.argv.slice(2));
+const CITY_CONFIG = CLI_OPTIONS.layoutPath
+  ? {
+      source: "layout",
+      layoutPath: CLI_OPTIONS.layoutPath
+    }
+  : {
+      source: "procedural",
+      layoutPath: null
+    };
 
 const clients = new Set();
 const pendingStrikeTimers = new Map();
@@ -32,6 +64,154 @@ function mulberry32(seed) {
   };
 }
 
+function hashString(value) {
+  let hash = 2166136261;
+  const stringValue = String(value || "");
+  for (let index = 0; index < stringValue.length; index += 1) {
+    hash ^= stringValue.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
+function chance(rand, value) {
+  return rand() < value;
+}
+
+function loadLayoutDefinition(layoutPath) {
+  const raw = fs.readFileSync(layoutPath, "utf8");
+  const parsed = JSON.parse(raw);
+  if (
+    !parsed ||
+    !parsed.grid ||
+    typeof parsed.grid.cols !== "number" ||
+    typeof parsed.grid.rows !== "number" ||
+    !parsed.world ||
+    typeof parsed.world.width !== "number" ||
+    typeof parsed.world.depth !== "number" ||
+    !Array.isArray(parsed.cells)
+  ) {
+    throw new Error(`Invalid layout file: ${layoutPath}`);
+  }
+  return parsed;
+}
+
+function addBuildingRecord(buildings, building) {
+  buildings.push({
+    ...building,
+    destroyedAt: null,
+    destroyedBy: null
+  });
+}
+
+function addHighriseLot(buildings, rand, cell, blockId, lotId) {
+  const baseW = cell.width * (0.66 + rand() * 0.18);
+  const baseD = cell.depth * (0.66 + rand() * 0.18);
+  const podiumH = 18 + rand() * 22;
+  const offsetX = (rand() - 0.5) * cell.width * 0.12;
+  const offsetZ = (rand() - 0.5) * cell.depth * 0.12;
+
+  addBuildingRecord(buildings, {
+    id: `${blockId}-${lotId}-podium`,
+    x: cell.x + offsetX,
+    z: cell.z + offsetZ,
+    width: baseW,
+    depth: baseD,
+    height: podiumH,
+    zone: "downtown"
+  });
+
+  const towerCount = chance(rand, 0.45) ? 2 : 1;
+  for (let index = 0; index < towerCount; index += 1) {
+    const towerW = baseW * (towerCount === 2 ? 0.32 + rand() * 0.11 : 0.4 + rand() * 0.18);
+    const towerD = baseD * (towerCount === 2 ? 0.32 + rand() * 0.11 : 0.4 + rand() * 0.18);
+    const shiftX = towerCount === 2 ? (index === 0 ? -towerW * 0.72 : towerW * 0.72) : (rand() - 0.5) * baseW * 0.1;
+    const shiftZ = (rand() - 0.5) * baseD * 0.12;
+    addBuildingRecord(buildings, {
+      id: `${blockId}-${lotId}-tower-${index}`,
+      x: cell.x + offsetX + shiftX,
+      z: cell.z + offsetZ + shiftZ,
+      width: towerW,
+      depth: towerD,
+      height: 140 + rand() * 180,
+      zone: "downtown"
+    });
+  }
+}
+
+function addMidriseLot(buildings, rand, cell, blockId, lotId) {
+  const count = chance(rand, 0.76) ? 1 : 2;
+  for (let index = 0; index < count; index += 1) {
+    addBuildingRecord(buildings, {
+      id: `${blockId}-${lotId}-mid-${index}`,
+      x: cell.x + (rand() - 0.5) * cell.width * 0.24,
+      z: cell.z + (rand() - 0.5) * cell.depth * 0.24,
+      width: cell.width * (0.42 + rand() * 0.26),
+      depth: cell.depth * (0.42 + rand() * 0.26),
+      height: 48 + rand() * 74,
+      zone: "midrise"
+    });
+  }
+}
+
+function addHouseLot(buildings, rand, cell, blockId, lotId) {
+  const count = chance(rand, 0.72) ? 1 : 2;
+  for (let index = 0; index < count; index += 1) {
+    addBuildingRecord(buildings, {
+      id: `${blockId}-${lotId}-house-${index}`,
+      x: cell.x + (rand() - 0.5) * cell.width * 0.26,
+      z: cell.z + (rand() - 0.5) * cell.depth * 0.26,
+      width: Math.max(10, cell.width * (0.42 + rand() * 0.18)),
+      depth: Math.max(10, cell.depth * (0.42 + rand() * 0.18)),
+      height: 10 + rand() * 16,
+      zone: "residential"
+    });
+  }
+}
+
+function buildCityFromLayout(seed, layoutDefinition) {
+  const rand = mulberry32(seed ^ hashString(layoutDefinition.name || path.basename(CITY_CONFIG.layoutPath || "")));
+  const buildings = [];
+  const cols = layoutDefinition.grid.cols;
+  const rows = layoutDefinition.grid.rows;
+  const worldWidth = layoutDefinition.world.width;
+  const worldDepth = layoutDefinition.world.depth;
+  const cellWorldWidth = worldWidth / cols;
+  const cellWorldDepth = worldDepth / rows;
+  const halfWorldWidth = worldWidth * 0.5;
+  const halfWorldDepth = worldDepth * 0.5;
+
+  for (const cell of layoutDefinition.cells) {
+    if (!cell || typeof cell.x !== "number" || typeof cell.y !== "number") {
+      continue;
+    }
+    if (cell.type === "roads" || cell.type === "parks") {
+      continue;
+    }
+
+    const centerX = -halfWorldWidth + cellWorldWidth * (cell.x + 0.5);
+    const centerZ = -halfWorldDepth + cellWorldDepth * (cell.y + 0.5);
+    const lot = {
+      x: centerX,
+      z: centerZ,
+      width: cellWorldWidth * 0.92,
+      depth: cellWorldDepth * 0.92
+    };
+    const blockId = `c-${cell.x}-${cell.y}`;
+    const lotId = cell.type;
+
+    if (cell.type === "highrise") {
+      addHighriseLot(buildings, rand, lot, blockId, lotId);
+    } else if (cell.type === "midrise") {
+      addMidriseLot(buildings, rand, lot, blockId, lotId);
+    } else if (cell.type === "houses") {
+      addHouseLot(buildings, rand, lot, blockId, lotId);
+    }
+  }
+
+  return buildings.sort((a, b) => a.x - b.x || a.z - b.z || a.height - b.height);
+}
+
 function buildCity(seed) {
   const rand = mulberry32(seed);
   const buildings = [];
@@ -40,11 +220,6 @@ function buildCity(seed) {
   const ROAD_W = 10;
   const BLOCK = 36;
   const DOWNTOWN_RADIUS = 140;
-
-  function chance(value) {
-    return rand() < value;
-  }
-
   function zoneAt(x, z) {
     const d = Math.sqrt(x * x + z * z);
     if (d < DOWNTOWN_RADIUS) {
@@ -59,21 +234,13 @@ function buildCity(seed) {
     return chance(0.72) ? "suburban" : "park";
   }
 
-  function addBuilding(building) {
-    buildings.push({
-      ...building,
-      destroyedAt: null,
-      destroyedBy: null
-    });
-  }
-
   function addTowerLot(x, z, lotW, lotD, blockId, lotId) {
     const podiumH = 14 + rand() * 16;
     const podiumW = lotW * (0.7 + rand() * 0.18);
     const podiumD = lotD * (0.7 + rand() * 0.18);
     const baseJitterX = (rand() - 0.5) * lotW * 0.1;
     const baseJitterZ = (rand() - 0.5) * lotD * 0.1;
-    addBuilding({
+    addBuildingRecord(buildings, {
       id: `${blockId}-${lotId}-podium`,
       x: x + baseJitterX,
       z: z + baseJitterZ,
@@ -89,7 +256,7 @@ function buildCity(seed) {
       const towerD = podiumD * (towerCount === 2 ? 0.34 + rand() * 0.12 : 0.38 + rand() * 0.24);
       const offsetX = towerCount === 2 ? (index === 0 ? -towerW * 0.7 : towerW * 0.7) : (rand() - 0.5) * podiumW * 0.08;
       const offsetZ = (rand() - 0.5) * podiumD * 0.12;
-      addBuilding({
+      addBuildingRecord(buildings, {
         id: `${blockId}-${lotId}-tower-${index}`,
         x: x + baseJitterX + offsetX,
         z: z + baseJitterZ + offsetZ,
@@ -102,11 +269,11 @@ function buildCity(seed) {
   }
 
   function addMidriseLot(x, z, lotW, lotD, blockId, lotId) {
-    const count = chance(0.8) ? 1 : 2;
+    const count = chance(rand, 0.8) ? 1 : 2;
     for (let index = 0; index < count; index += 1) {
       const footprintW = lotW * (0.34 + rand() * 0.34);
       const footprintD = lotD * (0.34 + rand() * 0.34);
-      addBuilding({
+      addBuildingRecord(buildings, {
         id: `${blockId}-${lotId}-mid-${index}`,
         x: x + (rand() - 0.5) * lotW * 0.3,
         z: z + (rand() - 0.5) * lotD * 0.3,
@@ -119,11 +286,11 @@ function buildCity(seed) {
   }
 
   function addResidentialLot(x, z, lotW, lotD, blockId, lotId) {
-    const count = chance(0.84) ? 1 : 2;
+    const count = chance(rand, 0.84) ? 1 : 2;
     for (let index = 0; index < count; index += 1) {
       const width = 10 + rand() * 9;
       const depth = 10 + rand() * 9;
-      addBuilding({
+      addBuildingRecord(buildings, {
         id: `${blockId}-${lotId}-res-${index}`,
         x: x + (rand() - 0.5) * Math.max(lotW * 0.34, 4),
         z: z + (rand() - 0.5) * Math.max(lotD * 0.34, 4),
@@ -136,7 +303,7 @@ function buildCity(seed) {
   }
 
   function addSuburbanLot(x, z, lotW, lotD, blockId, lotId) {
-    addBuilding({
+    addBuildingRecord(buildings, {
       id: `${blockId}-${lotId}-suburban`,
       x: x + (rand() - 0.5) * lotW * 0.22,
       z: z + (rand() - 0.5) * lotD * 0.22,
@@ -159,16 +326,16 @@ function buildCity(seed) {
       }
 
       const zone = zoneAt(gx, gz);
-      if (chance(0.1)) {
+      if (chance(rand, 0.1)) {
         continue;
       }
-      if (zone === "park" || chance(0.08)) {
+      if (zone === "park" || chance(rand, 0.08)) {
         continue;
       }
 
       const blockId = `b-${gx}-${gz}`.replace(/\./g, "_");
-      const lotsX = zone === "downtown" ? (chance(0.82) ? 1 : 2) : (chance(0.72) ? 1 : 2);
-      const lotsZ = zone === "downtown" ? (chance(0.82) ? 1 : 2) : (chance(0.72) ? 1 : 2);
+      const lotsX = zone === "downtown" ? (chance(rand, 0.82) ? 1 : 2) : (chance(rand, 0.72) ? 1 : 2);
+      const lotsZ = zone === "downtown" ? (chance(rand, 0.82) ? 1 : 2) : (chance(rand, 0.72) ? 1 : 2);
       const blockFill = zone === "downtown" ? 0.9 : 0.82 + rand() * 0.1;
       const usableW = BLOCK * blockFill;
       const usableD = BLOCK * blockFill;
@@ -202,12 +369,18 @@ function buildCity(seed) {
   return buildings.sort((a, b) => a.x - b.x || a.z - b.z || a.height - b.height);
 }
 
+const LAYOUT_DEFINITION = CITY_CONFIG.source === "layout" ? loadLayoutDefinition(CITY_CONFIG.layoutPath) : null;
+
 function createRound(roundId) {
   const seed = Date.now() ^ (roundId * 2654435761);
-  const buildings = buildCity(seed);
+  const buildings = CITY_CONFIG.source === "layout"
+    ? buildCityFromLayout(seed, LAYOUT_DEFINITION)
+    : buildCity(seed);
   return {
     roundId,
     seed,
+    citySource: CITY_CONFIG.source,
+    cityLayoutName: LAYOUT_DEFINITION ? LAYOUT_DEFINITION.name || path.basename(CITY_CONFIG.layoutPath) : null,
     phase: "active",
     startedAt: Date.now(),
     endedAt: null,
@@ -231,6 +404,15 @@ function loadState() {
       (parsed.buildings[0] && (typeof parsed.buildings[0].z !== "number" || typeof parsed.buildings[0].depth !== "number"))
     ) {
       throw new Error("Invalid state file");
+    }
+    if ((parsed.citySource || "procedural") !== CITY_CONFIG.source) {
+      throw new Error("State source mismatch");
+    }
+    if (CITY_CONFIG.source === "layout") {
+      const expectedLayoutName = LAYOUT_DEFINITION ? (LAYOUT_DEFINITION.name || path.basename(CITY_CONFIG.layoutPath)) : null;
+      if ((parsed.cityLayoutName || null) !== expectedLayoutName) {
+        throw new Error("State layout mismatch");
+      }
     }
     delete parsed.lastStrike;
     delete parsed.pendingStrikes;
@@ -259,6 +441,8 @@ function currentPayload() {
   return {
     roundId: state.roundId,
     seed: state.seed,
+    citySource: state.citySource || "procedural",
+    cityLayoutName: state.cityLayoutName || null,
     phase: state.phase,
     startedAt: state.startedAt,
     endedAt: state.endedAt,
@@ -305,6 +489,16 @@ function registerPlayer(playerId, name) {
     saveState();
     broadcast("leaderboard");
   }
+}
+
+function chooseStrikeVehicle(building) {
+  if (!building) {
+    return "missile";
+  }
+  if (building.zone === "downtown" && building.height >= 120 && Math.random() < 0.3) {
+    return "airplane";
+  }
+  return "missile";
 }
 
 function resetRound() {
@@ -387,6 +581,7 @@ function resolveStrike(strikeId) {
       strikeId: strike.strikeId,
       seq: strike.seq,
       buildingId: strike.buildingId,
+      vehicle: strike.vehicle || "missile",
       playerId: strike.playerId,
       playerName: strike.playerName,
       startedAt: strike.startedAt,
@@ -447,14 +642,17 @@ function markDestroyed(buildingId, playerId, playerName) {
   const startedAt = Date.now();
   const intercepted = Math.random() < 0.2;
   state.strikeSeq = (state.strikeSeq || 0) + 1;
+  const vehicle = chooseStrikeVehicle(building);
+  const travelMs = vehicle === "airplane" ? AIRPLANE_TRAVEL_MS : STRIKE_TRAVEL_MS;
   const strike = {
     strikeId: `${state.roundId}-${state.strikeSeq}-${buildingId}`,
     seq: state.strikeSeq,
     buildingId,
+    vehicle,
     playerId: playerId || "anonymous",
     playerName: playerName || ((state.players[playerId] && state.players[playerId].name) || "Anonymous"),
     startedAt,
-    impactAt: startedAt + STRIKE_TRAVEL_MS,
+    impactAt: startedAt + travelMs,
     outcome: intercepted ? "intercepted" : "destroyed"
   };
   activeStrikes.set(strike.strikeId, strike);
@@ -463,6 +661,7 @@ function markDestroyed(buildingId, playerId, playerName) {
     playerId: playerId || "anonymous",
     playerName: strike.playerName,
     buildingId,
+    vehicle: strike.vehicle,
     outcome: strike.outcome,
     roundId: state.roundId
   });
@@ -473,7 +672,7 @@ function markDestroyed(buildingId, playerId, playerName) {
 
   state.lastEventAt = Date.now();
   saveState();
-  pendingStrikeTimers.set(strike.strikeId, setTimeout(() => resolveStrike(strike.strikeId), STRIKE_TRAVEL_MS));
+  pendingStrikeTimers.set(strike.strikeId, setTimeout(() => resolveStrike(strike.strikeId), travelMs));
   return { ok: true, code: 200, payload: currentPayload() };
 }
 
@@ -630,6 +829,8 @@ server.listen(PORT, HOST, () => {
   logEvent("server_started", {
     url: `http://${HOST}:${PORT}`,
     roundId: state.roundId,
-    totalBuildings: state.totalBuildings
+    totalBuildings: state.totalBuildings,
+    citySource: state.citySource || "procedural",
+    cityLayoutName: state.cityLayoutName || null
   });
 });
