@@ -1,0 +1,66 @@
+<!doctype html>
+<!-- Version: 2.0.6 -->
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Skyline MM2 v2.0.6</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="hud">
+      <div class="hud-block">
+        <p class="eyebrow">Shared Round</p>
+        <h1>Skyline MM2</h1>
+        <p class="copy">Everyone attacks the same Hormuz Strait traffic. When the last vessel is destroyed, the round locks for 10 minutes.</p>
+        <p class="meta" id="app-version">Version --</p>
+      </div>
+
+      <div class="hud-grid">
+        <section class="card">
+          <p class="label">Status</p>
+          <p class="value" id="phase-label">Connecting</p>
+          <p class="meta" id="phase-copy">Syncing strait state...</p>
+        </section>
+        <section class="card">
+          <p class="label">Timer</p>
+          <p class="value timer" id="timer-label">--:--</p>
+          <p class="meta" id="round-label">Round --</p>
+        </section>
+        <section class="card">
+          <p class="label">Destruction</p>
+          <p class="value" id="destruction-label">0 / 0</p>
+          <p class="meta" id="remaining-label">0 vessels left</p>
+        </section>
+      </div>
+
+      <section class="card identity-card">
+        <label class="label" for="player-name">Alias</label>
+        <input id="player-name" maxlength="24" autocomplete="nickname" placeholder="Anonymous">
+        <p class="meta">Saved locally and sent with your strikes.</p>
+      </section>
+
+      <section class="card">
+        <div class="leaderboard-head">
+          <p class="label">Round Leaders</p>
+          <p class="meta" id="connection-label">Offline</p>
+        </div>
+        <ol class="leaderboard" id="leaderboard"></ol>
+      </section>
+    </aside>
+
+    <main class="stage" id="stage">
+      <div class="overlay" id="overlay">
+        <div class="overlay-card">
+          <p class="eyebrow">Cooldown</p>
+          <h2>Strait Cleared</h2>
+          <p id="overlay-copy">New traffic is on the way.</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="./app.js?v=2.0.6"></script>
+</body>
+</html>
